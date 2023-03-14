@@ -2,6 +2,8 @@ from django.urls import path
 from training import views
 
 urlpatterns = [
-    path('training_session/', views.Training_Session_View.as_view()),
-    path('training/', views.Training_View.as_view())
+    path('session/', views.TrainingSessionView.as_view()),
+    path('', views.TrainingView.as_view()),
+    path('feedback/',views.FeedbackView.as_view()),
+    path('enrollment/',views.EnrollmentView.as_view()),
 ]
