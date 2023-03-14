@@ -1,20 +1,20 @@
 from rest_framework import serializers
-from nomination.models import NominationModel, ConfirmationModel, RejectionModel
+from nomination.models import Nomination, Confirmation, Rejection
 
 class NominationSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = NominationModel
+        model = Nomination
         fields = '__all__'
 
 class ConfirmationSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = ConfirmationModel
+        model = Confirmation
         fields = '__all__'
 
 class RejectionSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = RejectionModel
+        model = Rejection
         fields = '__all__'

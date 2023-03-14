@@ -1,16 +1,14 @@
 from django.db import models
 
 
-class NominationModel(models.Model):
-    nom_id = models.IntegerField(primary_key=True)
+class Nomination(models.Model):
     emp_id = models.IntegerField()
     session_id = models.IntegerField()
 
     class Meta:
         db_table = 'Nomination'
 
-class ConfirmationModel(models.Model):
-    con_id = models.IntegerField(primary_key=True)
+class Confirmation(models.Model):
     emp_id = models.IntegerField()
     session_id = models.IntegerField()
     confirmed_by = models.TextField()
@@ -19,8 +17,7 @@ class ConfirmationModel(models.Model):
     class Meta:
         db_table = 'Confirmation'
 
-class RejectionModel(models.Model):
-    rej_id = models.IntegerField(primary_key=True)
+class Rejection(models.Model):
     emp_id = models.IntegerField()
     session_id = models.IntegerField()
     rejected_by = models.TextField()
