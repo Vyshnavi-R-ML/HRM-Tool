@@ -1,13 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class Training_Session(models.Model):
+class TrainingSession(models.Model):
     session_id = models.IntegerField(primary_key=True)
     session_date = models.DateField()
     session_time = models.TimeField()
 
     class Meta:
-        db_table = 'Training_Session'
+        db_table = 'training_session'
 
 class Training(models.Model):
     session_id = models.IntegerField()
@@ -16,7 +16,7 @@ class Training(models.Model):
     trainer_id = models.IntegerField()
     
     class Meta:
-        db_table = 'Training'
+        db_table = 'training'
 
 
 class Feedback(models.Model):
@@ -27,7 +27,7 @@ class Feedback(models.Model):
     feedback_q3 = models.IntegerField()
 
     class Meta:
-        db_table = 'Feedback'
+        db_table = 'feedback'
 
 class Enrollment(models.Model):
     session_id = models.IntegerField()
@@ -35,4 +35,4 @@ class Enrollment(models.Model):
     training_status = models.TextField()
 
     class Meta:
-        db_table = 'Enrollment'
+        db_table = 'enrollment'

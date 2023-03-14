@@ -7,9 +7,9 @@ class Employee(models.Model):
     rm_id = models.IntegerField(unique=True)
 
     class Meta:
-        db_table = 'Employee'
+        db_table = 'employee'
 
-class RM_Requested(models.Model):
+class RmRequested(models.Model):
     trn_name = models.TextField()
     urgency = models.IntegerField()
     emp_id = models.IntegerField()
@@ -19,4 +19,4 @@ class RM_Requested(models.Model):
     session_time = models.TextField()
 
     class Meta:
-        db_table = 'RM_Requested'
+        db_table = 'rm_requested'

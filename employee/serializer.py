@@ -1,4 +1,4 @@
-from employee.models import Employee, RM_Requested
+from employee.models import Employee, RmRequested
 from rest_framework import serializers
 
 class EmployeeSerializer(serializers.ModelSerializer):
@@ -7,8 +7,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
         model = Employee
         fields = '__all__'
 
-class RM_RequestSerializer(serializers.ModelSerializer):
+class RmRequestSerializer(serializers.ModelSerializer):
 
     class Meta: 
-        model = RM_Requested
+        model = RmRequested
         fields = '__all__'

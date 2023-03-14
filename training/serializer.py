@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from training.models import Training_Session, Training, Feedback, Enrollment
+from training.models import TrainingSession, Training, Feedback, Enrollment
 
 class SessionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Training_Session
+        model = TrainingSession
         fields = '__all__'
         
 class TrainingSerializer(serializers.ModelSerializer):

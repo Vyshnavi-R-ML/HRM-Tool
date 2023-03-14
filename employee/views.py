@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from employee.models import Employee, RM_Requested
-from employee.serializer import EmployeeSerializer, RM_RequestSerializer
+from employee.models import Employee, RmRequested
+from employee.serializer import EmployeeSerializer, RmRequestSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
-class Employee_View(APIView):
+class EmployeeView(APIView):
 
     def get(self,request):
         emp = Employee.objects.all()
@@ -24,16 +24,16 @@ class Employee_View(APIView):
 
         return Response("Updated to the database",status=status.HTTP_200_OK)
 
-class RM_Request_View(APIView):
+class RmRequestView(APIView):
 
     def post(self, request):
         data = request.data
 
-        serilized_data = RM_RequestSerializer(data = data)
+        serilized_data = RmRequestSerializer(data = data)
         if not serilized_data.is_valid():
             return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
         
-        RM_Requested.objects.create(
+        RmRequested.objects.create(
                         trn_name = data['trn_name'], 
                         urgency = data['urgency'], 
                         emp_id = data['emp_id'], 

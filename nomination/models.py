@@ -6,7 +6,7 @@ class Nomination(models.Model):
     session_id = models.IntegerField()
 
     class Meta:
-        db_table = 'Nomination'
+        db_table = 'nomination'
 
 class Confirmation(models.Model):
     emp_id = models.IntegerField()
@@ -15,7 +15,7 @@ class Confirmation(models.Model):
     is_confirmed = models.BooleanField()
 
     class Meta:
-        db_table = 'Confirmation'
+        db_table = 'confirmation'
 
 class Rejection(models.Model):
     emp_id = models.IntegerField()
@@ -24,4 +24,4 @@ class Rejection(models.Model):
     reason = models.TextField()
     
     class Meta:
-        db_table = 'Rejection'
+        db_table = 'rejection'
