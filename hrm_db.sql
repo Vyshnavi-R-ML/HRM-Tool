@@ -10,10 +10,13 @@ CREATE TABLE training(training_id INTEGER,
                       trainer_id INTEGER,
                       PRIMARY KEY (training_id));
 
-CREATE TABLE nomination(nom_id INTEGER,
+CREATE TABLE nomination(
                         emp_id INTEGER,
                         session_id INTEGER,
                         PRIMARY KEY (nom_id));
+
+INSERT INTO nomination(emp_id, training_session_id) VALUES(10391, 7001);
+
 
 CREATE TABLE confirmation(con_id INTEGER,
                           emp_id INTEGER,

@@ -11,6 +11,19 @@ class TrainingSessionView(APIView):
         ts_objects =  TrainingSession.objects.all()
         ts_data = SessionSerializer(ts_objects, many=True).data
         return Response(ts_data, status=status.HTTP_200_OK)
+    
+    def post(self, request):
+        data = request.data
+
+        serilized_data = SessionSerializer(data = data)
+        if not serilized_data.is_valid():
+            return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
+        
+        TrainingSession.objects.create(session_id = data['session_id'], session_date = data['session_date'], session_time = data['session_time'])
+
+
+        return Response("Updated to the database",status=status.HTTP_200_OK)
+   
 
 class TrainingView(APIView):
 
