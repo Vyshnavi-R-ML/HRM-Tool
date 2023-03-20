@@ -4,7 +4,7 @@ class Employee(models.Model):
     emp_id = models.IntegerField(primary_key=True,unique=True)
     emp_name = models.TextField()
     emp_category = models.TextField()
-    rm_id = models.ForeignKey("self", on_delete=models.CASCADE,  null=True, blank=True)
+    rm = models.ForeignKey("self", on_delete=models.CASCADE,  null=True, blank=True)
 
     class Meta:
         db_table = 'employee'
@@ -12,7 +12,7 @@ class Employee(models.Model):
 class RmRequested(models.Model):
     trn_name = models.TextField()
     urgency = models.IntegerField()
-    emp_id = models.IntegerField()
+    emp = models.ForeignKey(Employee, on_delete=models.CASCADE)
     tm_acceptance = models.TextField()
     rej_reason = models.TextField()
     session_date = models.TextField()
