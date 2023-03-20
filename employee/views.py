@@ -19,7 +19,7 @@ class EmployeeView(APIView):
         if not serilized_data.is_valid():
             return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
         
-        Employee.objects.create(emp_id = data['emp_id'], emp_name = data['emp_name'], emp_category = data['emp_category'], rm_id = data['rm_id'])
+        Employee.objects.create(emp_id = data['emp_id'], emp_name = data['emp_name'], emp_category = data['emp_category'], rm = data['rm'])
 
 
         return Response("Updated to the database",status=status.HTTP_200_OK)
