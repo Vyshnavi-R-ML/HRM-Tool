@@ -19,7 +19,7 @@ class TrainingSessionView(APIView):
         if not serilized_data.is_valid():
             return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
         
-        TrainingSession.objects.create(session_id = data['session_id'], session_date = data['session_date'], session_time = data['session_time'])
+        TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'])
 
 
         return Response("Updated to the database",status=status.HTTP_200_OK)
@@ -27,13 +27,11 @@ class TrainingSessionView(APIView):
     def put(self, request):
         data = request.data
 
-        serilized_data = SessionSerializer(data = data)
-        if not serilized_data.is_valid():
-            return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
-        
         TrainingSession.objects.filter(session_id = data['session_id']).update(
+            training_name=data['training_name'],
             session_date=data['session_date'], 
-            session_time = data['session_time']
+            session_time = data['session_time'],
+            trainer_id=data['trainer_id']
         )
 
 
@@ -42,9 +40,6 @@ class TrainingSessionView(APIView):
     def delete(self, request):
         data = request.data
 
-        serilized_data = SessionSerializer(data = data)
-        if not serilized_data.is_valid():
-            return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
         
         TrainingSession.objects.get(session_id = data['session_id']).delete()
 

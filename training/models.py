@@ -5,7 +5,7 @@ from employee.models import Employee
 # Create your models here.
 class TrainingSession(models.Model):
     session_id = models.IntegerField(primary_key=True)
-    trainer_name = models.TextField()
+    training_name = models.TextField()
     session_date = models.DateField()
     session_time = models.TimeField()
     trainer = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)
