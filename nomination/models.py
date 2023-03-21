@@ -6,7 +6,7 @@ class Nomination(models.Model):
     to_add_emp = models.IntegerField()
     session = models.ForeignKey(TrainingSession,on_delete=models.CASCADE)
     confirm_by_emp = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    confirm_status = models.BooleanField()
+    confirm_status = models.BooleanField(null=True)
     class Meta:
         db_table = 'nomination'
 
