@@ -24,12 +24,6 @@ class NominationView(APIView):
 
         nom.save()
 
-        # Nomination.objects.create(session = data['session'],
-        #     to_add_emp=data['to_add_emp'],
-        #     confirm_by_emp=data['confirm_by_emp'], 
-        #     confirm_status = data['confirm_status']
-        # )
-
         return Response('Nomination for {} created to the database'.format(data['session_id']),status=status.HTTP_200_OK)
 
 
