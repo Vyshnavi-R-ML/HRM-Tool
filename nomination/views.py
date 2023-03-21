@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
-from nomination.models import Nomination, Confirmation, Rejection
-from nomination.serializer import NominationSerializer, ConfirmationSerializer, RejectionSerializer
+from training.models import Training
+from nomination.models import Nomination, Rejection
+from nomination.serializer import NominationSerializer, RejectionSerializer
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -11,11 +12,20 @@ class NominationView(APIView):
         nom_data = NominationSerializer(nom, many = True).data
         return Response(nom_data, status=status.HTTP_200_OK)
 
-class ConfirmationView(APIView):
-    def get(self, request):
-        con = Confirmation.objects.all()
-        con_data = ConfirmationSerializer(con, many = True).data
-        return Response(con_data, status=status.HTTP_200_OK)
+    def put(self, request):
+        data = request.data
+
+        Nomination.objects.filter(session = data['session']).update(
+            to_add_emp=data['to_add_emp'],
+            confirm_by_emp=data['confirm_by_emp'], 
+            confirm_status = data['confirm_status']
+        )
+
+        if data['confirm_status']:
+            Training.objects.create(session = data['session'], emp = data['to_add_emp'])
+
+        return Response('Session {} updated to the database'.format(data['session_id']),status=status.HTTP_200_OK)
+
 
 class RejectionView(APIView):
     def get(self, request):
