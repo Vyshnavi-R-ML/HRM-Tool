@@ -5,17 +5,17 @@ from employee.models import Employee
 # Create your models here.
 class TrainingSession(models.Model):
     session_id = models.IntegerField(primary_key=True)
+    trainer_name = models.TextField()
     session_date = models.DateField()
     session_time = models.TimeField()
+    trainer = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)
 
     class Meta:
         db_table = 'training_session'
 
 class Training(models.Model):
     session = models.ForeignKey(TrainingSession, on_delete=models.CASCADE)
-    training_name = models.TextField()
     emp = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='empID')
-    trainer = models.ForeignKey(Employee, on_delete=models.CASCADE, related_name='trainerID')
     
     class Meta:
         db_table = 'training'
