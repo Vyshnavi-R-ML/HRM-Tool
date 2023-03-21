@@ -9,7 +9,10 @@ class TrainingSession(models.Model):
     session_date = models.DateField()
     session_time = models.TimeField()
     trainer = models.ForeignKey(Employee, on_delete=models.CASCADE, null=True)
-
+    created_date = models.DateTimeField(auto_now_add=True)
+    created_by = models.IntegerField()
+    updated_date = models.DateTimeField(auto_now_add=True)
+    updated_by = models.IntegerField(null=True)
     class Meta:
         db_table = 'training_session'
 

@@ -4,6 +4,8 @@ from rest_framework.response import Response
 from training.serializer import SessionSerializer, TrainingSerializer, FeedbackSerializer, EnrollmentSerializer
 from training.models import TrainingSession, Training, Feedback, Enrollment
 from rest_framework import status
+from datetime import datetime
+
 # Create your views here.
 class TrainingSessionView(APIView):
 
@@ -19,7 +21,7 @@ class TrainingSessionView(APIView):
         if not serilized_data.is_valid():
             return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
         
-        TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'])
+        TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'], created_by = data['created_by'])
 
 
         return Response("Updated to the database",status=status.HTTP_200_OK)
@@ -31,7 +33,9 @@ class TrainingSessionView(APIView):
             training_name=data['training_name'],
             session_date=data['session_date'], 
             session_time = data['session_time'],
-            trainer_id=data['trainer_id']
+            trainer_id=data['trainer_id'],
+            updated_date=datetime.now(),
+            updated_by=data['updated_by']
         )
 
 
