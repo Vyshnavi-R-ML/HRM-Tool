@@ -11,7 +11,7 @@ class Nomination(models.Model):
         db_table = 'nomination'
 
 class Rejection(models.Model):
-    emp = models.ForeignKey(Nomination, on_delete=models.CASCADE)
+    emp = models.ForeignKey(Employee, on_delete=models.CASCADE)
     session = models.ForeignKey(TrainingSession, on_delete=models.CASCADE)
     rejected_by = models.TextField()
     reason = models.TextField()

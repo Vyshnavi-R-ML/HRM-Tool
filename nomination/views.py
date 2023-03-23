@@ -32,8 +32,15 @@ class NominationView(APIView):
 
         if data['status']:
             Training.objects.create(session_id = data['session_id'], emp_id = data['emp_id'])
-
-        return Response('Session {} updated to the database'.format(data['session_id']),status=status.HTTP_200_OK)
+            return Response('Session {} updated to the Training database'.format(data['session_id']),status=status.HTTP_200_OK)
+        else:
+            Rejection.objects.create(emp_id=data['emp_id'], 
+                session_id=data['session_id'], 
+                rejected_by=data['rejected_by'],
+                reason=data['reason']
+            )
+            return Response('Session {} updated to the Rejection database'.format(data['session_id']),status=status.HTTP_200_OK)
+        
 
 
 class RejectionView(APIView):
