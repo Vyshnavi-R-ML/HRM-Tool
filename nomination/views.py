@@ -16,9 +16,9 @@ class NominationView(APIView):
         data = request.data
 
         Nomination.objects.create(session_id = data['session_id'],
-            to_add_emp=data['to_add_emp'],
-            confirm_by_emp_id=data['confirm_by_emp_id'], 
-            confirm_status = data['confirm_status'])
+            emp_id=data['emp_id'],
+            nominated_by=data['nominated_by'], 
+            status = data['status'])
         
         return Response('Nomination for {} created to the database'.format(data['session_id']),status=status.HTTP_200_OK)
 
@@ -26,9 +26,9 @@ class NominationView(APIView):
     def put(self, request):
         data = request.data
 
-        Nomination.objects.filter(to_add_emp = data['to_add_emp']).update(
-            to_add_emp=data['to_add_emp'],
-            confirm_by_emp_id=data['confirm_by_emp_id'], 
+        Nomination.objects.filter(emp_id = data['to_add_emp']).update(
+            emp_id = data['to_add_emp'],
+            nominated_by_id = data['confirm_by_emp_id'], 
             confirm_status = data['confirm_status']
         )
 

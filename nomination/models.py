@@ -3,10 +3,10 @@ from training.models import TrainingSession
 from employee.models import Employee
 
 class Nomination(models.Model):
-    to_add_emp = models.IntegerField()
+    emp_id = models.IntegerField()
     session = models.ForeignKey(TrainingSession,on_delete=models.CASCADE)
-    confirm_by_emp = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    confirm_status = models.BooleanField(null=True)
+    nominated_by = models.IntegerField(null=True)
+    status = models.BooleanField(null=True)
     class Meta:
         db_table = 'nomination'
 
