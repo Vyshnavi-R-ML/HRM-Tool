@@ -8,8 +8,9 @@ from rest_framework import status
 
 class NominationView(APIView):
     def get(self, request):
-        nom = Nomination.objects.all()
-        nom_data = NominationSerializer(nom, many = True).data
+        data = request.query_params
+        nom_filter = Nomination.objects.filter(session_id = data['session_id'])
+        nom_data = NominationSerializer(nom_filter, many = True).data
         return Response(nom_data, status=status.HTTP_200_OK)
 
     def post(self, request):
