@@ -64,6 +64,20 @@ class FeedbackView(APIView):
         feedback = Feedback.objects.all()
         feedback_data = FeedbackSerializer(feedback, many=True).data
         return Response(feedback_data, status=status.HTTP_200_OK)
+
+    def post(self, request):
+        data = request.data
+        serilized_data = FeedbackSerializer(data = data)
+        if not serilized_data.is_valid():
+            return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
+
+        Feedback.objects.create(session_id=data['session'], 
+            emp=data['emp'], 
+            feedback_q1=data['feedback_q1'],
+            feedback_q2=data['feedback_q2'],
+            feedback_q3=data['feedback_q3'])
+
+        return Response('Feedback submitted successfully', status=status.HTTP_200_OK)
     
 class EnrollmentView(APIView):
 
