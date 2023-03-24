@@ -9,9 +9,20 @@ from rest_framework import status
 class NominationView(APIView):
     def get(self, request):
         data = request.query_params
-        nom_filter = Nomination.objects.filter(session_id = data['session_id'])
-        nom_data = NominationSerializer(nom_filter, many = True).data
-        return Response(nom_data, status=status.HTTP_200_OK)
+        nominated_by = data['nominated_by']
+        session_id = data['session_id']
+                    
+        if nominated_by != '':
+            nom_filter_mgr = Nomination.objects.filter(nominated_by=nominated_by)
+            nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
+            return Response(nom_data, status=status.HTTP_200_OK)
+        
+        elif session_id != '':
+            nom_filter = Nomination.objects.filter(session_id = session_id)
+            nom_data = NominationSerializer(nom_filter, many = True).data
+            return Response(nom_data, status=status.HTTP_200_OK) 
+               
+        return Response("Please enter either Session ID or Manager ID", status=status.HTTP_400_BAD_REQUEST) 
 
     def post(self, request):
         data = request.data
