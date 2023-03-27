@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from training.serializer import SessionSerializer, TrainingSerializer, FeedbackSerializer, EnrollmentSerializer
-from training.models import TrainingSession, Training, Feedback, Enrollment
+from training.serializer import SessionSerializer, TrainingSerializer, FeedbackSerializer
+from training.models import TrainingSession, Training, Feedback
 from rest_framework import status
 from datetime import datetime
 
@@ -78,10 +78,3 @@ class FeedbackView(APIView):
             feedback_q3=data['feedback_q3'])
 
         return Response('Feedback submitted successfully', status=status.HTTP_200_OK)
-    
-class EnrollmentView(APIView):
-
-    def get(self, request):
-        enroll = Enrollment.objects.all()
-        enroll_data = EnrollmentSerializer(enroll, many=True).data
-        return Response(enroll_data, status=status.HTTP_200_OK)

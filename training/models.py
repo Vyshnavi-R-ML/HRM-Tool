@@ -13,6 +13,7 @@ class TrainingSession(models.Model):
     created_by = models.IntegerField()
     updated_date = models.DateTimeField(auto_now_add=True)
     updated_by = models.IntegerField(null=True)
+    acceptance_status = models.BooleanField(null=True)
     class Meta:
         db_table = 'training_session'
 
@@ -34,10 +35,3 @@ class Feedback(models.Model):
     class Meta:
         db_table = 'feedback'
 
-class Enrollment(models.Model):
-    session = models.ForeignKey(TrainingSession, on_delete=models.CASCADE)
-    emp = models.ForeignKey(Employee, on_delete=models.CASCADE)
-    training_status = models.TextField()
-
-    class Meta:
-        db_table = 'enrollment'
