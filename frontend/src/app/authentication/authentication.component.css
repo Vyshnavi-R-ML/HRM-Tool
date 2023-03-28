@@ -20,10 +20,51 @@ img {
     margin-top: 15%;
 }
 
+.col {
+    padding-top: 4%;
+    padding-left: 30%;
+    padding-right: 25%;
+}
+
+.form-control {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #EDDBC7;
+    border-bottom-color: #5F5F60;
+}
+
+input:focus, input.form-control:focus {
+
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
 .btn {
     padding: 10px 40px;
+    margin-top: 2%;
+    margin-left: 2%;
+    border-radius: 8px;
 }
 .btn-signin {
-    margin-left: 5%;
     background-color: #006738;
+    color: white;
+    font-weight: 700;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.or-text {
+    margin-top: 2%;
+    margin-left: 50%;
+    margin-right: 35%;
+    color: #5F5F60;
+}
+
+.btn-outlook {
+    border-color: #5F5F60;
+    background-color: #EDDBC7;
 }
