@@ -44,11 +44,14 @@ h1 {
     font-style: normal;
 }
 .content-2 {
+    font-family: 'Belgrano';
     margin-left: 25%;
+    font-size: 50px;
+    font-style: normal;
     margin-top: 5%;
 }
 .btn {
-    margin-top: 10%;
+    margin-top: 5%;
     margin-right: 20%;
     color: #EDDBC7;
     padding: 10px 40px;
