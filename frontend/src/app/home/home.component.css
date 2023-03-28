@@ -12,12 +12,56 @@ a {
     padding-right: 10%;
 }
 
+.navbar-brand {
+    font-size: 40px;
+}
 .nav-item {
     font-size: small;
 }
 
 img {
-    margin-left: 5%;
-    width: 400px;
-    height: 500px;
+    margin-left: 6%;
+    margin-top: 4%;
+    width: 30%;
+    height: 70%;
+}
+
+.mainbar {
+    display: flex;
+    flex-direction: row;
+}
+
+.content-right {
+    margin-left: 20%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+}
+h1 {
+    font-family: 'Belgrano';
+    font-weight: 500;
+    font-size: 80px;
+    font-style: normal;
+}
+.content-2 {
+    margin-left: 25%;
+    margin-top: 5%;
+}
+.btn {
+    margin-top: 10%;
+    margin-right: 20%;
+    color: #EDDBC7;
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-family: 'Syncopate', sans-serif;
+}
+
+.btn-success {
+    background-color: #83DD7E;
+    border: #83DD7E;
+}
+
+.btn-danger {
+    background-color: #F07E5C;
+    border: #F07E5C;
 }
