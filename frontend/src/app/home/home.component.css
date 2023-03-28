@@ -18,7 +18,10 @@ a {
 .nav-item {
     font-size: small;
 }
-
+.navbar-nav > a{
+    padding-left: 25px;
+    padding-right: 25px;
+}
 img {
     margin-left: 6%;
     margin-top: 4%;
@@ -45,13 +48,14 @@ h1 {
 }
 .content-2 {
     font-family: 'Belgrano';
-    margin-left: 25%;
     font-size: 50px;
+    width: 75%;
     font-style: normal;
     margin-top: 5%;
 }
 .btn {
     margin-top: 5%;
+    margin-left: 0;
     margin-right: 20%;
     color: #EDDBC7;
     padding: 10px 40px;
