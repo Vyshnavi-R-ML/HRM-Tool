@@ -2,9 +2,16 @@ p {
     margin: 0;
 }
 
-.navbar{
-    background-color: #EDDBC7;
+a {
+    font-family: 'Syncopate', sans-serif;
 }
-.navbar-nav {
-    right : 10px;
+
+.navbar{
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-right: 10%;
+}
+
+.nav-item {
+    font-size: small;
 }
