@@ -2,3 +2,9 @@ p {
     margin: 0;
 }
 
+.navbar{
+    background-color: #EDDBC7;
+}
+.navbar-nav {
+    right : 10px;
+}
