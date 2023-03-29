@@ -36,11 +36,15 @@
     background-color: #FFFFFF;
     margin: 0 1px 0 0;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    
+}
+.emp-details {
     display: flex;
     flex-direction: row;
+    margin: 20px 0 0 0;
 }
 .user-img {
-    width: 50%;
+    width: 40%;
     height: 100%;
 }
 .list {
@@ -63,6 +67,6 @@
     font-size: 40px;
 }
 .right-page {
-    
+    width: 100%;
 }
 
