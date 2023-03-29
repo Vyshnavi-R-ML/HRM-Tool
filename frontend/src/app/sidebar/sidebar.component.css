@@ -2,12 +2,15 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: #F8FAFB;
 }
 
 .top-bar {
     width: 100%;
     height: 15%;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
+    margin: 0 0 1px 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .logo {
@@ -28,14 +31,38 @@
 }
 
 .side-bar{
-    width: 15%;
+    width: 16%;
     height: 100%;
-    background-color: aqua;
+    background-color: #FFFFFF;
+    margin: 0 1px 0 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    display: flex;
+    flex-direction: row;
+}
+.user-img {
+    width: 50%;
+    height: 100%;
+}
+.list {
+    width: 100%;
+}
+.name {
+    font-size: 20px;
+    font-family: 'Belgrano', serif;
+    padding: 10px 0 0 10px;
+    margin: 0;
+}
+.role {
+    padding: 0 0 0 10px;
+    font-family: 'Belgrano', serif;
+    color: #A4A4A4;
 }
 
+.bi-person-circle {
+    margin: 8px 4px 0 0;
+    font-size: 40px;
+}
 .right-page {
-    width: 100%;
-    height: 100%;
-    background-color: red;
+    
 }
 
