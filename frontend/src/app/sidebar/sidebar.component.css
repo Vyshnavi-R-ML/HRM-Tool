@@ -15,6 +15,12 @@
     margin: 1% 0 0 2%;
 }
 
+.bi {
+    float: right;
+    margin: 2% 3% 0 0;
+    font-size: 25px;
+}
+
 .main-page {
     display: flex;
     flex-direction: row;
