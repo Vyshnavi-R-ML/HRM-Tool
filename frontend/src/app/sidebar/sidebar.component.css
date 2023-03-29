@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.top-bar {
+    width: 100%;
+    height: 15%;
+    background-color: #ffffff;
+}
+
+.logo {
+    height: 70%;
+    margin: 1% 0 0 2%;
+}
+
+.main-page {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.side-bar{
+    width: 15%;
+    height: 100%;
+    background-color: aqua;
+}
+
+.right-page {
+    width: 100%;
+    height: 100%;
+    background-color: red;
+}
+
