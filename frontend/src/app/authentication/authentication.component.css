@@ -2,13 +2,23 @@
     background-color: #F07E5C;
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
+.logo {
+    font-family: 'Syncopate', sans-serif;
+    margin-top: 20%;
+    margin-left: 13%;
+    font-size: 40px;
+    cursor: default;
+}
 .auth-box {
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-left: 40%; 
+    width: 100%;
+    margin-left: 20%; 
     background-color: #EDDBC7;
     border-radius: 60px 0 0 60px;
 }
@@ -18,6 +28,7 @@ img {
     margin-left: 45%;
     margin-right: 45%;
     margin-top: 15%;
+    pointer-events: none;
 }
 
 .col {
@@ -40,7 +51,7 @@ input:focus, input.form-control:focus {
     outline:none !important;
     outline-width: 0 !important;
     box-shadow: none;
-    -moz-box-shadow: none;
+    /* -moz-box-shadow: none; */
     -webkit-box-shadow: none;
 }
 
@@ -62,6 +73,7 @@ input:focus, input.form-control:focus {
     margin-left: 50%;
     margin-right: 35%;
     color: #5F5F60;
+    cursor: default;
 }
 
 .btn-outlook {
