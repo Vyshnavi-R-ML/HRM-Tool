@@ -8,11 +8,26 @@
 }
 
 .logo {
-    margin-top: 6%;
+    margin: 14% 0 0 15%;
+    width: 70%;
 }
 
 .emp-container {
     margin: 1% 0 0% 2%;
     display: flex;
     flex-direction: column;
+}
+
+.name {
+    font-size: 30px;
+    font-family: 'Belgrano';
+}
+
+.category {
+    font-size: 20px;
+    font-family: 'Belgrano';
+}
+.role {
+    font-family: 'Belgrano', serif;
+    color: #A4A4A4;
 }
