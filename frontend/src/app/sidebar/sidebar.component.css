@@ -18,6 +18,10 @@
     margin: 1% 0 0 2%;
 }
 
+.bi-box-arrow-right {
+    cursor: pointer;
+}
+
 .bi {
     float: right;
     margin: 2% 3% 0 0;
@@ -70,15 +74,17 @@
 .nav-item {
     display: flex;
     flex-direction: row;
-    padding: 0 0 20% 25%;
+    margin: 0 0 20% 0%;
+    padding: 0 0 0 20%;
     font-size: 20px;
+    border: 1px black solid;
 }
 
 .nav-link {
     font-family: 'Belgrano', serif;
     color: black;
 }
-.nav-link:active {
+.nav-item:active {
     background-color: #F8FAFB;
 }
 
