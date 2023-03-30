@@ -96,10 +96,19 @@ tbody {
     font-weight: 600;
 }
 
-.status {
+.status-green {
     display: inline;
     background-color: #CBEEE7;
     color: #16C098;
+    font-weight: 600;
+    padding: 5% 5%;
+    border-radius: 6px;
+}
+
+.status-red {
+    display: inline;
+    background-color: #DF7373;
+    color: #b70000;
     font-weight: 600;
     padding: 5% 5%;
     border-radius: 6px;

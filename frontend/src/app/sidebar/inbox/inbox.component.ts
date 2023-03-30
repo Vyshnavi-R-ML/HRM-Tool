@@ -7,11 +7,30 @@ import { Component } from '@angular/core';
 })
 export class InboxComponent {
   trainingStatus = {
-    managerName: 'Tapash',
-    department: 'Delivery',
-    training: 'Golang',
-    duration: '20 days',
-    deadline: '5 march',
-    status: 'Accepted',
+    first: {
+      managerName: 'Tapash',
+      department: 'Delivery',
+      training: 'Golang',
+      duration: '20 days',
+      deadline: '5 march',
+      status: 'Online',
+    },
+    second: {
+      managerName: 'Kumar',
+      department: 'Delivery',
+      training: 'Python',
+      duration: '25 days',
+      deadline: '15 march',
+      status: 'Offline ',
+    },
+    third: {
+      managerName: 'Deepan',
+      department: 'Delivery',
+      training: 'Django',
+      duration: '22 days',
+      deadline: '18 march',
+      status: 'Online',
+    }
+    
   }
 }
