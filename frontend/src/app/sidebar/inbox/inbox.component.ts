@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent {
-  trainingStatus = {
-    first: {
+  trainingStatus = [
+    {
       managerName: 'Tapash',
       department: 'Delivery',
       training: 'Golang',
@@ -15,7 +15,7 @@ export class InboxComponent {
       deadline: '5 march',
       status: 'Online',
     },
-    second: {
+    {
       managerName: 'Kumar',
       department: 'Delivery',
       training: 'Python',
@@ -23,7 +23,7 @@ export class InboxComponent {
       deadline: '15 march',
       status: 'Offline ',
     },
-    third: {
+    {
       managerName: 'Deepan',
       department: 'Delivery',
       training: 'Django',
@@ -32,5 +32,5 @@ export class InboxComponent {
       status: 'Online',
     }
     
-  }
+  ]
 }

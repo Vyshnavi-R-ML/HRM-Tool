@@ -48,40 +48,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="table-row">{{trainingStatus.first.managerName}}</td>
-                <td class="table-row">{{trainingStatus.first.department}}</td>
-                <td class="table-row">{{trainingStatus.first.training}}</td>
-                <td class="table-row">{{trainingStatus.first.duration}}</td>
-                <td class="table-row">{{trainingStatus.first.deadline}}</td>
+              <tr *ngFor="let details of trainingStatus; index as i"> 
+                <td class="table-row">{{details.managerName}}</td>
+                <td class="table-row">{{details.department}}</td>
+                <td class="table-row">{{details.training}}</td>
+                <td class="table-row">{{details.duration}}</td>
+                <td class="table-row">{{details.deadline}}</td>
                 <td class="table-row">
-                    <div class="status-green">        
-                        {{trainingStatus.first.status}}
+                    <div class="status-green" *ngIf="details.status == 'Online'; else elseBlock">        
+                        {{details.status}}
                     </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="table-row">{{trainingStatus.second.managerName}}</td>
-                <td class="table-row">{{trainingStatus.second.department}}</td>
-                <td class="table-row">{{trainingStatus.second.training}}</td>
-                <td class="table-row">{{trainingStatus.second.duration}}</td>
-                <td class="table-row">{{trainingStatus.second.deadline}}</td>
-                <td class="table-row">
-                    <div class="status-red">        
-                        {{trainingStatus.second.status}}
-                    </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="table-row">{{trainingStatus.third.managerName}}</td>
-                <td class="table-row">{{trainingStatus.third.department}}</td>
-                <td class="table-row">{{trainingStatus.third.training}}</td>
-                <td class="table-row">{{trainingStatus.third.duration}}</td>
-                <td class="table-row">{{trainingStatus.third.deadline}}</td>
-                <td class="table-row">
-                    <div class="status-green">        
-                        {{trainingStatus.third.status}}
-                    </div>
+                    <ng-template #elseBlock >
+                        <div class="status-red">
+                            {{details.status}}
+                        </div>
+                    </ng-template>
                 </td>
               </tr>
             </tbody>
