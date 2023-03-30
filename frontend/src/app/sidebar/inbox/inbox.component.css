@@ -5,6 +5,7 @@
     display: flex;
     flex: row;
     background-color: #FFFFFF;
+    cursor: default;
 }
 
 .logo {
@@ -38,13 +39,68 @@
 }
 
 .navbar-nav > li{
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     padding: 0 50%;
-    margin: 0 10%;
+    margin: 0 12%;
+    cursor: pointer;
 }
 
 .table-top {
     display: flex;
     justify-content: space-between;
-    width: 85%;
+    width: 90%;
     padding-bottom: 2%;
+    cursor: default;
+}
+
+.table-name {
+    font-size: 30px;
+    font-family: 'Belgrano', serif;
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+}
+.sort-btn {
+    border: none;
+    padding: 1% 2% 0 2%;
+    background-color: #F6F6F6;
+    border-radius: 8px;
+    color: #1A2B88;
+    font-weight: 500;
+    font-family: 'Belgrano', serif;
+}
+
+.sort-txt {
+    border:none;
+    background-color: #F6F6F6;
+}
+
+table {
+    cursor: default;
+}
+.table-row {
+    padding: 2% 1%;
+    box-sizing: content-box;
+}
+.table {
+    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+}
+
+thead {
+    color: #A4A4A4;
+}
+
+tbody {
+    font-weight: 600;
+}
+
+.status {
+    display: inline;
+    background-color: #CBEEE7;
+    color: #16C098;
+    font-weight: 600;
+    padding: 5% 5%;
+    border-radius: 6px;
 }

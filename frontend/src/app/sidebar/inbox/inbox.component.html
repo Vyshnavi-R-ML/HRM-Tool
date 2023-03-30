@@ -30,44 +30,59 @@
     </nav>
     <div class="emp-table">
         <div class="table-top">
-            <h2>Manager Status</h2>
-            <button class="sort-btn">Filter and Sort</button>
+            <h2 class="table-name">Manager Status</h2>
+            <div class="sort-btn">
+                <button class="sort-txt">Filter & Sort</button>
+                <i class="bi bi-funnel"></i>
+            </div>
         </div>
         <table class="table table-borderless">
             <thead>
               <tr>
-                <th scope="col">Manager Name</th>
-                <th scope="col">Department</th>
-                <th scope="col">Training</th>
-                <th scope="col">Duration</th>
-                <th scope="col">Deadline</th>
-                <th scope="col">Status</th>
+                <th scope="col" class="table-row">Manager Name</th>
+                <th scope="col" class="table-row">Department</th>
+                <th scope="col" class="table-row">Training</th>
+                <th scope="col" class="table-row">Duration</th>
+                <th scope="col" class="table-row">Deadline</th>
+                <th scope="col" class="table-row">Status</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>{{trainingStatus.managerName}}</td>
-                <td>{{trainingStatus.department}}</td>
-                <td>{{trainingStatus.training}}</td>
-                <td>{{trainingStatus.duration}}</td>
-                <td>{{trainingStatus.deadline}}</td>
-                <td>{{trainingStatus.status}}</td>
+                <td class="table-row">{{trainingStatus.managerName}}</td>
+                <td class="table-row">{{trainingStatus.department}}</td>
+                <td class="table-row">{{trainingStatus.training}}</td>
+                <td class="table-row">{{trainingStatus.duration}}</td>
+                <td class="table-row">{{trainingStatus.deadline}}</td>
+                <td class="table-row">
+                    <div class="status">        
+                        {{trainingStatus.status}}
+                    </div>
+                </td>
               </tr>
               <tr>
-                <td>{{trainingStatus.managerName}}</td>
-                <td>{{trainingStatus.department}}</td>
-                <td>{{trainingStatus.training}}</td>
-                <td>{{trainingStatus.duration}}</td>
-                <td>{{trainingStatus.deadline}}</td>
-                <td>{{trainingStatus.status}}</td>
+                <td class="table-row">{{trainingStatus.managerName}}</td>
+                <td class="table-row">{{trainingStatus.department}}</td>
+                <td class="table-row">{{trainingStatus.training}}</td>
+                <td class="table-row">{{trainingStatus.duration}}</td>
+                <td class="table-row">{{trainingStatus.deadline}}</td>
+                <td class="table-row">
+                    <div class="status">        
+                        {{trainingStatus.status}}
+                    </div>
+                </td>
               </tr>
               <tr>
-                <td>{{trainingStatus.managerName}}</td>
-                <td>{{trainingStatus.department}}</td>
-                <td>{{trainingStatus.training}}</td>
-                <td>{{trainingStatus.duration}}</td>
-                <td>{{trainingStatus.deadline}}</td>
-                <td>{{trainingStatus.status}}</td>
+                <td class="table-row">{{trainingStatus.managerName}}</td>
+                <td class="table-row">{{trainingStatus.department}}</td>
+                <td class="table-row">{{trainingStatus.training}}</td>
+                <td class="table-row">{{trainingStatus.duration}}</td>
+                <td class="table-row">{{trainingStatus.deadline}}</td>
+                <td class="table-row">
+                    <div class="status">        
+                        {{trainingStatus.status}}
+                    </div>
+                </td>
               </tr>
             </tbody>
           </table>
