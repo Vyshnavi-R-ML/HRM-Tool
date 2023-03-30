@@ -31,3 +31,20 @@
     font-family: 'Belgrano', serif;
     color: #A4A4A4;
 }
+
+.emp-table {
+    width: 80%;
+    margin: 2% 0 0 10%;
+}
+
+.navbar-nav > li{
+    padding: 0 50%;
+    margin: 0 10%;
+}
+
+.table-top {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    padding-bottom: 2%;
+}

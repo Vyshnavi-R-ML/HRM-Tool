@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent {
-
+  trainingStatus = {
+    managerName: 'Tapash',
+    department: 'Delivery',
+    training: 'Golang',
+    duration: '20 days',
+    deadline: '5 march',
+    status: 'Accepted',
+  }
 }
