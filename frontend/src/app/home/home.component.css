@@ -4,9 +4,6 @@
     height: 100%;
 }
 
-p {
-    margin: 0;
-}
 
 a {
     font-family: 'Syncopate', sans-serif;
@@ -16,18 +13,26 @@ a {
     padding-top: 2%;
     padding-left: 6%;
     padding-right: 10%;
+    width: 95%;
 }
 
 .navbar-brand {
-    font-size: 40px;
+    font-size: 240%;
     cursor: default;
 }
+
 .nav-item {
-    font-size: small;
+    font-size: 90%;
+    color: #000000;
 }
+
+.nav-item:hover {
+    color: #A4A4A4;
+    text-decoration: none;
+}  
+
 .navbar-nav > a{
-    padding-left: 25px;
-    padding-right: 25px;
+    padding:0 10%;
 }
 img {
     margin-left: 6%;
@@ -43,6 +48,7 @@ img {
 }
 
 .content-right {
+    width: 40%;
     margin-left: 20%;
     margin-top: 5%;
     display: flex;
@@ -52,12 +58,12 @@ img {
 h1 {
     font-family: 'Belgrano';
     font-weight: 500;
-    font-size: 80px;
+    font-size: 450%;
     font-style: normal;
 }
 .content-2 {
     font-family: 'Belgrano';
-    font-size: 50px;
+    font-size: 150%;
     width: 75%;
     font-style: normal;
     margin-top: 5%;
@@ -67,7 +73,7 @@ h1 {
     margin-left: -5%;
     margin-right: 20%;
     color: #EDDBC7;
-    padding: 10px 40px;
+    padding: 2% 5%;
     border-radius: 10px;
     font-family: 'Syncopate', sans-serif;
 }
@@ -77,7 +83,15 @@ h1 {
     border: #83DD7E;
 }
 
+.btn-success:hover {
+    background-color: #4dcf46;
+}
+
 .btn-danger {
     background-color: #F07E5C;
     border: #F07E5C;
+}
+
+.btn-danger:hover {
+    background-color: #f76336;
 }
