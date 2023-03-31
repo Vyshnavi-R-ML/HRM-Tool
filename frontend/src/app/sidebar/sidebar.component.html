@@ -16,43 +16,46 @@
             </div>
             <div class="side-bar-items mt-5">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
+                    <li class="nav-item" (click)="displayInbox()" [ngClass]="{'highlight': showInbox === true}">
                         <div>
                             <i class="bi bi-grid"></i>
                         </div>
                         <div>
-                            <a class="nav-link active" routerLink="/dashboard" routerLinkActive="active">Inbox</a>
+                            <a class="nav-link">Inbox</a>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" (click)="displayEmployee()" [ngClass]="{'highlight': showEmployee === true}">
                         <div>
                             <i class="bi bi-person-vcard"></i>
                         </div>
                         <div>
-                            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Employee</a>
+                            <a class="nav-link">Employee</a>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" (click)="displayCandidate()" [ngClass]="{'highlight': showCandidate === true}">
                         <div>
                             <i class="bi bi-person-square"></i>
                         </div>
                         <div>
-                            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Candidate</a>
+                            <a class="nav-link">Candidate</a>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" (click)="displayCalendar()" [ngClass]="{'highlight': showCalendar === true}">
                         <div>
                             <i class="bi bi-calendar-date"></i>
                         </div>
                         <div>
-                            <a class="nav-link" routerLink="/dashboard" routerLinkActive="active">Calendar</a>
+                            <a class="nav-link">Calendar</a>
                         </div>
                     </li>
                   </ul>
             </div>
         </div>
         <div class="right-page">
-            <app-inbox></app-inbox>
+            <app-inbox *ngIf="showInbox"></app-inbox>
+            <h1 *ngIf="showEmployee" class="emp-comp">Employee</h1>
+            <h1 *ngIf="showCandidate">Candidate</h1>
+            <h1 *ngIf="showCalendar">Calendar</h1>
         </div>
     </div>
 </div>

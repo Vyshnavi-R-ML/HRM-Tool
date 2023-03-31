@@ -92,11 +92,12 @@
     font-size: 120%;
     color: black;
 }
-.nav-item:active {
-    background-color: #F8FAFB;
-
-}
 
 .right-page {
     width: 100%;
+}
+
+.highlight {
+    color: #5932EA;
+    background-color: #F8FAFB;
 }

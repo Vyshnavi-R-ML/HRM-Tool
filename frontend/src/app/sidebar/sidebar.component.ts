@@ -6,5 +6,33 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
+  showInbox = true;
+  showEmployee = false;
+  showCandidate = false;
+  showCalendar = false;
 
+  displayInbox() {
+    this.showInbox = true;
+    this.showEmployee = false;
+    this.showCandidate = false;
+    this.showCalendar = false;
+  }
+  displayEmployee() {
+    this.showInbox = false;
+    this.showEmployee = true;
+    this.showCandidate = false;
+    this.showCalendar = false;
+  }
+  displayCandidate() {
+    this.showInbox = false;
+    this.showEmployee = false;
+    this.showCandidate = true;
+    this.showCalendar = false;  
+  }
+  displayCalendar() {
+    this.showInbox = false;
+    this.showEmployee = false;
+    this.showCandidate = false;
+    this.showCalendar = true;
+  }
 }

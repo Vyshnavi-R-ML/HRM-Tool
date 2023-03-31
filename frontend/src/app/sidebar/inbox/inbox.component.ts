@@ -33,4 +33,23 @@ export class InboxComponent {
     }
     
   ]
+  showTraining = true;
+  showReplies = false;
+  showRequest = false;
+
+  displayTraining() {
+    this.showTraining = true;
+    this.showReplies = false;
+    this.showRequest = false;
+  }
+  displayReplies() {
+    this.showTraining = false;
+    this.showReplies = true;
+    this.showRequest = false;
+  }
+  displayRequest() {
+    this.showTraining = false;
+    this.showReplies = false;
+    this.showRequest = true;
+  }
 }
