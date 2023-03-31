@@ -64,7 +64,7 @@
 }
 .sort-btn {
     border: none;
-    padding: 1% 2% 0 2%;
+    padding: 1% 2% 1% 2%;
     background-color: #F6F6F6;
     border-radius: 8px;
     color: #1A2B88;
@@ -72,9 +72,19 @@
     font-family: 'Belgrano', serif;
 }
 
+.sort-btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+}
+
 .sort-txt {
     border:none;
     background-color: #F6F6F6;
+    outline: 0;
+}
+
+.sort-txt:hover {
+    cursor: pointer;
 }
 
 table {
