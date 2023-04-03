@@ -53,9 +53,9 @@
         </div>
         <div class="right-page">
             <app-inbox *ngIf="showInbox"></app-inbox>
-            <h1 *ngIf="showEmployee" class="emp-comp">Employee</h1>
+            <app-employee *ngIf="showEmployee"> </app-employee>
             <h1 *ngIf="showCandidate">Candidate</h1>
-            <h1 *ngIf="showCalendar">Calendar</h1>
+            <app-calendar *ngIf="showCalendar"> </app-calendar>
         </div>
     </div>
 </div>

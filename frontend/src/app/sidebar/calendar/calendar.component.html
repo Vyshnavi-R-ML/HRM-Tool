@@ -1,0 +1,20 @@
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col" class="table-row">Session ID</th>
+        <th scope="col" class="table-row">Training Name</th>
+        <th scope="col" class="table-row">Session Date</th>
+        <th scope="col" class="table-row">Session Time</th>
+        <th scope="col" class="table-row">Created By</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let trainings of trainingSession; index as i"> 
+        <td class="table-row">{{trainings.sessionID}}</td>
+        <td class="table-row">{{trainings.trainingName}}</td>
+        <td class="table-row">{{trainings.sessionDate}}</td>
+        <td class="table-row">{{trainings.sessionTime}}</td>
+        <td class="table-row">{{trainings.createdBy}}</td>
+      </tr>
+    </tbody>
+  </table>
