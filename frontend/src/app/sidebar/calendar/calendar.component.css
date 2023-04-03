@@ -1,0 +1,10 @@
+.bi-calendar-plus {
+    font-size: 250%;
+    position: absolute;
+    bottom: 1%;
+    right: 1%;
+}
+
+form {
+    width: 100%;
+}

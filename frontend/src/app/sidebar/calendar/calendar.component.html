@@ -10,11 +10,34 @@
     </thead>
     <tbody>
       <tr *ngFor="let trainings of trainingSession; index as i"> 
-        <td class="table-row">{{trainings.sessionID}}</td>
-        <td class="table-row">{{trainings.trainingName}}</td>
-        <td class="table-row">{{trainings.sessionDate}}</td>
-        <td class="table-row">{{trainings.sessionTime}}</td>
-        <td class="table-row">{{trainings.createdBy}}</td>
+        <td class="table-row">{{trainings.session_id}}</td>
+        <td class="table-row">{{trainings.training_name}}</td>
+        <td class="table-row">{{trainings.session_date}}</td>
+        <td class="table-row">{{trainings.session_date}}</td>
+        <td class="table-row">{{trainings.created_by}}</td>
       </tr>
     </tbody>
-  </table>
+</table>
+<form [formGroup]="trainingForm">
+    <div class="form-group">
+      <label>Training Name</label>
+      <input type="text" formControlName="trainingName" class="form-control" placeholder="Django">
+    </div>
+    <div class="form-group">
+        <label>Trainer</label>
+        <input type="text" formControlName="trainer" class="form-control" placeholder="Trainer ID">
+      </div>
+    <div class="form-group">
+      <label>Session Date</label>
+      <input type="date" formControlName="sessionDate" class="form-control" placeholder="Date">
+    </div>
+    <div class="form-group">
+      <label>Session Time</label>
+      <input type="time" formControlName="sessionTime" class="form-control">
+    </div>
+    <button type="submit" (click)="addTraining()" class="btn btn-primary">Add</button>
+</form> 
+
+{{ trainingForm.value.trainer | json }}
+
+<i  class="bi bi-calendar-plus" (click)="clickForm()"></i>

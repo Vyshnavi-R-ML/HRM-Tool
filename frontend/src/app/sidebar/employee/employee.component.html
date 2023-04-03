@@ -1,27 +1,20 @@
 <table class="table table-borderless">
     <thead>
       <tr>
+        <th scope="col" class="table-row">Employee ID</th>
         <th scope="col" class="table-row">Employee Name</th>
-        <th scope="col" class="table-row">Department</th>
-        <th scope="col" class="table-row">Status</th>
+        <th scope="col" class="table-row">Category</th>
+        <th scope="col" class="table-row">RM ID</th>
         <th scope="col" class="table-row">Edit</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let details of trainingStatus; index as i"> 
-        <td class="table-row">{{details.employeeName}}</td>
-        <td class="table-row">{{details.department}}</td>
-        <td class="table-row">
-            <div class="status-green" *ngIf="details.status == 'Online'; else elseBlock">        
-                {{details.status}}
-            </div>
-            <ng-template #elseBlock >
-                <div class="status-red">
-                    {{details.status}}
-                </div>
-            </ng-template>
-        </td>
-        <td class="table-row"><button (click)="deleteEmp(details.employeeName)"><i class="bi bi-trash"></i></button></td>
+      <tr *ngFor="let details of employees; index as i"> 
+        <td class="table-row">{{details.emp_id}}</td>
+        <td class="table-row">{{details.emp_name}}</td>
+        <td class="table-row">{{details.emp_category}}</td>
+        <td class="table-row">{{details.rm}}</td>
+        <td class="table-row"><button (click)="deleteEmp(i)"><i class="bi bi-trash"></i></button></td>
       </tr>
     </tbody>
   </table>

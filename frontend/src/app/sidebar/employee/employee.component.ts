@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmployeeService } from 'src/app/services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -6,32 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent {
-  trainingStatus = [
+  employees = [
     {
-      employeeName: 'Tapash',
-      department: 'Delivery',
-      status: 'Online',
-    },
-    {
-      employeeName: 'Kumar',
-      department: 'Delivery',
-      status: 'Offline ',
-    },
-    {
-      employeeName: 'Deepan',
-      department: 'Delivery',
-      status: 'Online',
-    }
-    
+      emp_id: 'Tapash',
+      emp_name: 'Delivery',
+      emp_category: 'Online',
+      rm: ''
+    },    
   ]
 
-  deleteEmp(empName: string){
-    console.log(empName)
-    var index: any;
-    for(index in this.trainingStatus) {
-      if (this.trainingStatus[index].employeeName == empName){
-        this.trainingStatus.splice(index, 1)
-      }
-    }
+  constructor(private _employeeService: EmployeeService) {}
+
+  ngOnInit() {
+    this._employeeService.getEmployees()
+      .subscribe(data => this.employees = data)
+  }
+
+  deleteEmp(i: any){
+    // this.employees.splice(i, 1)
+    console.log(this.employees)
   }
 }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { InboxComponent } from './sidebar/inbox/inbox.component';
 import { EmployeeComponent } from './sidebar/employee/employee.component';
 import { CalendarComponent } from './sidebar/calendar/calendar.component';
+import { CalendarService } from './calendar.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,9 +26,10 @@ import { CalendarComponent } from './sidebar/calendar/calendar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [CalendarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
