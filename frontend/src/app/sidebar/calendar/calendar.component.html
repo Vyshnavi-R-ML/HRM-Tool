@@ -18,7 +18,7 @@
       </tr>
     </tbody>
 </table>
-<form [formGroup]="trainingForm">
+<form *ngIf = "showForm" [formGroup]="trainingForm">
     <div class="form-group">
       <label>Training Name</label>
       <input type="text" formControlName="trainingName" class="form-control" placeholder="Django">
