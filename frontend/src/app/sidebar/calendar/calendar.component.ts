@@ -55,6 +55,9 @@ export class CalendarComponent implements OnInit {
       this.trainingForm.value.trainer,
       this.trainingForm.value.sessionDate,
       this.trainingForm.value.sessionTime
-    ).subscribe(res => this.getTraining())
+    ).subscribe(res => {
+      console.log(res)
+      this.getTraining()
+    })
   }
 }
