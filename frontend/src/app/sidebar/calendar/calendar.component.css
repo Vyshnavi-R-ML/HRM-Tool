@@ -1,6 +1,6 @@
 .bi-calendar-plus {
     font-size: 250%;
-    position: absolute;
+    position: fixed;
     bottom: 1%;
     right: 1%;
 }

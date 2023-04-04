@@ -12,14 +12,20 @@ class TrainingSessionView(APIView):
     def get(self, request):
         ts_objects =  TrainingSession.objects.all()
         ts_data = SessionSerializer(ts_objects, many=True).data
+
         return Response(ts_data, status=status.HTTP_200_OK)
     
     def post(self, request):
+        request.data._mutable = True
         data = request.data
+        session_id = TrainingSession.objects.all().last().session_id + 1
+        data['session_id'] = session_id
+        request.data._mutable = False
 
         serilized_data = SessionSerializer(data = data)
         if not serilized_data.is_valid():
             return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
+
         
         TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'], created_by = data['created_by'])
 

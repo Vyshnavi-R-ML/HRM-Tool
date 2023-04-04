@@ -24,7 +24,6 @@ export class EmployeeComponent {
   }
 
   deleteEmp(i: any){
-    // this.employees.splice(i, 1)
-    console.log(this.employees)
+    this.employees.splice(i, 1)
   }
 }

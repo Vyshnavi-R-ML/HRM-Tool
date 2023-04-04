@@ -34,6 +34,10 @@ export class CalendarComponent implements OnInit {
   constructor(private _calendarService: CalendarService, private fb: FormBuilder){ }
 
   ngOnInit() {
+    this.getTraining()
+  }
+
+  getTraining() {
     this._calendarService.getTrainingSession()
       .subscribe(data => console.log(this.trainingSession = data))
   }
@@ -51,6 +55,6 @@ export class CalendarComponent implements OnInit {
       this.trainingForm.value.trainer,
       this.trainingForm.value.sessionDate,
       this.trainingForm.value.sessionTime
-    )
+    ).subscribe(res => this.getTraining())
   }
 }
