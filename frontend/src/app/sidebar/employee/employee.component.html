@@ -13,7 +13,10 @@
         <td class="table-row">{{details.emp_id}}</td>
         <td class="table-row">{{details.emp_name}}</td>
         <td class="table-row">{{details.emp_category}}</td>
-        <td class="table-row">{{details.rm}}</td>
+        <td class="table-row" *ngIf="details.rm != null; else elseBlock">{{details.rm}}</td>
+        <ng-template #elseBlock>
+          <td>-</td>
+        </ng-template>
         <td class="table-row"><button (click)="deleteEmp(i)"><i class="bi bi-trash"></i></button></td>
       </tr>
     </tbody>
