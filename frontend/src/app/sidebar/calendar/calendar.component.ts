@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CalendarService } from 'src/app/calendar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTrainingModalComponent } from './add-training-modal/add-training-modal.component';
+import { ViewEmployeeModalComponent } from './view-employee-modal/view-employee-modal.component';
 /**
  * Calendar Component Displays Training Sessions and 
  * Creates Training Session
@@ -23,7 +24,7 @@ export class CalendarComponent implements OnInit {
     }
   ]
 
-  constructor(private _calendarService: CalendarService, private fb: FormBuilder, private dialogRef: MatDialog){ }
+  constructor(private _calendarService: CalendarService, private fb: FormBuilder, public dialogRef: MatDialog){ }
 
   ngOnInit() {
     this.getTraining()
@@ -36,6 +37,12 @@ export class CalendarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       result ? this.getTraining() : console.log('else')
+    })
+  }
+
+  displayEmployees() {
+    let dialogRef = this.dialogRef.open(ViewEmployeeModalComponent, {
+      width: '40%',
     })
   }
 

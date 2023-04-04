@@ -14,7 +14,8 @@ import { CalendarService } from './calendar.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal/add-training-modal.component'
+import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal/add-training-modal.component';
+import { ViewEmployeeModalComponent } from './sidebar/calendar/view-employee-modal/view-employee-modal.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal
     InboxComponent,
     EmployeeComponent,
     CalendarComponent,
-    AddTrainingModalComponent
+    AddTrainingModalComponent,
+    ViewEmployeeModalComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal
     BrowserAnimationsModule
   ],
   providers: [CalendarService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AddTrainingModalComponent, ViewEmployeeModalComponent]
 })
 export class AppModule { }

@@ -1,0 +1,14 @@
+<table class="table table-borderless">
+    <thead>
+      <tr>
+        <th scope="col" class="table-row">Session ID</th>
+        <th scope="col" class="table-row">Employee ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let training of trainings; index as i"> 
+        <td class="table-row">{{training.session}}</td>
+        <td class="table-row">{{training.emp}}</td>
+      </tr>
+    </tbody>
+</table>

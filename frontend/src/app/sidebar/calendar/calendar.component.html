@@ -9,17 +9,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let trainings of trainingSession; index as i"> 
+      <tr *ngFor="let trainings of trainingSession; index as i">
         <td class="table-row">{{trainings.session_id}}</td>
         <td class="table-row">{{trainings.training_name}}</td>
         <td class="table-row">{{trainings.session_date}}</td>
         <td class="table-row">{{trainings.session_time}}</td>
         <td class="table-row">{{trainings.created_by}}</td>
+        <td class="table-row"><i  class="bi bi-people" (click)="displayEmployees()"></i></td>
       </tr>
     </tbody>
 </table>
-
-
-
 
 <i  class="bi bi-calendar-plus" (click)="displayForm()"></i>

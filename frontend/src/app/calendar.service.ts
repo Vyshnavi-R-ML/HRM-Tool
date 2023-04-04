@@ -7,11 +7,15 @@ import { Observable } from 'rxjs';
 })
 export class CalendarService {
 
-  private _url: string = "http://127.0.0.1:8000/training/session/";
+  private _url: string = "http://127.0.0.1:8000/training/";
 
   constructor(private http: HttpClient) { }
 
   getTrainingSession(): Observable<any> {
+    return this.http.get<any>(this._url + 'session/')
+  }
+
+  getTrainingEmployees(): Observable<any> {
     return this.http.get<any>(this._url)
   }
 
