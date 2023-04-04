@@ -23,9 +23,6 @@ export class CalendarComponent implements OnInit {
     }
   ]
 
-
-  showForm = false;
-
   constructor(private _calendarService: CalendarService, private fb: FormBuilder, private dialogRef: MatDialog){ }
 
   ngOnInit() {
@@ -38,7 +35,7 @@ export class CalendarComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      result ? this.getTraining() : console.log(result)
+      result ? this.getTraining() : console.log('else')
     })
   }
 
@@ -49,8 +46,4 @@ export class CalendarComponent implements OnInit {
       .subscribe(data => console.log(this.trainingSession = data))
   }
 
-
-  clickForm(){
-    this.showForm = !this.showForm
-  }
 }

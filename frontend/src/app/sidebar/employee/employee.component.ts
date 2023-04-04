@@ -9,9 +9,9 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class EmployeeComponent {
   employees = [
     {
-      emp_id: 'Tapash',
-      emp_name: 'Delivery',
-      emp_category: 'Online',
+      emp_id: '',
+      emp_name: '',
+      emp_category: '',
       rm: ''
     },    
   ]
