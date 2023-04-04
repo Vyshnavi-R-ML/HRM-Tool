@@ -9,6 +9,11 @@ table {
     position: fixed;
     bottom: 1%;
     right: 1%;
+    cursor: pointer;
+}
+
+.bi-people {
+    cursor: pointer;
 }
 
 form {
