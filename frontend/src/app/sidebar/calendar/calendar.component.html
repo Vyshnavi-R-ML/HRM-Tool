@@ -18,26 +18,8 @@
       </tr>
     </tbody>
 </table>
-<form *ngIf = "showForm" [formGroup]="trainingForm">
-    <div class="form-group">
-      <label>Training Name</label>
-      <input type="text" formControlName="trainingName" class="form-control" placeholder="Django">
-    </div>
-    <div class="form-group">
-        <label>Trainer</label>
-        <input type="text" formControlName="trainer" class="form-control" placeholder="Trainer ID">
-      </div>
-    <div class="form-group">
-      <label>Session Date</label>
-      <input type="date" formControlName="sessionDate" class="form-control" placeholder="Date">
-    </div>
-    <div class="form-group">
-      <label>Session Time</label>
-      <input type="time" formControlName="sessionTime" class="form-control">
-    </div>
-    <button type="submit" (click)="addTraining()" class="btn btn-primary">Add</button>
-</form> 
 
-{{ trainingForm.value.trainer | json }}
 
-<i  class="bi bi-calendar-plus" (click)="clickForm()"></i>
+
+
+<i  class="bi bi-calendar-plus" (click)="displayForm()"></i>

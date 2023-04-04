@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CalendarService } from 'src/app/calendar.service';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTrainingModalComponent } from './add-training-modal/add-training-modal.component';
 /**
  * Calendar Component Displays Training Sessions and 
  * Creates Training Session
@@ -21,21 +23,26 @@ export class CalendarComponent implements OnInit {
     }
   ]
 
-  trainingForm = this.fb.group({
-    trainingName: [''],
-    trainer: [''],
-    sessionDate: [''],
-    sessionTime: [''],
-  })
-
 
   showForm = false;
 
-  constructor(private _calendarService: CalendarService, private fb: FormBuilder){ }
+  constructor(private _calendarService: CalendarService, private fb: FormBuilder, private dialogRef: MatDialog){ }
 
   ngOnInit() {
     this.getTraining()
   }
+
+  displayForm() {
+    let dialogRef = this.dialogRef.open(AddTrainingModalComponent, {
+      width: '40%',
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      result ? this.getTraining() : console.log(result)
+    })
+  }
+
+  
 
   getTraining() {
     this._calendarService.getTrainingSession()
@@ -45,19 +52,5 @@ export class CalendarComponent implements OnInit {
 
   clickForm(){
     this.showForm = !this.showForm
-  }
-
-
-  // POST Form Data to backend
-  addTraining() {
-    this._calendarService.addTrainingSession(
-      this.trainingForm.value.trainingName,
-      this.trainingForm.value.trainer,
-      this.trainingForm.value.sessionDate,
-      this.trainingForm.value.sessionTime
-    ).subscribe(res => {
-      console.log(res)
-      this.getTraining()
-    })
   }
 }

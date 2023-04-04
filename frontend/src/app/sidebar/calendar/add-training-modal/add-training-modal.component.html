@@ -1,0 +1,19 @@
+<form [formGroup]="trainingForm">
+    <div class="form-group">
+      <label>Training Name</label>
+      <input type="text" formControlName="trainingName" class="form-control" placeholder="Django">
+    </div>
+    <div class="form-group">
+        <label>Trainer</label>
+        <input type="text" formControlName="trainer" class="form-control" placeholder="Trainer ID">
+      </div>
+    <div class="form-group">
+      <label>Session Date</label>
+      <input type="date" formControlName="sessionDate" class="form-control" placeholder="Date">
+    </div>
+    <div class="form-group">
+      <label>Session Time</label>
+      <input type="time" formControlName="sessionTime" class="form-control">
+    </div>
+    <button type="submit" (click)="addTraining()" [mat-dialog-close]="true" class="btn btn-primary">Add</button>
+</form> 

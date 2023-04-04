@@ -12,7 +12,9 @@ import { EmployeeComponent } from './sidebar/employee/employee.component';
 import { CalendarComponent } from './sidebar/calendar/calendar.component';
 import { CalendarService } from './calendar.service';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal/add-training-modal.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +23,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     InboxComponent,
     EmployeeComponent,
-    CalendarComponent
+    CalendarComponent,
+    AddTrainingModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [CalendarService],
   bootstrap: [AppComponent]
