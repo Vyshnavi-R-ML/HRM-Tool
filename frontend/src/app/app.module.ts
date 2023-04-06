@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal/add-training-modal.component'
+import { EditTrainingModelComponent } from './sidebar/calendar/edit-training-model/edit-training-model.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal
     InboxComponent,
     EmployeeComponent,
     CalendarComponent,
-    AddTrainingModalComponent
+    AddTrainingModalComponent,
+    EditTrainingModelComponent
   ],
   imports: [
     BrowserModule,

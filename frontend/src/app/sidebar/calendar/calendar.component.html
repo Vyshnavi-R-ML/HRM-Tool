@@ -10,14 +10,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let trainings of trainingSession;index as i"> 
+      <tr *ngFor="let trainings of trainingSession;index as sessionIndex"> 
         <!-- <td class="table-row">{{trainings.session_id}}</td> -->
         <td class="table-row">{{trainings.training_name}}</td>
         <td class="table-row">{{trainings.session_date}}</td>
         <td class="table-row">{{trainings.session_time}}</td>
         <td class="table-row" *ngIf="trainings.trainer != null; else elseblock ">{{trainings.trainer}}</td>
         <ng-template #elseblock> <td class="table-row">- </td> </ng-template>
-        <td><i class="bi bi-pen" (click)="displayEditform(i)"></i></td>
+        <td><i class="bi bi-pen" (click)="displayEditform(sessionIndex)"></i></td>
       </tr>
     </tbody>
 </table>

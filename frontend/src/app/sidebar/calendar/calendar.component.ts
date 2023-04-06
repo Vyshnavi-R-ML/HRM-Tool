@@ -21,7 +21,8 @@ export class CalendarComponent implements OnInit {
       session_date: '',
       session_time: '',
       created_by: '',
-      trainer: ''
+      trainer: '',
+      updated_by: ''
     }
   ]
   
@@ -55,14 +56,10 @@ export class CalendarComponent implements OnInit {
   
 
   displayEditform(sessionIndex: any) {
-
-    
     let editDialog = this.dialogRef.open(EditTrainingModelComponent, {
-      width : '50%', data: {session: this.trainingSession[sessionIndex]}
+      width : '40%', data: {session: this.trainingSession[sessionIndex]}
       
     })
-
-    
     editDialog.afterClosed().subscribe(res => res ? this.getTraining() : console.log(res)
     )
   }
