@@ -11,6 +11,11 @@ table {
     right: 1%;
 }
 
+.bi-pen {
+    border: 1px black dotted;
+    padding: 5%;
+}
+
 form {
     width: 100%;
 }

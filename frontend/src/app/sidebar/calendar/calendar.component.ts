@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { CalendarService } from 'src/app/calendar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTrainingModalComponent } from './add-training-modal/add-training-modal.component';
+import { EditTrainingModelComponent } from './edit-training-model/edit-training-model.component';
 /**
  * Calendar Component Displays Training Sessions and 
  * Creates Training Session
@@ -19,12 +20,13 @@ export class CalendarComponent implements OnInit {
       training_name: '',
       session_date: '',
       session_time: '',
-      created_by: ''
+      created_by: '',
+      trainer: ''
     }
   ]
+  
+  
 
-
-  showForm = false;
 
   constructor(private _calendarService: CalendarService, private fb: FormBuilder, private dialogRef: MatDialog){ }
 
@@ -48,9 +50,22 @@ export class CalendarComponent implements OnInit {
     this._calendarService.getTrainingSession()
       .subscribe(data => console.log(this.trainingSession = data))
   }
+  
 
+  
 
-  clickForm(){
-    this.showForm = !this.showForm
+  displayEditform(sessionIndex: any) {
+
+    
+    let editDialog = this.dialogRef.open(EditTrainingModelComponent, {
+      width : '50%', data: {session: this.trainingSession[sessionIndex]}
+      
+    })
+
+    
+    editDialog.afterClosed().subscribe(res => res ? this.getTraining() : console.log(res)
+    )
   }
+
+  
 }
