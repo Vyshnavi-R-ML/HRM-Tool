@@ -11,9 +11,13 @@ table {
     right: 1%;
 }
 
-.bi-pen {
-    border: 1px black dotted;
-    padding: 5%;
+.bi-calendar-plus:hover {
+    cursor: pointer;
+}
+
+
+.bi-pencil-square:hover {
+    cursor: pointer;
 }
 
 form {
