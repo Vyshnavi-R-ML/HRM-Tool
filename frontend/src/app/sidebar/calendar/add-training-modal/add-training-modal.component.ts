@@ -28,5 +28,6 @@ export class AddTrainingModalComponent {
     ).subscribe(res => {
       console.log(res)
     })
+    
   }
 }

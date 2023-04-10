@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +30,17 @@ export class CalendarService {
     
     return this.http.post<any>(this._url + 'session/', postData)
   }
+
+  updateTrainingSession(session_id: any, training_name: any, session_date: any, session_time: any, trainer: any, updated_by: any) {
+    const putData = new FormData();
+
+    putData.append('session_id', session_id)
+    putData.append('training_name', training_name)
+    putData.append('session_date', session_date)
+    putData.append('session_time', session_time)
+    putData.append('trainer_id',trainer)
+    putData.append('updated_by', updated_by)
+
+    return this.http.put<any>(this._url, putData)
+  } 
 }

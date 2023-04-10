@@ -16,6 +16,15 @@ table {
     cursor: pointer;
 }
 
+.bi-calendar-plus:hover {
+    cursor: pointer;
+}
+
+
+.edit-btn:hover {
+    cursor: pointer;
+}
+
 form {
     width: 100%;
 }

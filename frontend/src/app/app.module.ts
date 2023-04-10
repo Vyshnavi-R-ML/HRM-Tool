@@ -18,7 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal/add-training-modal.component';
 import { ViewEmployeeModalComponent } from './sidebar/calendar/view-employee-modal/view-employee-modal.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { EditTrainingModelComponent } from './sidebar/calendar/edit-training-model/edit-training-model.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     EmployeeComponent,
     CalendarComponent,
     AddTrainingModalComponent,
-    ViewEmployeeModalComponent
+    ViewEmployeeModalComponent,
+    EditTrainingModelComponent
   ],
   imports: [
     BrowserModule,
