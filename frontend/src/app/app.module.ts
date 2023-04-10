@@ -44,6 +44,6 @@ import { EditTrainingModelComponent } from './sidebar/calendar/edit-training-mod
   ],
   providers: [CalendarService],
   bootstrap: [AppComponent],
-  entryComponents:[AddTrainingModalComponent, ViewEmployeeModalComponent]
+  entryComponents:[AddTrainingModalComponent, ViewEmployeeModalComponent, EditTrainingModelComponent]
 })
 export class AppModule { }
