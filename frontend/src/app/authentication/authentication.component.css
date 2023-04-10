@@ -69,6 +69,19 @@ input:focus, input.form-control:focus {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.btn-signin {
+    cursor: not-allowed;
+}
+
+.btn-disabled {
+    cursor: not-allowed !important;
+    opacity: 0.7;
+}
+
+.btn-clickable {
+    pointer-events: none;
+}
+
 .or-text {
     margin-top: 2%;
     margin-left: 50%;

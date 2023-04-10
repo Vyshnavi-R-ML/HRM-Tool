@@ -4,19 +4,32 @@
     </div>
     <div class="auth-box">
         <img src="../../assets/logo.svg" alt="logo.png">
-        <form>
+        <form [formGroup]="authForm">
               <div class="col mt-1">
-                <input type="text" class="form-control" placeholder="User Name">
+                <input type="text" 
+                formControlName="email" 
+                class="form-control" placeholder="Email">
+                <div *ngIf="authForm.controls.email.invalid && (authForm.controls.email.dirty || authForm.controls.email.touched)">
+                    <small *ngIf="authForm.controls.email.errors?.['required']">Email is required</small>
+                </div>
               </div>
               <div class="col">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                <div *ngIf="authForm.controls.password.invalid && (authForm.controls.password.dirty || authForm.controls.password.touched)">
+                    <small *ngIf="authForm.controls.password.errors?.['required']">Password is required</small>
+                </div>
+                <div *ngIf="authForm.controls.password.errors?.['minlength']">
+                    Name must be at least 8 characters long.
+                </div>
               </div>
         </form>
-        <div class="btn">
-            <button type="button" class="btn btn-signin" routerLink="/dashboard" routerLinkActive="active">Sign in</button>
+        <div class="btn" [ngClass]="{'btn-disabled': authForm.controls.email.invalid || authForm.controls.password.invalid}">
+            <button type="button" [ngClass]="{'btn-clickable': authForm.controls.email.invalid || authForm.controls.password.invalid}" class="btn btn-signin" routerLink="/dashboard" routerLinkActive="active">Sign in</button>
         </div>
         <div class="or-text">
             <p> - OR -</p>
+            {{authForm.controls.email.invalid}}
+            {{authForm.controls.password.invalid}}
         </div>
         <div class="btn">
             <button type="button"class="btn btn-outlook" routerLink="/dashboard" routerLinkActive="active">Sign in with Outlook</button>

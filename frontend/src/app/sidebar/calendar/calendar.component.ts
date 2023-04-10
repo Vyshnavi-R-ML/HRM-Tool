@@ -23,6 +23,7 @@ export class CalendarComponent implements OnInit {
       created_by: ''
     }
   ]
+  searchText = '';
 
   constructor(private _calendarService: CalendarService, private fb: FormBuilder, public dialogRef: MatDialog){ }
 

@@ -1,5 +1,8 @@
 <table class="table table-borderless">
     <thead>
+      <div class="search-training">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="&#61442;  Search here">
+      </div>
       <tr>
         <th scope="col" class="table-row">Session ID</th>
         <th scope="col" class="table-row">Training Name</th>
@@ -10,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let trainings of trainingSession; index as i">
+      <tr *ngFor="let trainings of trainingSession | filter: searchText">
         <td class="table-row">{{trainings.session_id}}</td>
         <td class="table-row">{{trainings.training_name}}</td>
         <td class="table-row">{{trainings.session_date}}</td>

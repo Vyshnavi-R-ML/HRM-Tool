@@ -28,6 +28,6 @@ export class CalendarService {
     postData.append('session_time', session_time)
     postData.append('created_by', "10105")
     
-    return this.http.post<any>(this._url, postData)
+    return this.http.post<any>(this._url + 'session/', postData)
   }
 }
