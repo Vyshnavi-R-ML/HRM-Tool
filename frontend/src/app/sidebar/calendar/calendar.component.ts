@@ -66,12 +66,19 @@ export class CalendarComponent implements OnInit {
   
 
   displayEditform(sessionIndex: any) {
-    
+      this._calendarService.session = this.trainingSession[sessionIndex]
+      
       let editDialog = this.dialogRef.open(EditTrainingModelComponent, {
-        width : '40%', data: {session: this.trainingSession[sessionIndex]}
+        width : '40%'
         
       })
-      editDialog.afterClosed().subscribe(res => res ? this.getTraining() : console.log(res)
+      editDialog.afterClosed().subscribe(res => {
+        if(res)
+        {
+          this._calendarService.updateTrainingSession()
+          .subscribe(res => this.trainingSession = res)
+        }
+      }
       )
   }
 

@@ -43,9 +43,10 @@ class TrainingSessionView(APIView):
             updated_date=datetime.now(),
             updated_by=data['updated_by']
         )
+        ts_objects = TrainingSession.objects.all()
+        ts_data = SessionSerializer(ts_objects, many=True).data
 
-
-        return Response('Session {} updated to the database'.format(data['session_id']),status=status.HTTP_200_OK)
+        return Response(ts_data,status=status.HTTP_200_OK)
 
     def delete(self, request):
         data = request.data

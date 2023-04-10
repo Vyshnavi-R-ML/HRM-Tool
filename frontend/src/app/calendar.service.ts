@@ -5,11 +5,22 @@ import { Observable, retry } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CalendarService {
 
   private _url: string = "http://127.0.0.1:8000/training/";
 
   constructor(private http: HttpClient) { }
+
+  public session: any = {
+    session_id : '',
+    training_name : '',
+    trainer : '',
+    created_date : '',
+    created_time : '',
+    updated_by : ''
+    
+  }
 
   getTrainingSession(): Observable<any> {
     return this.http.get<any>(this._url + 'session/')
@@ -31,15 +42,16 @@ export class CalendarService {
     return this.http.post<any>(this._url + 'session/', postData)
   }
 
-  updateTrainingSession(session_id: any, training_name: any, session_date: any, session_time: any, trainer: any, updated_by: any) {
+  updateTrainingSession() {
     const putData = new FormData();
-
-    putData.append('session_id', session_id)
-    putData.append('training_name', training_name)
-    putData.append('session_date', session_date)
-    putData.append('session_time', session_time)
-    putData.append('trainer_id',trainer)
-    putData.append('updated_by', updated_by)
+  
+    
+    putData.append('session_id', this.session.session_id)
+    putData.append('training_name', this.session.training_name)
+    putData.append('session_date', this.session.session_date)
+    putData.append('session_time', this.session.session_time)
+    putData.append('trainer_id',this.session.trainer)
+    putData.append('updated_by', this.session.updated_by)
 
     return this.http.put<any>(this._url + 'session/', putData)
   } 

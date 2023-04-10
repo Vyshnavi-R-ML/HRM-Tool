@@ -12,45 +12,34 @@ export class EditTrainingModelComponent {
 
 
   trainingForm = this.fb.group({
-    sessionId: [''],
-    trainingName: [''],
+    session_id: [''],
+    training_name: [''],
     trainer: [''],
-    sessionDate: [''],
-    sessionTime: [''],
-    createdBy:['']
+    session_date: [''],
+    session_time: [''],
+    updated_by:['']
   })
 
-  session:any = {}
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any ,private _calendarService: CalendarService, private fb: FormBuilder){
-    this.session = data.session
+  constructor(private _calendarService: CalendarService, private fb: FormBuilder){
+    
    }
   
   ngOnInit() {
-    console.log(this.session);
     
-    
-    let current_session = this.session
+    let current_session = this._calendarService.session
     
     this.trainingForm.setValue({
-      sessionId: <any> current_session?.session_id,
-      trainingName: <any> current_session?.training_name,
-      sessionDate: <any> current_session?.session_date,
-      sessionTime: <any> current_session?.session_time,
-      trainer: <any> current_session?.trainer,
-      createdBy: <any> current_session?.created_by
+      session_id: <any> current_session.session_id,
+      training_name: <any> current_session.training_name,
+      session_date: <any> current_session.session_date,
+      session_time: <any> current_session.session_time,
+      trainer: <any> current_session.trainer,
+      updated_by: <any> current_session.updated_by
     })
 }
 
-updateTraining() {
-  this._calendarService.updateTrainingSession( 
-    this.trainingForm.value.sessionId,
-    this.trainingForm.value.trainingName,
-    this.trainingForm.value.sessionDate,
-    this.trainingForm.value.sessionTime,
-    this.trainingForm.value.trainer,
-    this.trainingForm.value.createdBy)
-  .subscribe(res => console.log(res)
-  )
+updateSession() {
+  this._calendarService.session = this.trainingForm.value
 }
+
 }
