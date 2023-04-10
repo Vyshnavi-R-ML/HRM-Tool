@@ -41,6 +41,6 @@ export class CalendarService {
     putData.append('trainer_id',trainer)
     putData.append('updated_by', updated_by)
 
-    return this.http.put<any>(this._url, putData)
+    return this.http.put<any>(this._url + 'session/', putData)
   } 
 }
