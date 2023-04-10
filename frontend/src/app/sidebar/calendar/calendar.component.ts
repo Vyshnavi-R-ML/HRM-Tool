@@ -36,13 +36,13 @@ export class CalendarComponent implements OnInit {
   }
 
   displayForm() {
-    let dialogRef = this.dialogRef.open(AddTrainingModalComponent, {
-      width: '40%',
-    })
-
-    dialogRef.afterClosed().subscribe(result => {
-      result ? this.getTraining() : console.log(result)
-    })
+      let dialogRef = this.dialogRef.open(AddTrainingModalComponent, {
+        width: '40%',
+      })
+  
+      dialogRef.afterClosed().subscribe(result => {
+        result ? this.getTraining() : console.log(result)
+      })
   }
 
   
@@ -56,12 +56,13 @@ export class CalendarComponent implements OnInit {
   
 
   displayEditform(sessionIndex: any) {
-    let editDialog = this.dialogRef.open(EditTrainingModelComponent, {
-      width : '40%', data: {session: this.trainingSession[sessionIndex]}
-      
-    })
-    editDialog.afterClosed().subscribe(res => res ? this.getTraining() : console.log(res)
-    )
+    
+      let editDialog = this.dialogRef.open(EditTrainingModelComponent, {
+        width : '40%', data: {session: this.trainingSession[sessionIndex]}
+        
+      })
+      editDialog.afterClosed().subscribe(res => res ? this.getTraining() : console.log(res)
+      )
   }
 
   

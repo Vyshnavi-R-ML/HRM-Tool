@@ -23,7 +23,12 @@ export class EmployeeComponent {
       .subscribe(data => this.employees = data)
   }
 
+  confirmBtn : any
+
   deleteEmp(i: any){
-    this.employees.splice(i, 1)
+    this.confirmBtn = confirm('Do you want to delete?')
+    if(this.confirmBtn == true) {
+      this.employees.splice(i, 1)
+    }
   }
 }
