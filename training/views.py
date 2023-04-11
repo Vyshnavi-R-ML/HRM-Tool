@@ -27,7 +27,7 @@ class TrainingSessionView(APIView):
             return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
 
         
-        TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'], created_by = data['created_by'])
+        TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'], created_by = data['created_by'], trainer_id = data['trainer'])
 
 
         return Response("Updated to the database",status=status.HTTP_200_OK)

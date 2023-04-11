@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { CalendarService } from 'src/app/calendar.service';
+import { CalendarService } from 'src/app/services/calendar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTrainingModalComponent } from './add-training-modal/add-training-modal.component';
 import { ViewEmployeeModalComponent } from './view-employee-modal/view-employee-modal.component';

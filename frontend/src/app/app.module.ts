@@ -11,7 +11,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { InboxComponent } from './sidebar/inbox/inbox.component';
 import { EmployeeComponent } from './sidebar/employee/employee.component';
 import { CalendarComponent } from './sidebar/calendar/calendar.component';
-import { CalendarService } from './calendar.service';
+import { CalendarService } from './services/calendar.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
