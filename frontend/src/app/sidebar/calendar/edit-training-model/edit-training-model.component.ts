@@ -43,14 +43,6 @@ export class EditTrainingModelComponent {
 }
 
 updateTraining() {
-  this._calendarService.updateTrainingSession( 
-    this.trainingForm.value.sessionId,
-    this.trainingForm.value.trainingName,
-    this.trainingForm.value.sessionDate,
-    this.trainingForm.value.sessionTime,
-    this.trainingForm.value.trainer,
-    this.trainingForm.value.createdBy)
-  .subscribe(res => console.log(res)
-  )
+
 }
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
 
@@ -8,6 +8,12 @@ import { Observable, retry } from 'rxjs';
 export class CalendarService {
 
   private _url: string = "http://127.0.0.1:8000/training/";
+
+  httpsOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    body: null,
+  }
+
 
   constructor(private http: HttpClient) { }
 
@@ -40,7 +46,16 @@ export class CalendarService {
     putData.append('session_time', session_time)
     putData.append('trainer_id',trainer)
     putData.append('updated_by', updated_by)
+    console.log(putData);
+    
 
     return this.http.put<any>(this._url + 'session/', putData)
+
   } 
+
+  deleteTrainingSession(id: any) {
+    this.httpsOptions.body = id;
+
+    return this.http.delete<any>(this._url + 'session/', this.httpsOptions)
+  }
 }

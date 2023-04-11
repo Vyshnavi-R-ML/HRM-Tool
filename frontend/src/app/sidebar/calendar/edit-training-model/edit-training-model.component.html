@@ -19,5 +19,5 @@
       <label>Created By</label>
       <input type="text" formControlName="createdBy" class="form-control">
     </div>
-    <button type="submit" (click)="updateTraining()" [mat-dialog-close]="true" class="btn btn-primary">Update</button>
+    <button type="submit" [mat-dialog-close]="trainingForm.value" class="btn btn-primary">Update</button>
   </form> 

@@ -42,6 +42,7 @@ export class CalendarComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       result ? this.getTraining() : console.log('else')
+
     })
   }
 
@@ -71,8 +72,27 @@ export class CalendarComponent implements OnInit {
         width : '40%', data: {session: this.trainingSession[sessionIndex]}
         
       })
-      editDialog.afterClosed().subscribe(res => res ? this.getTraining() : console.log(res)
+      editDialog.afterClosed().subscribe(editTraining => {
+        if(editTraining) {
+          this._calendarService.updateTrainingSession( 
+          editTraining.sessionId,
+          editTraining.trainingName,
+          editTraining.sessionDate,
+          editTraining.sessionTime,
+          editTraining.trainer,
+          editTraining.createdBy)
+          .subscribe(res => {
+            console.log(res)
+            this.trainingSession = res
+          })
+        }
+      }   
       )
+  }
+
+  deleteTraining(index: any) {
+    this._calendarService.deleteTrainingSession(this.trainingSession[index].session_id)
+      .subscribe(res => res ? this.trainingSession.splice(index, 1) : console.log(res))
   }
 
   

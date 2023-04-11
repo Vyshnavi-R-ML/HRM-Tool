@@ -9,8 +9,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class AuthenticationComponent {
 
   authForm = this.fb.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required, Validators.minLength(8)]
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(8)]]
   })
 
   constructor(private fb: FormBuilder){}
