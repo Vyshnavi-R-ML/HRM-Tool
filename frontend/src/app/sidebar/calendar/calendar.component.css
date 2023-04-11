@@ -3,6 +3,17 @@ table {
     margin: 3% 0 0 3%;
 }
 
+table tbody {
+    display: inline-block;
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  
+table thead, table tbody tr {
+display: table;
+width: 100%;
+table-layout: fixed;
+}
 
 .bi-calendar-plus {
     font-size: 250%;

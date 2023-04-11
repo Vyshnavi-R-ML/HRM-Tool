@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
 
@@ -9,6 +9,11 @@ import { Observable, retry } from 'rxjs';
 export class CalendarService {
 
   private _url: string = "http://127.0.0.1:8000/training/";
+
+  // httpOptions = {
+  //   headers : new HttpHeaders({'Content-Type' : 'application/json'}),
+  //   body : null,
+  // }
 
   constructor(private http: HttpClient) { }
 
@@ -43,16 +48,6 @@ export class CalendarService {
   }
 
   updateTrainingSession() {
-    const putData = new FormData();
-  
-    
-    putData.append('session_id', this.session.session_id)
-    putData.append('training_name', this.session.training_name)
-    putData.append('session_date', this.session.session_date)
-    putData.append('session_time', this.session.session_time)
-    putData.append('trainer_id',this.session.trainer)
-    putData.append('updated_by', this.session.updated_by)
-
-    return this.http.put<any>(this._url + 'session/', putData)
+    return this.http.put<any>(this._url + 'session/', this.session)
   } 
 }

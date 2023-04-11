@@ -10,7 +10,7 @@ from datetime import datetime
 class TrainingSessionView(APIView):
 
     def get(self, request):
-        ts_objects =  TrainingSession.objects.all()
+        ts_objects =  TrainingSession.objects.order_by('session_date')
         ts_data = SessionSerializer(ts_objects, many=True).data
 
         return Response(ts_data, status=status.HTTP_200_OK)
@@ -34,16 +34,15 @@ class TrainingSessionView(APIView):
 
     def put(self, request):
         data = request.data
-
         TrainingSession.objects.filter(session_id = data['session_id']).update(
             training_name=data['training_name'],
             session_date=data['session_date'], 
             session_time = data['session_time'],
-            trainer_id=data['trainer_id'],
+            trainer_id=data['trainer'],
             updated_date=datetime.now(),
             updated_by=data['updated_by']
         )
-        ts_objects = TrainingSession.objects.all()
+        ts_objects = TrainingSession.objects.order_by('session_date')
         ts_data = SessionSerializer(ts_objects, many=True).data
 
         return Response(ts_data,status=status.HTTP_200_OK)

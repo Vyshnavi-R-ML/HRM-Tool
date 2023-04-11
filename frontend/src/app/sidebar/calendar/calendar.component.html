@@ -4,11 +4,12 @@
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="&#61442;  Search here">
       </div>
       <tr>
-        <th scope="col" class="table-row">Training Name</th>
-        <th scope="col" class="table-row">Session Date</th>
-        <th scope="col" class="table-row">Session Time</th>
+        <th class="table-row">Training Name</th>
+        <th class="table-row">Session Date</th>
+        <th class="table-row">Session Time</th>
         <th class="table-row">Trainer</th>
-        <th scope="col" class="table-row">Employees</th>
+        <th class="table-row">Employees</th>
+        <th class="table-row">Edit</th>
       </tr>
     </thead>
     <tbody>
@@ -17,8 +18,8 @@
         <td class="table-row">{{trainings.session_date}}</td>
         <td class="table-row">{{trainings.session_time}}</td>
         <td class="table-row" *ngIf="trainings.trainer != null; else elseblock ">{{trainings.trainer}}</td>
-        <td class="table-row"><i  class="bi bi-people" (click)="displayEmployees()"></i></td>
         <ng-template #elseblock> <td class="table-row">- </td> </ng-template>
+        <td class="table-row"><i  class="bi bi-people" (click)="displayEmployees()"></i></td>
         <td class="table-row"><button class="edit-btn" (click)="displayEditform(sessionIndex)"><i class="bi bi-pencil-square"></i></button></td>
       </tr>
     </tbody>
