@@ -4,7 +4,7 @@ import { CalendarService } from 'src/app/services/calendar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTrainingModalComponent } from './add-training-modal/add-training-modal.component';
 import { ViewEmployeeModalComponent } from './view-employee-modal/view-employee-modal.component';
-import { EditTrainingModelComponent } from './edit-training-model/edit-training-model.component';
+import { EditTrainingModalComponent } from './edit-training-modal/edit-training-modal.component';
 /**
  * Calendar Component Displays Training Sessions and 
  * Creates Training Session
@@ -68,7 +68,7 @@ export class CalendarComponent implements OnInit {
   displayEditform(sessionIndex: any) {
       this._calendarService.session = this.trainingSession[sessionIndex]
       
-      let editDialog = this.dialogRef.open(EditTrainingModelComponent, {
+      let editDialog = this.dialogRef.open(EditTrainingModalComponent, {
         width : '40%'
         
       })

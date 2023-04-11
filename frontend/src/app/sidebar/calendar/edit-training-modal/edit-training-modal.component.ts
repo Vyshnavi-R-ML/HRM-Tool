@@ -3,11 +3,11 @@ import { FormBuilder } from '@angular/forms';
 import { CalendarService } from 'src/app/services/calendar.service';
 
 @Component({
-  selector: 'app-edit-training-model',
-  templateUrl: './edit-training-model.component.html',
-  styleUrls: ['./edit-training-model.component.css']
+  selector: 'app-edit-training-modal',
+  templateUrl: './edit-training-modal.component.html',
+  styleUrls: ['./edit-training-modal.component.css']
 })
-export class EditTrainingModelComponent {
+export class EditTrainingModalComponent {
 
 
   trainingForm = this.fb.group({
