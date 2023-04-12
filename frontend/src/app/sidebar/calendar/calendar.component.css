@@ -1,13 +1,16 @@
 table {
     width: 90%;
+    height: 95%;
+    display: block;
     margin: 3% 0 0 3%;
+
 }
 
-table tbody {
-    display: inline-block;
-    max-height: 300px;
-    overflow-y: scroll;
-  }
+tbody {
+    max-height: 85%;
+    overflow: auto;
+    display: block;
+}
   
 table thead, table tbody tr {
 display: table;

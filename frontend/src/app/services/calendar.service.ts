@@ -43,7 +43,7 @@ export class CalendarService {
     return this.http.post<any>(this._url + 'session/', postData)
   }
 
-  updateTrainingSession() {
-    return this.http.put<any>(this._url + 'session/', this.session)
+  updateTrainingSession(data: any) {
+    return this.http.put<any>(this._url + 'session/', data)
   } 
 }

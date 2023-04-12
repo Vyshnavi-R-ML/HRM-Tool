@@ -75,7 +75,7 @@ export class CalendarComponent implements OnInit {
       editDialog.afterClosed().subscribe(res => {
         if(res)
         {
-          this._calendarService.updateTrainingSession()
+          this._calendarService.updateTrainingSession(this._calendarService.session)
           .subscribe(res => this.trainingSession = res)
         }
       }
