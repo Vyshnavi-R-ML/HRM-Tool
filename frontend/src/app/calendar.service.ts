@@ -1,19 +1,28 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalendarService {
 
-  private _url: string = "http://127.0.0.1:8000/training/";
+  private _url: string = environment.apiUrl
 
   httpsOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    body: null,
+    body: {},
   }
 
+  public sendData: any = {
+    session_id: '', 
+    training_name: '', 
+    session_date: '', 
+    session_time: '', 
+    trainer: '', 
+    created_by: ''
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -25,36 +34,29 @@ export class CalendarService {
     return this.http.get<any>(this._url)
   }
 
-  addTrainingSession(training_name: any, trainer: any, session_date: any, session_time: any) {
-    const postData = new FormData();
 
-    postData.append('training_name', training_name)
-    postData.append('trainer', trainer)
-    postData.append('session_date', session_date)
-    postData.append('session_time', session_time)
-    postData.append('created_by', "10105")
+  addTrainingSession() {
+    this.sendData.created_by = 10105
+    this.httpsOptions.body = this.sendData
+    console.log(this.sendData)
     
-    return this.http.post<any>(this._url + 'session/', postData)
+    return this.http.post<any>(this._url + 'session/', this.httpsOptions.body)
   }
 
   updateTrainingSession(session_id: any, training_name: any, session_date: any, session_time: any, trainer: any, updated_by: any) {
-    const putData = new FormData();
-
-    putData.append('session_id', session_id)
-    putData.append('training_name', training_name)
-    putData.append('session_date', session_date)
-    putData.append('session_time', session_time)
-    putData.append('trainer_id',trainer)
-    putData.append('updated_by', updated_by)
-    console.log(putData);
+    console.log(this.sendData);
     
+    this.httpsOptions.body = this.sendData
 
-    return this.http.put<any>(this._url + 'session/', putData)
+    return this.http.put<any>(this._url + 'session/', this.httpsOptions.body)
 
   } 
 
   deleteTrainingSession(id: any) {
-    this.httpsOptions.body = id;
+    this.httpsOptions.body = {
+      session_id: id
+    };
+    console.log(id)
 
     return this.http.delete<any>(this._url + 'session/', this.httpsOptions)
   }

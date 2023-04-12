@@ -16,11 +16,11 @@ class TrainingSessionView(APIView):
         return Response(ts_data, status=status.HTTP_200_OK)
     
     def post(self, request):
-        request.data._mutable = True
+        # request.data._mutable = True
         data = request.data
         session_id = TrainingSession.objects.all().last().session_id + 1
         data['session_id'] = session_id
-        request.data._mutable = False
+        # request.data._mutable = False
 
         serilized_data = SessionSerializer(data = data)
         if not serilized_data.is_valid():
