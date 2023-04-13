@@ -27,11 +27,11 @@ export class CalendarService {
   constructor(private http: HttpClient) { }
 
   getTrainingSession(): Observable<any> {
-    return this.http.get<any>(this._url + 'session/')
+    return this.http.get<any>(this._url + 'training/session/')
   }
 
   getTrainingEmployees(): Observable<any> {
-    return this.http.get<any>(this._url)
+    return this.http.get<any>(this._url + 'training/')
   }
 
 
@@ -40,7 +40,7 @@ export class CalendarService {
     this.httpsOptions.body = this.sendData
     console.log(this.sendData)
     
-    return this.http.post<any>(this._url + 'session/', this.httpsOptions.body)
+    return this.http.post<any>(this._url + 'training/session/', this.httpsOptions.body)
   }
 
   updateTrainingSession(session_id: any, training_name: any, session_date: any, session_time: any, trainer: any, updated_by: any) {
@@ -48,7 +48,7 @@ export class CalendarService {
     
     this.httpsOptions.body = this.sendData
 
-    return this.http.put<any>(this._url + 'session/', this.httpsOptions.body)
+    return this.http.put<any>(this._url + 'training/session/', this.httpsOptions.body)
 
   } 
 
@@ -58,6 +58,23 @@ export class CalendarService {
     };
     console.log(id)
 
-    return this.http.delete<any>(this._url + 'session/', this.httpsOptions)
+    return this.http.delete<any>(this._url + 'training/session/', this.httpsOptions)
+  }
+
+  //Nominate Employee
+  nominateEmp(data:any) {
+    return this.http.post<any>(this._url + 'nomination/', data)
+  }
+
+  //Get Nomination
+  getNominations(data:any) {
+    return this.http.get<any>(this._url + `nomination/?emp_id=${data}&session_id`)
+    // return this.http.get<any>(this._url + `nomination/?emp_id=10378&session_id`)
+
+  }
+
+  //Accept Nom Request
+  acceptNomRequest(data:any) {
+    return this.http.put<any>(this._url + `nomination/`, data)
   }
 }

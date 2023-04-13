@@ -6,10 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent {
-  showInbox = false;
+  showInbox = true;
   showEmployee = false;
   showCandidate = false;
-  showCalendar = true;
+  showCalendar = false;
 
   displayInbox() {
     this.showInbox = true;

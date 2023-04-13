@@ -15,6 +15,11 @@ import { EditTrainingModelComponent } from './edit-training-model/edit-training-
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
+  user: any = {
+    user_id: '',
+    user_role: '',
+  }
+
   trainingSession = [
     {
       session_id: '',
@@ -33,6 +38,10 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.getTraining()
+    let userData: any = localStorage.getItem('user')
+    userData = JSON.parse(userData)
+    
+    this.user = userData
   }
 
   displayForm() {
@@ -95,5 +104,18 @@ export class CalendarComponent implements OnInit {
       .subscribe(res => res ? this.trainingSession.splice(index, 1) : console.log(res))
   }
 
+  accept(empID: any, sessionID: any) {
+    console.log(empID, sessionID)
+    const from_emp = 10131
+    const to_emp = 10105
+
+    const data = {
+      session_id: sessionID,
+      nominated_by: from_emp,
+      emp_id: to_emp,
+    }
+    this._calendarService.nominateEmp(data)
+      .subscribe(res => console.log(res))
+  }
   
 }

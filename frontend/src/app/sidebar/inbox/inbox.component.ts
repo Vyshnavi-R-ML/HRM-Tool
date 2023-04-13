@@ -1,41 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CalendarService } from 'src/app/calendar.service';
 
 @Component({
   selector: 'app-inbox',
   templateUrl: './inbox.component.html',
   styleUrls: ['./inbox.component.css']
 })
-export class InboxComponent {
-  trainingStatus = [
+export class InboxComponent implements OnInit {
+
+  user: any = {
+    user_id: '',
+    user_role: '',
+  }
+
+  nominationStatus = [
     {
-      managerName: 'Tapash',
-      department: 'Delivery',
-      training: 'Golang',
-      duration: '20 days',
-      deadline: '5 march',
-      status: 'Online',
-    },
-    {
-      managerName: 'Kumar',
-      department: 'Delivery',
-      training: 'Python',
-      duration: '25 days',
-      deadline: '15 march',
-      status: 'Offline ',
-    },
-    {
-      managerName: 'Deepan',
-      department: 'Delivery',
-      training: 'Django',
-      duration: '22 days',
-      deadline: '18 march',
-      status: 'Online',
+      session: '',
+      nominated_by: '',
+      status: null,
+      emp_id: ''
     }
-    
   ]
   showTraining = true;
   showReplies = false;
   showRequest = false;
+
+  constructor(private _calendarService: CalendarService) {}
 
   displayTraining() {
     this.showTraining = true;
@@ -52,4 +42,34 @@ export class InboxComponent {
     this.showReplies = false;
     this.showRequest = true;
   }
+
+
+  //Get nominations
+  ngOnInit() {
+    let userData: any = localStorage.getItem('user')
+    userData = JSON.parse(userData)
+    
+    this.user = userData
+    this._calendarService.getNominations(userData.user_id)
+      .subscribe(data => {
+        this.nominationStatus = data
+        console.log(data)
+      })
+
+  }
+
+  acceptNomRequest(empIndex:any) {
+    let data = {
+      emp_id:this.nominationStatus[empIndex].nominated_by,
+      status: true,
+      session_id: this.nominationStatus[empIndex].session,
+      
+    }
+
+    console.log(data);
+    
+    this._calendarService.acceptNomRequest(data)
+      .subscribe(res => console.log(res))
+  }
+
 }

@@ -30,7 +30,7 @@
     </nav>
     <div class="emp-table" *ngIf="showTraining">
         <div class="table-top">
-            <h2 class="table-name">Manager Status</h2>
+            <h2 class="table-name">{{user.user_role == 'RM' ? 'Manager' : 'Employee'}} Status</h2>
             <div class="sort-btn">
                 <button class="sort-txt">Filter & Sort</button>
                 <i class="bi bi-funnel"></i>
@@ -39,30 +39,32 @@
         <table class="table table-borderless">
             <thead>
               <tr>
-                <th scope="col" class="table-row">Manager Name</th>
-                <th scope="col" class="table-row">Department</th>
-                <th scope="col" class="table-row">Training</th>
-                <th scope="col" class="table-row">Duration</th>
-                <th scope="col" class="table-row">Deadline</th>
+                <th scope="col" class="table-row">Employee</th>
+                <th scope="col" class="table-row">Session</th>
+                <th scope="col" class="table-row">Request</th>
                 <th scope="col" class="table-row">Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let details of trainingStatus; index as i"> 
-                <td class="table-row">{{details.managerName}}</td>
-                <td class="table-row">{{details.department}}</td>
-                <td class="table-row">{{details.training}}</td>
-                <td class="table-row">{{details.duration}}</td>
-                <td class="table-row">{{details.deadline}}</td>
+              <tr *ngFor="let details of nominationStatus; index as i"> 
+                <td class="table-row">{{details.nominated_by}}</td>
+                <td class="table-row">{{details.session}}</td>
                 <td class="table-row">
-                    <div class="status-green" *ngIf="details.status == 'Online'; else elseBlock">        
-                        {{details.status}}
+                    <div *ngIf="details.status == null">
+                    <button type="button" class="btn btn-success" (click)="acceptNomRequest(i)">Accept</button>
+                    <button type="button" class="btn btn-danger">Reject</button>
                     </div>
-                    <ng-template #elseBlock >
-                        <div class="status-red">
-                            {{details.status}}
+                </td>
+                <td class="table-row">
+                    <div class="status-green" *ngIf="details.status == null">      
+                        Pending
+                    </div>
+                        <div class="status-red" *ngIf="details.status == false">
+                            Rejected
                         </div>
-                    </ng-template>
+                        <div class="status-green" *ngIf="details.status == true">
+                            Accepted
+                        </div>
                 </td>
               </tr>
             </tbody>
