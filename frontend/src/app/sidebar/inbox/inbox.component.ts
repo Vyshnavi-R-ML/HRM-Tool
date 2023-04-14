@@ -58,9 +58,10 @@ export class InboxComponent implements OnInit {
 
   }
 
+  // Manager as User
   acceptNomRequest(empIndex:any) {
     let data = {
-      emp_id:this.nominationStatus[empIndex].nominated_by,
+      nominated_by:this.nominationStatus[empIndex].nominated_by,
       status: true,
       session_id: this.nominationStatus[empIndex].session,
       

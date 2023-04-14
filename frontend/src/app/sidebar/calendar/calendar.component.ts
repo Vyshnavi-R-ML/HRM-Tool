@@ -104,15 +104,18 @@ export class CalendarComponent implements OnInit {
       .subscribe(res => res ? this.trainingSession.splice(index, 1) : console.log(res))
   }
 
-  accept(empID: any, sessionID: any) {
+
+  // Nominate employee for Training Session
+  sendNomRequest(empID: any, sessionID: any) {
     console.log(empID, sessionID)
-    const from_emp = 10131
+    const from_emp = 10378
     const to_emp = 10105
 
     const data = {
       session_id: sessionID,
       nominated_by: from_emp,
       emp_id: to_emp,
+      status: null
     }
     this._calendarService.nominateEmp(data)
       .subscribe(res => console.log(res))

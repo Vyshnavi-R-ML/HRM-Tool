@@ -49,16 +49,16 @@ class NominationView(APIView):
     def put(self, request):
         data = request.data
         print(data['status'])
-        Nomination.objects.filter(emp_id = data['emp_id']).update(
+        Nomination.objects.filter(nominated_by=data['nominated_by']).update(
             #this does not work
             status = data['status']
         )
 
         if data['status']:
-            Training.objects.create(session_id = data['session_id'], emp_id = data['emp_id'])
+            Training.objects.create(session_id = data['session_id'], emp_id = data['nominated_by'])
             return Response('Session {} updated to the Training database'.format(data['session_id']),status=status.HTTP_200_OK)
         else:
-            Rejection.objects.create(emp_id=data['emp_id'], 
+            Rejection.objects.create(nominated_by=data['nominated_by'], 
                 session_id=data['session_id'], 
                 rejected_by=data['rejected_by'],
                 reason=data['reason']

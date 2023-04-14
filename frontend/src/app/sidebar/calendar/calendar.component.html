@@ -8,8 +8,9 @@
         <th scope="col" class="table-row">Session Date</th>
         <th scope="col" class="table-row">Session Time</th>
         <th class="table-row">Trainer</th>
-        <!-- <th></th> -->
         <th scope="col" class="table-row">Employees</th>
+        <th>Nomination</th>
+        <th *ngIf="user.user_role == 'RM'"></th>
       </tr>
     </thead>
     <tbody>
@@ -19,14 +20,14 @@
         <td class="table-row">{{trainings.session_time}}</td>
         <td class="table-row" *ngIf="trainings.trainer != null; else elseblock ">{{trainings.trainer}}</td>
         <td class="table-row"><i  class="bi bi-people" (click)="displayEmployees()"></i></td>
-        <td class="table-row"><button (click)="deleteTraining(sessionIndex)"><i class="bi bi-trash"></i></button></td>
+        <td *ngIf="user.user_role == 'RM'" class="table-row"><button (click)="deleteTraining(sessionIndex)"><i class="bi bi-trash"></i></button></td>
         <ng-template #elseblock> <td class="table-row">- </td> </ng-template>
         <td class="table-row" *ngIf="user.user_role == 'Intern'">
-          <i class="bi bi-check-lg" (click) = "accept(10378, trainings.session_id)"></i>
+          <i class="bi bi-check-lg mr-4" (click) = "sendNomRequest(10378, trainings.session_id)"></i>
           <i class="bi bi-x-square"></i>
         </td>
         
-        <td class="table-row"><button class="edit-btn" (click)="displayEditform(sessionIndex)"><i class="bi bi-pencil-square"></i></button></td>
+        <td *ngIf="user.user_role == 'RM'" class="table-row"><button class="edit-btn" (click)="displayEditform(sessionIndex)"><i class="bi bi-pencil-square"></i></button></td>
       </tr>
     </tbody>
 </table>
