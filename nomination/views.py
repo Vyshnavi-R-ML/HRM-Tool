@@ -54,16 +54,19 @@ class NominationView(APIView):
             status = data['status']
         )
 
+        nom_filter_mgr = Nomination.objects.filter(emp_id=data['emp_id'])
+        nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
+
         if data['status']:
             Training.objects.create(session_id = data['session_id'], emp_id = data['nominated_by'])
-            return Response('Session {} updated to the Training database'.format(data['session_id']),status=status.HTTP_200_OK)
         else:
             Rejection.objects.create(nominated_by=data['nominated_by'], 
                 session_id=data['session_id'], 
                 rejected_by=data['rejected_by'],
                 reason=data['reason']
             )
-            return Response('Session {} updated to the Rejection database'.format(data['session_id']),status=status.HTTP_200_OK)
+
+        return Response(nom_data, status=status.HTTP_200_OK)
         
 
 

@@ -64,13 +64,13 @@ export class InboxComponent implements OnInit {
       nominated_by:this.nominationStatus[empIndex].nominated_by,
       status: true,
       session_id: this.nominationStatus[empIndex].session,
-      
+      emp_id: this.user.user_id
     }
 
     console.log(data);
     
     this._calendarService.acceptNomRequest(data)
-      .subscribe(res => console.log(res))
+      .subscribe(res => this.nominationStatus = res)
   }
 
 }

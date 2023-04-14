@@ -18,6 +18,7 @@ table tbody {
 
 .bi {
     cursor: pointer;
+    font-size: 150%;
 }
 
 .bi-calendar-plus {
@@ -30,19 +31,6 @@ table tbody {
 
 .bi-calendar-plus:hover {
     cursor: pointer;
-}
-
-.bi-people {
-    font-size: 150%;
-}
-
-.bi-check-lg {
-    font-size: 150%;
-}
-
-.bi-x-square {
-    font-size: 150%;
-
 }
 
 
