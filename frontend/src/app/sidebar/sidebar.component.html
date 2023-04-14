@@ -52,10 +52,10 @@
             </div>
         </div>
         <div class="right-page">
-            <app-inbox *ngIf="showInbox"></app-inbox>
-            <app-employee *ngIf="showEmployee"> </app-employee>
-            <h1 *ngIf="showCandidate">Candidate</h1>
-            <app-calendar *ngIf="showCalendar"> </app-calendar>
+            <app-inbox class="app app-inbox" *ngIf="showInbox"></app-inbox>
+            <app-employee class="app" *ngIf="showEmployee"> </app-employee>
+            <h1 class="app" *ngIf="showCandidate">Candidate</h1>
+            <app-calendar class="app" *ngIf="showCalendar"> </app-calendar>
         </div>
     </div>
 </div>
