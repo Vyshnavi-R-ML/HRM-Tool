@@ -49,7 +49,7 @@ class NominationView(APIView):
     def put(self, request):
         data = request.data
         print(data['status'])
-        Nomination.objects.filter(nominated_by=data['nominated_by']).update(
+        Nomination.objects.filter(nominated_by=data['nominated_by'], session_id = data['session_id']).update(
             #this does not work
             status = data['status']
         )
@@ -60,7 +60,7 @@ class NominationView(APIView):
         if data['status']:
             Training.objects.create(session_id = data['session_id'], emp_id = data['nominated_by'])
         else:
-            Rejection.objects.create(nominated_by=data['nominated_by'], 
+            Rejection.objects.create(emp_id = data['nominated_by'], 
                 session_id=data['session_id'], 
                 rejected_by=data['rejected_by'],
                 reason=data['reason']

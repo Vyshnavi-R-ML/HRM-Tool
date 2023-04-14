@@ -73,4 +73,16 @@ export class InboxComponent implements OnInit {
       .subscribe(res => this.nominationStatus = res)
   }
 
+  rejectNomRequest(empIndex:any) {
+    let data = {
+      nominated_by : this.nominationStatus[empIndex].nominated_by,
+      status: false,
+      session_id : this.nominationStatus[empIndex].session,
+      rejected_by : '10349',
+      reason : 'Already in a training'
+    }
+    this._calendarService.acceptNomRequest(data)
+    .subscribe(res => console.log(res))
+  }
+
 }

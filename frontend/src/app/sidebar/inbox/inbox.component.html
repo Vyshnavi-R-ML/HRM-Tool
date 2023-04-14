@@ -52,7 +52,7 @@
                 <td class="table-row">
                     <div *ngIf="details.status == null">
                     <button type="button" class="btn btn-success mr-2" (click)="acceptNomRequest(i)">Accept</button>
-                    <button type="button" class="btn btn-danger">Reject</button>
+                    <button type="button" class="btn btn-danger" (click)="rejectNomRequest(i)">Reject</button>
                     </div>
                 </td>
                 <td class="table-row">
