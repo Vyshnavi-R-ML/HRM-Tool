@@ -4,13 +4,13 @@
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="&#61442;  Search here">
       </div>
       <tr>
-        <th scope="col" class="table-row">Training Name</th>
-        <th scope="col" class="table-row">Session Date</th>
-        <th scope="col" class="table-row">Session Time</th>
+        <th class="table-row">Training Name</th>
+        <th class="table-row">Session Date</th>
+        <th class="table-row">Session Time</th>
         <th class="table-row">Trainer</th>
-        <th scope="col" class="table-row">Employees</th>
-        <th>Nomination</th>
-        <th *ngIf="user.user_role == 'RM'"></th>
+        <th class="table-row">Employees</th>
+        <th class="table-row">{{user.user_role == 'RM' ? "Delete" : "Nomination"}}</th>
+        <th *ngIf="user.user_role == 'RM'">Edit</th>
       </tr>
     </thead>
     <tbody>
@@ -24,7 +24,7 @@
         <ng-template #elseblock> <td class="table-row">- </td> </ng-template>
         <td class="table-row" *ngIf="user.user_role == 'Intern'">
           <i class="bi bi-check-lg mr-4" (click) = "sendNomRequest(10378, trainings.session_id)"></i>
-          <i class="bi bi-x-square"></i>
+          <!-- <i class="bi bi-x-square"></i> -->
         </td>
         
         <td *ngIf="user.user_role == 'RM'" class="table-row"><button class="edit-btn" (click)="displayEditform(sessionIndex)"><i class="bi bi-pencil-square"></i></button></td>
@@ -32,4 +32,4 @@
     </tbody>
 </table>
 
-<i  class="bi bi-calendar-plus" (click)="displayForm()"></i>
+<i  class="bi bi-calendar-plus" *ngIf="user.user_role == 'RM'" (click)="displayForm()"></i>

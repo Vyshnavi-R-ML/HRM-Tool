@@ -13,13 +13,13 @@ export class InboxComponent implements OnInit {
     user_role: '',
   }
 
-  nominationStatus = [
-    {
-      session: '',
-      nominated_by: '',
-      status: null,
-      emp_id: ''
-    }
+  nominationStatus: any = [
+    // {
+    //   session: '',
+    //   nominated_by: '',
+    //   status: null,
+    //   emp_id: ''
+    // }
   ]
   showTraining = true;
   showReplies = false;
