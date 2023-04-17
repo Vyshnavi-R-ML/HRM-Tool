@@ -4,16 +4,13 @@
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="&#61442;  Search here">
       </div>
       <tr>
-        <th class="table-row">Training Name</th>
-        <th class="table-row">Session Date</th>
-        <th class="table-row">Session Time</th>
-        <th class="table-row">Training Name</th>
-        <th class="table-row">Session Date</th>
-        <th class="table-row">Session Time</th>
+        <th scope="col" class="table-row">Training Name {{user.user_role == 'RM'}}</th>
+        <th scope="col" class="table-row">Session Date</th>
+        <th scope="col" class="table-row">Session Time</th>
         <th class="table-row">Trainer</th>
-        <th class="table-row">Employees</th>
-        <th class="table-row">{{user.user_role == 'RM' ? "Delete" : "Nomination"}}</th>
-        <th *ngIf="user.user_role == 'RM'">Edit</th>
+        <th scope="col" class="table-row">Employees</th>
+        <th>{{user.user_role == 'Intern' ? 'Nomination': 'Modify'}}</th>
+        <th *ngIf="user.user_role == 'RM'"></th>
       </tr>
     </thead>
     <tbody>
@@ -23,14 +20,17 @@
         <td class="table-row">{{trainings.session_time}}</td>
         <td class="table-row" *ngIf="trainings.trainer != null; else elseblock ">{{trainings.trainer}}</td>
         <td class="table-row"><i  class="bi bi-people" (click)="displayEmployees()"></i></td>
-        <td *ngIf="user.user_role == 'RM'" class="table-row"><button (click)="deleteTraining(sessionIndex)"><i class="bi bi-trash"></i></button></td>
         <ng-template #elseblock> <td class="table-row">- </td> </ng-template>
+        <td *ngIf="user.user_role == 'RM'" class="table-row">
+          <i class="bi bi-trash mr-4" (click)="deleteTraining(sessionIndex)"></i>
+          <i class="bi bi-pencil-square" (click)="displayEditform(sessionIndex)"></i>
+        </td>
         <td class="table-row" *ngIf="user.user_role == 'Intern'">
           <i class="bi bi-check-lg mr-4" (click) = "sendNomRequest(10378, trainings.session_id)"></i>
           <!-- <i class="bi bi-x-square"></i> -->
         </td>
         
-        <td *ngIf="user.user_role == 'RM'" class="table-row"><button class="edit-btn" (click)="displayEditform(sessionIndex)"><i class="bi bi-pencil-square"></i></button></td>
+        <td  class="table-row"></td>
       </tr>
     </tbody>
 </table>
