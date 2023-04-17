@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CalendarService } from 'src/app/calendar.service';
+import { CalendarService } from 'src/app/services/calendar.service';
 
 @Component({
   selector: 'app-inbox',
@@ -14,12 +14,7 @@ export class InboxComponent implements OnInit {
   }
 
   nominationStatus: any = [
-    // {
-    //   session: '',
-    //   nominated_by: '',
-    //   status: null,
-    //   emp_id: ''
-    // }
+    {}
   ]
   showTraining = true;
   showReplies = false;
