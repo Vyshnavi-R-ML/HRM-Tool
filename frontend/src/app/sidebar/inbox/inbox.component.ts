@@ -9,15 +9,14 @@ import { CalendarService } from 'src/app/calendar.service';
 export class InboxComponent implements OnInit {
 
   user: any = {
-    user_id: '',
-    user_role: '',
+
   }
 
-  nominationStatus = [
+  nominationStatus: any = [
     {
       session: '',
       nominated_by: '',
-      status: null,
+      status: 'pending',
       emp_id: ''
     }
   ]
@@ -53,7 +52,6 @@ export class InboxComponent implements OnInit {
     this._calendarService.getNominations(userData.user_id)
       .subscribe(data => {
         this.nominationStatus = data
-        console.log(data)
       })
 
   }
@@ -66,8 +64,6 @@ export class InboxComponent implements OnInit {
       session_id: this.nominationStatus[empIndex].session,
       emp_id: this.user.user_id
     }
-
-    console.log(data);
     
     this._calendarService.acceptNomRequest(data)
       .subscribe(res => this.nominationStatus = res)
@@ -82,7 +78,7 @@ export class InboxComponent implements OnInit {
       reason : 'Already in a training'
     }
     this._calendarService.acceptNomRequest(data)
-    .subscribe(res => console.log(res))
+    .subscribe(res => res)
   }
 
 }
