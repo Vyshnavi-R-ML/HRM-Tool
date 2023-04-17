@@ -10,7 +10,7 @@ from datetime import datetime
 class TrainingSessionView(APIView):
 
     def get(self, request):
-        ts_objects =  TrainingSession.objects.all()
+        ts_objects =  TrainingSession.objects.order_by('session_date')
         ts_data = SessionSerializer(ts_objects, many=True).data
 
         return Response(ts_data, status=status.HTTP_200_OK)
@@ -27,22 +27,23 @@ class TrainingSessionView(APIView):
             return Response({'error':serilized_data.errors},status=status.HTTP_400_BAD_REQUEST)
 
         
-        TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'], created_by = data['created_by'])
+        TrainingSession.objects.create(session_id = data['session_id'],training_name = data['training_name'], session_date = data['session_date'], session_time = data['session_time'], created_by = data['created_by'], trainer_id = data['trainer'])
 
 
         return Response("Updated to the database",status=status.HTTP_200_OK)
 
     def put(self, request):
         data = request.data
-
         TrainingSession.objects.filter(session_id = data['session_id']).update(
             training_name=data['training_name'],
             session_date=data['session_date'], 
             session_time = data['session_time'],
-            trainer_id=data['trainer_id'],
+            trainer_id=data['trainer'],
             updated_date=datetime.now(),
             updated_by=data['updated_by']
         )
+        ts_objects = TrainingSession.objects.order_by('session_date')
+        ts_data = SessionSerializer(ts_objects, many=True).data
 
         ts_objects =  TrainingSession.objects.all()
         ts_data = SessionSerializer(ts_objects, many=True).data

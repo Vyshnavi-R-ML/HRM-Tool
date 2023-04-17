@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { CalendarService } from 'src/app/calendar.service';
+import { CalendarService } from 'src/app/services/calendar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddTrainingModalComponent } from './add-training-modal/add-training-modal.component';
 import { ViewEmployeeModalComponent } from './view-employee-modal/view-employee-modal.component';
-import { EditTrainingModelComponent } from './edit-training-model/edit-training-model.component';
+import { EditTrainingModalComponent } from './edit-training-modal/edit-training-modal.component';
 /**
  * Calendar Component Displays Training Sessions and 
  * Creates Training Session
@@ -76,26 +76,19 @@ export class CalendarComponent implements OnInit {
   
 
   displayEditform(sessionIndex: any) {
-    
-      let editDialog = this.dialogRef.open(EditTrainingModelComponent, {
-        width : '40%', data: {session: this.trainingSession[sessionIndex]}
+      this._calendarService.session = this.trainingSession[sessionIndex]
+      
+      let editDialog = this.dialogRef.open(EditTrainingModalComponent, {
+        width : '40%'
         
       })
-      editDialog.afterClosed().subscribe(editTraining => {
-        if(editTraining) {
-          this._calendarService.updateTrainingSession( 
-          editTraining.sessionId,
-          editTraining.trainingName,
-          editTraining.sessionDate,
-          editTraining.sessionTime,
-          editTraining.trainer,
-          editTraining.createdBy)
-          .subscribe(res => {
-            console.log(res)
-            this.trainingSession = res
-          })
+      editDialog.afterClosed().subscribe(res => {
+        if(res)
+        {
+          this._calendarService.updateTrainingSession(this._calendarService.session)
+          .subscribe(res => this.trainingSession = res)
         }
-      }   
+      }
       )
   }
 

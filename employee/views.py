@@ -23,3 +23,10 @@ class EmployeeView(APIView):
 
 
         return Response("Updated to the database",status=status.HTTP_200_OK)
+    
+    def delete(self, request):
+        data = request.data
+
+        Employee.objects.get(emp_id = data['emp_id']).delete()
+
+        return Response('Employee {} has been deleted successfully'.format(data['emp_id']), status=status.HTTP_200_OK)

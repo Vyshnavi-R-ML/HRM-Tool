@@ -11,14 +11,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { InboxComponent } from './sidebar/inbox/inbox.component';
 import { EmployeeComponent } from './sidebar/employee/employee.component';
 import { CalendarComponent } from './sidebar/calendar/calendar.component';
-import { CalendarService } from './calendar.service';
+import { CalendarService } from './services/calendar.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal/add-training-modal.component';
 import { ViewEmployeeModalComponent } from './sidebar/calendar/view-employee-modal/view-employee-modal.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { EditTrainingModelComponent } from './sidebar/calendar/edit-training-model/edit-training-model.component';
+import { EditTrainingModalComponent } from './sidebar/calendar/edit-training-modal/edit-training-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +30,7 @@ import { EditTrainingModelComponent } from './sidebar/calendar/edit-training-mod
     CalendarComponent,
     AddTrainingModalComponent,
     ViewEmployeeModalComponent,
-    EditTrainingModelComponent
+    EditTrainingModalComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +44,6 @@ import { EditTrainingModelComponent } from './sidebar/calendar/edit-training-mod
   ],
   providers: [CalendarService],
   bootstrap: [AppComponent],
-  entryComponents:[AddTrainingModalComponent, ViewEmployeeModalComponent, EditTrainingModelComponent]
+  entryComponents:[AddTrainingModalComponent, ViewEmployeeModalComponent, EditTrainingModalComponent]
 })
 export class AppModule { }

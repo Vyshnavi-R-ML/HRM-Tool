@@ -105,6 +105,9 @@
 .app-inbox {
     height: 94%;
 }
+.app-calendar {
+    height: 90%;
+}
 
 .highlight {
     color: #5932EA;

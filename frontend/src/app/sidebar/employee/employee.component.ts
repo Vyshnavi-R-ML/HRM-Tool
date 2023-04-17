@@ -28,7 +28,10 @@ export class EmployeeComponent {
   deleteEmp(i: any){
     this.confirmBtn = confirm('Do you want to delete?')
     if(this.confirmBtn == true) {
-      this.employees.splice(i, 1)
+    this._employeeService.deleteEmployee(this.employees[i].emp_id)
+    .subscribe(res => res ? this.employees.splice(i, 1) : console.log(res)
+    )
+      
     }
   }
 }

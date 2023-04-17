@@ -29,10 +29,9 @@
         <div class="btn" [ngClass]="{'btn-disabled': authForm.controls.email.invalid || authForm.controls.password.invalid}">
             <button type="button" [ngClass]="{'btn-clickable': authForm.controls.email.invalid || authForm.controls.password.invalid}" class="btn btn-signin" routerLink="/dashboard" routerLinkActive="active">Sign in</button>
         </div>
+
         <div class="or-text">
             <p> - OR -</p>
-            {{authForm.controls.email.invalid}}
-            {{authForm.controls.password.invalid}}
         </div>
         <div class="btn">
             <button type="button"class="btn btn-outlook" routerLink="/dashboard" routerLinkActive="active">Sign in with Outlook</button>
