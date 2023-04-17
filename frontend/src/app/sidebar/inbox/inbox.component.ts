@@ -13,7 +13,7 @@ export class InboxComponent implements OnInit {
   }
 
   nominationStatus: any = [
-    {}
+    
   ]
   showTraining = true;
   showReplies = false;
@@ -48,6 +48,8 @@ export class InboxComponent implements OnInit {
       .subscribe(data => {
         this.nominationStatus = data
       })
+      console.log(this.nominationStatus);
+      
 
   }
 
@@ -73,7 +75,7 @@ export class InboxComponent implements OnInit {
       reason : 'Already in a training'
     }
     this._calendarService.acceptNomRequest(data)
-    .subscribe(res => res)
+    .subscribe(res => this.nominationStatus = res)
   }
 
 }

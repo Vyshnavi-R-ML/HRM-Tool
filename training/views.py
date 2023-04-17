@@ -45,9 +45,6 @@ class TrainingSessionView(APIView):
         ts_objects = TrainingSession.objects.order_by('session_date')
         ts_data = SessionSerializer(ts_objects, many=True).data
 
-        ts_objects =  TrainingSession.objects.all()
-        ts_data = SessionSerializer(ts_objects, many=True).data
-
         return Response(ts_data, status=status.HTTP_200_OK)
 
     def delete(self, request):

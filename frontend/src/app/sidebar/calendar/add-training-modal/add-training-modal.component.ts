@@ -20,7 +20,7 @@ export class AddTrainingModalComponent {
 
   // POST Form Data to backend
   addTraining() {
-    this._calendarService.sendData = this.trainingForm.value
+    this._calendarService.session = this.trainingForm.value
 
     this._calendarService.addTrainingSession()
       .subscribe(res => {

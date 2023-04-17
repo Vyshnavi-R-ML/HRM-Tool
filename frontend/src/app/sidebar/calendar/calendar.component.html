@@ -4,7 +4,7 @@
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="&#61442;  Search here">
       </div>
       <tr>
-        <th scope="col" class="table-row">Training Name {{user.user_role == 'RM'}}</th>
+        <th scope="col" class="table-row">Training Name</th>
         <th scope="col" class="table-row">Session Date</th>
         <th scope="col" class="table-row">Session Time</th>
         <th class="table-row">Trainer</th>
@@ -27,10 +27,8 @@
         </td>
         <td class="table-row" *ngIf="user.user_role == 'Intern'">
           <i class="bi bi-check-lg mr-4" (click) = "sendNomRequest(10378, trainings.session_id)"></i>
-          <!-- <i class="bi bi-x-square"></i> -->
         </td>
         
-        <td  class="table-row"></td>
       </tr>
     </tbody>
 </table>

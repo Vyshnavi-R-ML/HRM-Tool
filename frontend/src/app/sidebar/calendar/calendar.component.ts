@@ -32,7 +32,7 @@ export class CalendarComponent implements OnInit {
     }
   ]
   searchText = ''; 
-
+  confirmBtn : any;
 
   constructor(private _calendarService: CalendarService, private fb: FormBuilder, private dialogRef: MatDialog){ }
 
@@ -93,8 +93,11 @@ export class CalendarComponent implements OnInit {
   }
 
   deleteTraining(index: any) {
-    this._calendarService.deleteTrainingSession(this.trainingSession[index].session_id)
-      .subscribe(res => res ? this.trainingSession.splice(index, 1) : console.log(res))
+    this.confirmBtn = confirm('Do you want to delete?')
+    if(this.confirmBtn == true){
+      this._calendarService.deleteTrainingSession(this.trainingSession[index].session_id)
+        .subscribe(res => res ? this.trainingSession.splice(index, 1) : console.log(res))
+    }
   }
 
 

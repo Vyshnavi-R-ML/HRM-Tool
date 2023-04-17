@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, retry } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -8,42 +9,58 @@ import { Observable, retry } from 'rxjs';
 
 export class CalendarService {
 
-  private _url: string = "http://127.0.0.1:8000/training/";
+  private _url: string = environment.apiUrl;
 
 
   constructor(private http: HttpClient) { }
 
-  public session: any = {
-    session_id : '',
-    training_name : '',
-    trainer : '',
-    created_date : '',
-    created_time : '',
-    updated_by : ''
+  public session: any = {}
+
+  httpsOptions = {
+
+     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     
-  }
+     body: {},
+    
+    }
 
   getTrainingSession(): Observable<any> {
-    return this.http.get<any>(this._url + 'session/')
+    return this.http.get<any>(this._url + 'training/session/')
   }
 
   getTrainingEmployees(): Observable<any> {
     return this.http.get<any>(this._url)
   }
 
-  addTrainingSession(training_name: any, trainer: any, session_date: any, session_time: any) {
-    const postData = new FormData();
-
-    postData.append('training_name', training_name)
-    postData.append('trainer', trainer)
-    postData.append('session_date', session_date)
-    postData.append('session_time', session_time)
-    postData.append('created_by', "10105")
-    
-    return this.http.post<any>(this._url + 'session/', postData)
+  addTrainingSession() {
+    this.session.created_by = 10105
+    return this.http.post<any>(this._url + 'training/session/', this.session)
   }
 
   updateTrainingSession(data: any) {
-    return this.http.put<any>(this._url + 'session/', data)
+    return this.http.put<any>(this._url + 'training/session/', data)
   } 
+  deleteTrainingSession(id: any) {
+     this.httpsOptions.body = {
+     session_id: id
+    };
+     console.log(id)
+     return this.http.delete<any>(this._url + 'training/session/', this.httpsOptions)
+    }
+    
+    //Nominate Employee
+     nominateEmp(data:any) {
+     return this.http.post<any>(this._url + 'nomination/', data)
+    }
+    
+    //Get Nomination
+     getNominations(data:any) {
+     return this.http.get<any>(this._url + `nomination/?emp_id=${data}&session_id`)
+    // return this.http.get<any>(this._url + `nomination/?emp_id=10378&session_id`)
+    }
+    
+     //Accept Nom Request
+     acceptNomRequest(data:any) {
+     return this.http.put<any>(this._url + `nomination/`, data)
+    }
 }
