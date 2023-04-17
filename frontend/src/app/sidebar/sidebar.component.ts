@@ -1,15 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   showInbox = true;
   showEmployee = false;
   showCandidate = false;
   showCalendar = false;
+
+  rmUser = true;
+
+  userRM: any = {
+    user_id: '10105',
+    user_role: 'RM'
+  }
+
+  userIntern: any = {
+    user_id: '10131',
+    user_role: 'Intern'
+  }
 
   displayInbox() {
     this.showInbox = true;
@@ -35,4 +47,18 @@ export class SidebarComponent {
     this.showCandidate = false;
     this.showCalendar = true;
   }
+
+  ngOnInit() {
+  }
+
+  setRM() {
+    localStorage.clear()
+    localStorage.setItem('user',  JSON.stringify(this.userRM))
+  }
+
+  setIntern () {
+    localStorage.clear()
+    localStorage.setItem('user',  JSON.stringify(this.userIntern))
+  }
+
 }

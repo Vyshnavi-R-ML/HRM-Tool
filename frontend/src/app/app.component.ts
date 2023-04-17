@@ -8,17 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'frontend';
 
-  // user: any = {
-  //   user_id: '10131',
-  //   user_role: 'Intern'
-  // }
-
-  user: any = {
-    user_id: '10105',
-    user_role: 'RM'
-  }
-
   ngOnInit() {
-    localStorage.setItem('user',  JSON.stringify(this.user))
   }
 }

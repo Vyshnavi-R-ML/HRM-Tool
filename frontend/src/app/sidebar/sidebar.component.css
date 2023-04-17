@@ -18,11 +18,10 @@
     margin: 1% 0 0 2%;
 }
 
-.bi-box-arrow-right {
-    cursor: pointer;
-}
+
 
 .bi {
+    cursor: pointer;
     float: right;
     margin: 2% 3% 0 0;
     font-size: 175%;
