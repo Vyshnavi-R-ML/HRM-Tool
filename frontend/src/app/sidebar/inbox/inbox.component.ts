@@ -13,6 +13,7 @@ export class InboxComponent implements OnInit {
   user: any = {}
   nominationStatus: any = []
   empList: any = []
+  session: any = {}
   
   showTraining = true;
   showReplies = false;
@@ -46,24 +47,32 @@ export class InboxComponent implements OnInit {
     this.user = userData
 
     this.empList = this._employeeService.emp_list
+    this.session = this._calendarService.session
     this._calendarService.getNominations(userData.user_id)
       .subscribe(data => {
         this.nominationStatus = data
         this.filter()
       })
-      console.log(this.nominationStatus);
-  }
-
-
-  //Filter
-  filter() {
-    for(let i in this.nominationStatus) {
-      for (let empIndex in this.empList) {
-        if(this.empList[empIndex].emp_id === this.nominationStatus[i].nominated_by) {
-          this.nominationStatus[i].emp_name = this.empList[empIndex].emp_name
+    }
+    
+    
+    //Filter
+    filter() {
+      for(let i in this.nominationStatus) {
+        for (let empIndex in this.empList) {
+          if(this.empList[empIndex].emp_id === this.nominationStatus[i].nominated_by) {
+            this.nominationStatus[i].emp_name = this.empList[empIndex].emp_name
+          }
         }
       }
-    }
+      for(let i in this.nominationStatus){
+        let filterTraining = this.session.filter((data: any) =>{ 
+          return data.session_id == this.nominationStatus[i].session   
+        }) 
+        this.nominationStatus[i].training_name = filterTraining[0].training_name
+             
+      }
+
   }
 
   // Manager as User

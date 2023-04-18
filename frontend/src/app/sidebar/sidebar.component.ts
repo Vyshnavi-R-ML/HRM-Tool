@@ -21,7 +21,8 @@ export class SidebarComponent implements OnInit {
 
   userIntern: any = {
     user_id: '10131',
-    user_role: 'Intern'
+    user_role: 'Intern',
+    rm: '10105'
   }
 
   displayInbox() {

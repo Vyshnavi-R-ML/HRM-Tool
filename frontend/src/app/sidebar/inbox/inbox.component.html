@@ -48,7 +48,7 @@
             <tbody>
               <tr *ngFor="let noms of nominationStatus; index as i; let details of empList | filter: nominationStatus.emp_id">
                 <td class="table-row">{{noms.emp_name}}</td>
-                <td class="table-row">{{noms.session}}</td>
+                <td class="table-row">{{noms.training_name}}</td>
                 <td class="table-row">
                     <div *ngIf="noms.status == null">
                     <button type="button" class="btn btn-success mr-2" (click)="acceptNomRequest(i)">Accept</button>

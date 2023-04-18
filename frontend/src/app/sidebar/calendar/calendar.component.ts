@@ -69,7 +69,8 @@ export class CalendarComponent implements OnInit {
 
   getTraining() {
     this._calendarService.getTrainingSession()
-      .subscribe(data => console.log(this.trainingSession = data))
+      .subscribe(data => {console.log(this._calendarService.session = data)
+      this.trainingSession = data})
   }
   
 
@@ -103,9 +104,8 @@ export class CalendarComponent implements OnInit {
 
   // Nominate employee for Training Session
   sendNomRequest(empID: any, sessionID: any) {
-    console.log(empID, sessionID)
     const from_emp = this.user.user_id
-    const to_emp = 10105
+    const to_emp = this.user.rm
 
     const data = {
       session_id: sessionID,
