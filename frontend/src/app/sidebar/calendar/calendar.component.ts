@@ -104,7 +104,7 @@ export class CalendarComponent implements OnInit {
   // Nominate employee for Training Session
   sendNomRequest(empID: any, sessionID: any) {
     console.log(empID, sessionID)
-    const from_emp = 10378
+    const from_emp = this.user.user_id
     const to_emp = 10105
 
     const data = {

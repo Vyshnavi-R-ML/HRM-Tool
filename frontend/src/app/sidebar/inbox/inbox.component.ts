@@ -43,6 +43,7 @@ export class InboxComponent implements OnInit {
     let userData: any = localStorage.getItem('user')
     userData = JSON.parse(userData)
     
+    
     this.user = userData
     this._calendarService.getNominations(userData.user_id)
       .subscribe(data => {
@@ -71,6 +72,7 @@ export class InboxComponent implements OnInit {
       nominated_by : this.nominationStatus[empIndex].nominated_by,
       status: false,
       session_id : this.nominationStatus[empIndex].session,
+      emp_id : this.user.user_id,
       rejected_by : '10349',
       reason : 'Already in a training'
     }

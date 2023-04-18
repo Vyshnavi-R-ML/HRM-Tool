@@ -5,13 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent {
   showInbox = true;
   showEmployee = false;
   showCandidate = false;
   showCalendar = false;
 
-  rmUser = true;
+  rmUser = false;
 
   userRM: any = {
     user_id: '10105',
@@ -48,8 +48,7 @@ export class SidebarComponent implements OnInit {
     this.showCalendar = true;
   }
 
-  ngOnInit() {
-  }
+  
 
   setRM() {
     localStorage.clear()
@@ -59,6 +58,15 @@ export class SidebarComponent implements OnInit {
   setIntern () {
     localStorage.clear()
     localStorage.setItem('user',  JSON.stringify(this.userIntern))
+  }
+  switchUser() {
+    if(this.rmUser) {
+      this.setRM()
+    }
+    else {
+      this.setIntern()
+    }
+    this.rmUser = !this.rmUser
   }
 
 }
