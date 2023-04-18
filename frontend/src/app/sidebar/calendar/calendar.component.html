@@ -10,7 +10,6 @@
         <th class="table-row">Trainer</th>
         <th scope="col" class="table-row">Employees</th>
         <th>{{user.user_role == 'Intern' ? 'Nomination': 'Modify'}}</th>
-        <th *ngIf="user.user_role == 'RM'"></th>
       </tr>
     </thead>
     <tbody>

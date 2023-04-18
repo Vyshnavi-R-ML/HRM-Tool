@@ -76,7 +76,10 @@ export class InboxComponent implements OnInit {
     }
     
     this._calendarService.acceptNomRequest(data)
-      .subscribe(res => this.nominationStatus = res)
+      .subscribe(res => {
+        this.nominationStatus = res
+        this.filter()
+      })
   }
 
   rejectNomRequest(empIndex:any) {
@@ -89,7 +92,10 @@ export class InboxComponent implements OnInit {
       reason : 'Already in a training'
     }
     this._calendarService.acceptNomRequest(data)
-    .subscribe(res => this.nominationStatus = res)
+    .subscribe(res =>{
+       this.nominationStatus = res
+       this.filter()
+      })
   }
 
 }

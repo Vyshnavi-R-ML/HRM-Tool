@@ -29,7 +29,7 @@ export class CalendarService {
   }
 
   getTrainingEmployees(): Observable<any> {
-    return this.http.get<any>(this._url)
+    return this.http.get<any>(this._url + 'training/')
   }
 
   addTrainingSession() {
