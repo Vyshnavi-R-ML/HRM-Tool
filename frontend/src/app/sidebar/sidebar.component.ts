@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
-  showInbox = true;
+export class SidebarComponent implements OnInit {
+  showInbox = false;
   showEmployee = false;
   showCandidate = false;
-  showCalendar = false;
+  showCalendar = true;
 
   rmUser = false;
 
@@ -48,7 +49,13 @@ export class SidebarComponent {
     this.showCalendar = true;
   }
 
-  
+  constructor(private _employeeService: EmployeeService) {}
+
+  ngOnInit() {
+    this._employeeService.getEmployees()
+      .subscribe(res => {
+        console.log(this._employeeService.emp_list = res)})
+  }
 
   setRM() {
     localStorage.clear()
