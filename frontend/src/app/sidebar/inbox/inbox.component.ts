@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from 'src/app/services/calendar.service';
+import { EmployeeService } from 'src/app/services/employee.service';
+
 
 @Component({
   selector: 'app-inbox',
@@ -8,18 +10,15 @@ import { CalendarService } from 'src/app/services/calendar.service';
 })
 export class InboxComponent implements OnInit {
 
-  user: any = {
-
-  }
-
-  nominationStatus: any = [
-    
-  ]
+  user: any = {}
+  nominationStatus: any = []
+  empList: any = []
+  
   showTraining = true;
   showReplies = false;
   showRequest = false;
 
-  constructor(private _calendarService: CalendarService) {}
+  constructor(private _calendarService: CalendarService, private _employeeService: EmployeeService) {}
 
   displayTraining() {
     this.showTraining = true;
@@ -42,15 +41,27 @@ export class InboxComponent implements OnInit {
   ngOnInit() {
     let userData: any = localStorage.getItem('user')
     userData = JSON.parse(userData)
-    
     this.user = userData
+
+    this.empList = this._employeeService.emp_list
     this._calendarService.getNominations(userData.user_id)
       .subscribe(data => {
         this.nominationStatus = data
+        this.filter()
       })
       console.log(this.nominationStatus);
-      
+  }
 
+
+  //Filter
+  filter() {
+    for(let i in this.nominationStatus) {
+      for (let empIndex in this.empList) {
+        if(this.empList[empIndex].emp_id === this.nominationStatus[i].nominated_by) {
+          this.nominationStatus[i].emp_name = this.empList[empIndex].emp_name
+        }
+      }
+    }
   }
 
   // Manager as User
