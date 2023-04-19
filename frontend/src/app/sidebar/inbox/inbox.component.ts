@@ -51,28 +51,26 @@ export class InboxComponent implements OnInit {
     this._calendarService.getNominations(userData.user_id)
       .subscribe(data => {
         this.nominationStatus = data
-        this.filter()
+        this.displayNames()
       })
     }
     
     
-    //Filter
-    filter() {
+    displayNames() {
       for(let i in this.nominationStatus) {
-        for (let empIndex in this.empList) {
-          if(this.empList[empIndex].emp_id === this.nominationStatus[i].nominated_by) {
-            this.nominationStatus[i].emp_name = this.empList[empIndex].emp_name
-          }
-        }
-      }
-      for(let i in this.nominationStatus){
-        let filterTraining = this.session.filter((data: any) =>{ 
-          return data.session_id == this.nominationStatus[i].session   
-        }) 
-        this.nominationStatus[i].training_name = filterTraining[0].training_name
-             
+        let displayEmployeeName = this.empList.find((data:any) => {
+          return data.emp_id == this.nominationStatus[i].nominated_by
+        })        
+        
+        this.nominationStatus[i].emp_name = displayEmployeeName.emp_name
       }
 
+      for(let i in this.nominationStatus){
+        let displayTrainingName = this.session.find((data: any) =>{ 
+          return data.session_id == this.nominationStatus[i].session   
+        }) 
+        this.nominationStatus[i].training_name = displayTrainingName.training_name       
+      }
   }
 
   // Manager as User
@@ -87,7 +85,7 @@ export class InboxComponent implements OnInit {
     this._calendarService.acceptNomRequest(data)
       .subscribe(res => {
         this.nominationStatus = res
-        this.filter()
+        this.displayNames()
       })
   }
 
@@ -103,7 +101,7 @@ export class InboxComponent implements OnInit {
     this._calendarService.acceptNomRequest(data)
     .subscribe(res =>{
        this.nominationStatus = res
-       this.filter()
+       this.displayNames()
       })
   }
 

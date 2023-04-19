@@ -46,23 +46,23 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let noms of nominationStatus; index as i; let details of empList | filter: nominationStatus.emp_id">
-                <td class="table-row">{{noms.emp_name}}</td>
-                <td class="table-row">{{noms.training_name}}</td>
+              <tr *ngFor="let details of nominationStatus; index as i">
+                <td class="table-row">{{details.emp_name}}</td>
+                <td class="table-row">{{details.training_name}}</td>
                 <td class="table-row">
-                    <div *ngIf="noms.status == null">
+                    <div *ngIf="details.status == null">
                     <button type="button" class="btn btn-success mr-2" (click)="acceptNomRequest(i)">Accept</button>
                     <button type="button" class="btn btn-danger" (click)="rejectNomRequest(i)">Reject</button>
                     </div>
                 </td>
                 <td class="table-row">
-                    <div class="status-grey" *ngIf="noms.status == null">      
+                    <div class="status-grey" *ngIf="details.status == null">      
                         Pending
                     </div>
-                        <div class="status-red" *ngIf="noms.status == false">
+                        <div class="status-red" *ngIf="details.status == false">
                             Rejected
                         </div>
-                        <div class="status-green" *ngIf="noms.status == true">
+                        <div class="status-green" *ngIf="details.status == true">
                             Accepted
                         </div>
                 </td>
