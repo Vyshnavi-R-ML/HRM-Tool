@@ -55,7 +55,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this._employeeService.getEmployees()
       .subscribe(res => {
-        console.log(this._employeeService.emp_list = res)})
+        this._employeeService.emp_list = res})
   }
 
   setRM() {

@@ -69,8 +69,10 @@ export class CalendarComponent implements OnInit {
 
   getTraining() {
     this._calendarService.getTrainingSession()
-      .subscribe(data => {console.log(this._calendarService.session = data)
-      this.trainingSession = data})
+      .subscribe(data => {
+          this._calendarService.session = data
+        this.trainingSession = data
+      })
   }
   
 
