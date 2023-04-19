@@ -27,7 +27,8 @@
               </div>
         </form>
         <div class="btn" [ngClass]="{'btn-disabled': authForm.controls.email.invalid || authForm.controls.password.invalid}">
-            <button type="button" [ngClass]="{'btn-clickable': authForm.controls.email.invalid || authForm.controls.password.invalid}" class="btn btn-signin" routerLink="/dashboard" routerLinkActive="active">Sign in</button>
+            <button type="button" [ngClass]="{'btn-clickable': authForm.controls.email.invalid || authForm.controls.password.invalid}" class="btn btn-signin" (click)="login()">Sign in</button>
+            <!-- routerLink="/dashboard" routerLinkActive="active" -->
         </div>
 
         <div class="or-text">

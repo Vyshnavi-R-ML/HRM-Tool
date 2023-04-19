@@ -2,14 +2,14 @@
   "login":  
     [{
         "email": "tapash.das@maplelabs.com",
-        "password": "1245352",
-        "emp_id": "10105",
+        "password": "tapashsample",
+        "user_id": "10105",
         "user_role": "RM"
     },
     {
         "email": "shiva.pranav@maplelabs.com",
-        "password": "124535sfasf2",
-        "emp_id": "10391",
+        "password": "shivasample",
+        "user_id": "10391",
         "user_role": "Intern"
     }]
 

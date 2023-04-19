@@ -78,7 +78,7 @@ input:focus, input.form-control:focus {
     opacity: 0.7;
 }
 
-.btn-required {
+.btn-clickable {
     pointer-events: none;
 }
 
