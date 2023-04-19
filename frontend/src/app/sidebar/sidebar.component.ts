@@ -14,7 +14,7 @@ export class SidebarComponent implements OnInit {
 
   rmUser = false;
 
-  userRM: any = {
+  user: any = {
     user_id: '10105',
     user_role: 'RM'
   }
@@ -53,6 +53,12 @@ export class SidebarComponent implements OnInit {
   constructor(private _employeeService: EmployeeService) {}
 
   ngOnInit() {
+    let userData: any = localStorage.getItem('user')
+    userData = JSON.parse(userData)
+    
+    
+    this.user = userData
+
     this._employeeService.getEmployees()
       .subscribe(res => {
         this._employeeService.emp_list = res})
@@ -60,13 +66,14 @@ export class SidebarComponent implements OnInit {
 
   setRM() {
     localStorage.clear()
-    localStorage.setItem('user',  JSON.stringify(this.userRM))
+    localStorage.setItem('user',  JSON.stringify(this.user))
   }
 
   setIntern () {
     localStorage.clear()
     localStorage.setItem('user',  JSON.stringify(this.userIntern))
   }
+
   switchUser() {
     if(this.rmUser) {
       this.setRM()

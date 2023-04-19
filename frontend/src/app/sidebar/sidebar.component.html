@@ -2,7 +2,7 @@
     <div class="top-bar">
         <img class="logo" src="../../assets/logo.svg" alt="maplelabs logo">
         <i class="bi bi-box-arrow-right" routerLink="/auth" routerLinkActive="active"></i>
-        <i class="bi bi-person" (click)="switchUser()">Switch to {{rmUser ? 'RM' : 'Intern'}}</i>
+        <i class="bi bi-person">{{user.user_role}}</i>
     </div>
     <div class="main-page">
         <div class="side-bar">
@@ -11,8 +11,8 @@
                     <i class="bi bi-person-circle"></i>
                 </div>
                 <div class="list">
-                    <p class="name">Muazzam Alseri</p>
-                    <p class="role">Intern</p>
+                    <p class="name">{{user.name}}</p>
+                    <p class="role">{{user.user_role}}</p>
                 </div>
             </div>
             <div class="side-bar-items mt-5">
