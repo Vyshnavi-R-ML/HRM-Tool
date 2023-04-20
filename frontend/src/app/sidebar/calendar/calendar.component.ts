@@ -107,8 +107,9 @@ export class CalendarComponent implements OnInit {
   // Nominate employee for Training Session
   sendNomRequest(empID: any, sessionID: any) {
     const from_emp = this.user.user_id
-    const to_emp = this.user.rm
-
+    const to_emp = this.user.rm_id
+    console.log(to_emp);
+    
     const data = {
       session_id: sessionID,
       nominated_by: from_emp,

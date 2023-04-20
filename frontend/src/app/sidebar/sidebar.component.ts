@@ -84,4 +84,8 @@ export class SidebarComponent implements OnInit {
     this.rmUser = !this.rmUser
   }
 
+  logout() {
+    localStorage.clear()
+  }
+
 }

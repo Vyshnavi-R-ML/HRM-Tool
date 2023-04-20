@@ -31,10 +31,6 @@ export class AuthenticationComponent  {
             this.router.navigateByUrl('/dashboard')
           } 
         })
-
-        if(user) {
-          console.log(user)
-        }
       })
   }
 }

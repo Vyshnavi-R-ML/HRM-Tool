@@ -6,15 +6,17 @@
         "password": "tapashsample",
         "user_id": "10105",
         "user_role": "RM",
-        "token": "24trguhuasg7r2"
+        "token": "24trguhuasg7r2",
+        "rm_id": "10028"
     },
     {
         "email": "shiva.pranav@maplelabs.com",
         "name": "Shiva Pranav",
         "password": "shivasample",
-        "user_id": "10391",
+        "user_id": "10378",
         "user_role": "Intern",
-        "token": "asfyhuihdslge213f"
+        "token": "asfyhuihdslge213f",
+        "rm_id": "10105"
     }]
 
 }

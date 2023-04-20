@@ -1,7 +1,7 @@
 <div class="main">
     <div class="top-bar">
         <img class="logo" src="../../assets/logo.svg" alt="maplelabs logo">
-        <i class="bi bi-box-arrow-right" routerLink="/auth" routerLinkActive="active"></i>
+        <i class="bi bi-box-arrow-right" routerLink="/auth" routerLinkActive="active" (click)="logout()"></i>
         <i class="bi bi-person">{{user.user_role}}</i>
     </div>
     <div class="main-page">
