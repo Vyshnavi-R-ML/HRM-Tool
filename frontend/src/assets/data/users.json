@@ -5,14 +5,16 @@
         "name": "Tapash Das",
         "password": "tapashsample",
         "user_id": "10105",
-        "user_role": "RM"
+        "user_role": "RM",
+        "token": "24trguhuasg7r2"
     },
     {
         "email": "shiva.pranav@maplelabs.com",
         "name": "Shiva Pranav",
         "password": "shivasample",
         "user_id": "10391",
-        "user_role": "Intern"
+        "user_role": "Intern",
+        "token": "asfyhuihdslge213f"
     }]
 
 }

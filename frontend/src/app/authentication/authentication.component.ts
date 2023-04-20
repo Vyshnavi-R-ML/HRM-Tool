@@ -29,7 +29,7 @@ export class AuthenticationComponent  {
             
             localStorage.setItem('user',JSON.stringify(data))
             this.router.navigateByUrl('/dashboard')
-          }
+          } 
         })
 
         if(user) {
