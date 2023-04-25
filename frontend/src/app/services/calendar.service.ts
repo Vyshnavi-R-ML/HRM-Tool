@@ -55,7 +55,7 @@ export class CalendarService {
     
     //Get Nomination
      getNominations(data:any) {
-     return this.http.get<any>(this._url + `nomination/?emp_id=${data}&session_id`)
+     return this.http.get<any>(this._url + `nomination/?nominated_to=${data}&session_id`)
     // return this.http.get<any>(this._url + `nomination/?emp_id=10378&session_id`)
     }
     
