@@ -15,6 +15,7 @@ export class AuthenticationComponent  {
     password: ['', [Validators.required, Validators.minLength(8)]]
   })
   
+  dataValue: any
   
   constructor(private fb: FormBuilder, private _authService: AuthService, private router : Router){}
   
@@ -24,13 +25,17 @@ export class AuthenticationComponent  {
     this._authService.getUsers()
       .subscribe(res => {
         const user = res.login.find((data:any) => {        
-          if(data.email === this.authForm.value.email && data.password === this.authForm.value.password){
-            console.log(data);
-            
-            localStorage.setItem('user',JSON.stringify(data))
-            this.router.navigateByUrl('/dashboard')
-          } 
+          return data.email === this.authForm.value.email && data.password === this.authForm.value.password
         })
+
+        
+        if(user) {
+          localStorage.setItem('user',JSON.stringify(user))
+          this.router.navigateByUrl('/dashboard')
+        }
+        else {
+          alert('Enter correct credentials')
+        }
       })
   }
 }

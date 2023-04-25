@@ -61,6 +61,7 @@ export class InboxComponent implements OnInit {
         let displayEmployeeName = this.empList.find((data:any) => {
           return data.emp_id == this.nominationStatus[i].nominated_by
         })        
+        console.log(displayEmployeeName);
         
         this.nominationStatus[i].emp_name = displayEmployeeName.emp_name
       }

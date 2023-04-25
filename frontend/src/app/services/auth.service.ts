@@ -13,13 +13,12 @@ export class AuthService {
 
   public isAuthenticated(): any {
     const userData : any = localStorage.getItem('user');
-    const userToken = JSON.parse(userData)
-    console.log(userToken);
-    
+    const userToken = JSON.parse(userData)    
 
-    if (userToken.token) {
+    if (userToken?.token) {
       return true
     }  
+    else return false
   }
 
   getUsers(): Observable<any>{
