@@ -18,14 +18,14 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <li>
-                <a class="nav-item" (click)="displayTraining()" [ngStyle]="{'color': showTraining ? 'black' : '#A4A4A4'}">REQUEST</a></li>
+                <a class="nav-item" (click)="displayRequests()" [ngStyle]="{'color': showRequests ? 'black' : '#A4A4A4'}">REQUEST</a></li>
             <li>
                 <a class="nav-item" (click)="displayReplies()" [ngStyle]="{'color': showReplies ? 'black' : '#A4A4A4'}">REPLIES</a>
             </li>
           </div>
         </div>
     </nav>
-    <div class="emp-table" *ngIf="showTraining">
+    <div class="emp-table" *ngIf="showRequests">
         <div class="table-top">
             <h2 class="table-name">{{user.user_role == 'Intern' ? 'Employee' : 'Manager'}} Status</h2>
         </div>
@@ -39,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let details of nominationStatus; index as i">
+              <tr *ngFor="let details of nominationRequests; index as i">
                 <td class="table-row">{{details.emp_name}}</td>
                 <td class="table-row">{{details.training_name}}</td>
                 <td class="table-row">
@@ -77,6 +77,10 @@
               </tr>
             </thead>
             <tbody>
+              <tr *ngFor="let details of nominationReplies; index as i">
+                <td class="table-row">{{details.nominated_to}}</td>                
+                <td class="table-row">{{details.session_id}}</td>                
+              </tr>
             </tbody>
           </table>
     </div>

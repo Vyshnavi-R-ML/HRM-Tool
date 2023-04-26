@@ -11,32 +11,25 @@ import { EmployeeService } from 'src/app/services/employee.service';
 export class InboxComponent implements OnInit {
 
   user: any = {}
-  nominationStatus: any = []
+  nominationRequests: any = []
+  nominationReplies: any = []
   empList: any = []
   session: any = {}
   
-  showTraining = true;
+  showRequests = true;
   showReplies = false;
-  showRequest = false;
 
   constructor(private _calendarService: CalendarService, private _employeeService: EmployeeService) {}
 
-  displayTraining() {
-    this.showTraining = true;
+  displayRequests() {
+    this.showRequests = true;
     this.showReplies = false;
-    this.showRequest = false;
   }
   displayReplies() {
-    this.showTraining = false;
+    this.showRequests = false;
     this.showReplies = true;
-    this.showRequest = false;
   }
-  displayRequest() {
-    this.showTraining = false;
-    this.showReplies = false;
-    this.showRequest = true;
-  }
-
+  
 
   //Get nominations
   ngOnInit() {
@@ -50,58 +43,59 @@ export class InboxComponent implements OnInit {
     this.session = this._calendarService.session
     this._calendarService.getNominations(userData.user_id)
       .subscribe(data => {
-        this.nominationStatus = data
+        this.nominationRequests = data.nom_data_to
+        this.nominationReplies = data.nom_data_from
         this.displayNames()
       })
     }
     
     
     displayNames() {
-      for(let i in this.nominationStatus) {
+      for(let i in this.nominationRequests) {
         let displayEmployeeName = this.empList.find((data:any) => {
-          return data.emp_id == this.nominationStatus[i].nominated_from
+          return data.emp_id == this.nominationRequests[i].nominated_from
         })        
         console.log(displayEmployeeName);
         
-        this.nominationStatus[i].emp_name = displayEmployeeName.emp_name
+        this.nominationRequests[i].emp_name = displayEmployeeName.emp_name
       }
 
-      for(let i in this.nominationStatus){
+      for(let i in this.nominationRequests){
         let displayTrainingName = this.session.find((data: any) =>{ 
-          return data.session_id == this.nominationStatus[i].session   
+          return data.session_id == this.nominationRequests[i].session   
         }) 
-        this.nominationStatus[i].training_name = displayTrainingName.training_name       
+        this.nominationRequests[i].training_name = displayTrainingName.training_name       
       }
   }
 
   // Manager as User
   acceptNomRequest(empIndex:any) {
     let data = {
-      nominated_from:this.nominationStatus[empIndex].nominated_from,
+      nominated_from:this.nominationRequests[empIndex].nominated_from,
       status: true,
-      session_id: this.nominationStatus[empIndex].session,
+      session_id: this.nominationRequests[empIndex].session,
       nominated_to: this.user.user_id
     }
     
     this._calendarService.acceptNomRequest(data)
       .subscribe(res => {
-        this.nominationStatus = res
+        this.nominationRequests = res
         this.displayNames()
       })
   }
 
   rejectNomRequest(empIndex:any) {
     let data = {
-      nominated_from : this.nominationStatus[empIndex].nominated_from,
+      nominated_from : this.nominationRequests[empIndex].nominated_from,
       status: false,
-      session_id : this.nominationStatus[empIndex].session,
+      session_id : this.nominationRequests[empIndex].session,
       nominated_to : this.user.user_id,
       rejected_by : '10349',
       reason : 'Already in a training'
     }
     this._calendarService.acceptNomRequest(data)
     .subscribe(res =>{
-       this.nominationStatus = res
+       this.nominationRequests = res
        this.displayNames()
       })
   }

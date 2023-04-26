@@ -14,28 +14,34 @@ class NominationView(APIView):
         if not data:
             return Response("Please enter either Session ID or Manager ID", status=status.HTTP_400_BAD_REQUEST)
         
-        # Nomination Requests received 
-        nominated_to = data['nominated_to']
-        session_id = data['session_id']
+        emp_id = data['emp_id']
+
+        nom_data = {}
+        nom_filter_from = Nomination.objects.filter(nominated_from=emp_id)
+        nom_filter_to = Nomination.objects.filter(nominated_to=emp_id)
+        nom_data_from = NominationSerializer(nom_filter_from, many = True).data  
+        nom_data_to = NominationSerializer(nom_filter_to, many = True).data  
+        nom_data['nom_data_from'] = nom_data_from
+        nom_data['nom_data_to'] = nom_data_to
         
+        return Response(nom_data, status=status.HTTP_200_OK)
+
         print(nominated_to)
-        if nominated_to != '' and session_id != '':
-            nom_filter = Nomination.objects.filter(session_id = session_id)
-            nom_filter_mgr = nom_filter.filter(nominated_to = nominated_to)
-            nom_data = NominationSerializer(nom_filter_mgr, many = True).data
-            return Response(nom_data, status=status.HTTP_200_OK)                    
+        # if nominated_to != '' and session_id != '':
+        #     nom_filter = Nomination.objects.filter(session_id = session_id)
+        #     nom_filter_mgr = nom_filter.filter(nominated_to = nominated_to)
+        #     nom_data = NominationSerializer(nom_filter_mgr, many = True).data
+        #     return Response(nom_data, status=status.HTTP_200_OK)                    
         
-        elif nominated_to != '':
-            nom_filter_mgr = Nomination.objects.filter(nominated_to=nominated_to)
-            nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
-            return Response(nom_data, status=status.HTTP_200_OK)
+        # elif nominated_to != '':
+        #     nom_filter_mgr = Nomination.objects.filter(nominated_to=nominated_to)
+        #     nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
+        #     return Response(nom_data, status=status.HTTP_200_OK)
         
-        elif session_id != '':
-            nom_filter = Nomination.objects.filter(session_id = session_id)
-            nom_data = NominationSerializer(nom_filter, many = True).data
-            return Response(nom_data, status=status.HTTP_200_OK) 
-            
-        return Response("Please enter either Session ID or Manager ID", status=status.HTTP_400_BAD_REQUEST) 
+        # elif session_id != '':
+        #     nom_filter = Nomination.objects.filter(session_id = session_id)
+        #     nom_data = NominationSerializer(nom_filter, many = True).data
+        #     return Response(nom_data, status=status.HTTP_200_OK) 
 
     def post(self, request):
         data = request.data
@@ -52,7 +58,6 @@ class NominationView(APIView):
         data = request.data
         print(data['status'])
         Nomination.objects.filter(nominated_from=data['nominated_from'], session_id = data['session_id']).update(
-            #this does not work
             status = data['status']
         )
 
