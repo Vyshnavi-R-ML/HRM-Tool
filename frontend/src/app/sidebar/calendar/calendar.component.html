@@ -11,6 +11,7 @@
         <th class="table-row">Trainer</th>
         <th class="table-row">Employees</th>
         <th>{{user.user_role == 'Intern' ? 'Nomination': 'Modify'}}</th>
+        <th *ngIf="user.user_role == 'RM'">Employee Nomination</th>
       </tr>
     </thead>
     <tbody>
@@ -26,9 +27,11 @@
           <i class="bi bi-pencil-square" (click)="displayEditform(sessionIndex)"></i>
         </td>
         <td class="table-row" *ngIf="user.user_role == 'Intern'">
-          <i class="bi bi-check-lg mr-4" (click) = "sendNomRequest(10378, trainings.session_id)"></i>
+          <i class="bi bi-check-lg mr-4" (click) = "sendEmpNomRequest(trainings.session_id)"></i>
         </td>
-        
+        <td class="table-row" *ngIf="user.user_role == 'RM'">
+          <i class="bi bi-check-lg mr-4" (click)="sendRMNomRequest(trainings.session_id)"></i>
+        </td>
       </tr>
     </tbody>
 </table>

@@ -32,7 +32,7 @@
         <table class="table table-borderless">
             <thead>
               <tr>
-                <th scope="col" class="table-row">Employee</th>
+                <th scope="col" class="table-row">{{user.user_role == 'Intern' ? 'Manager' : 'Employee'}}</th>
                 <th scope="col" class="table-row">Session</th>
                 <th scope="col" class="table-row">Request</th>
                 <th scope="col" class="table-row">Status</th>
@@ -70,7 +70,7 @@
         <table class="table table-borderless">
             <thead>
               <tr>
-                <th scope="col" class="table-row">Employee</th>
+                <th scope="col" class="table-row">{{user.user_role == 'Intern' ? 'Manager' : 'Employee'}}</th>
                 <th scope="col" class="table-row">Session</th>
                 <th scope="col" class="table-row">Replies</th>
                 <th scope="col" class="table-row">Reason</th>

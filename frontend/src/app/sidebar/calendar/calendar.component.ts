@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddTrainingModalComponent } from './add-training-modal/add-training-modal.component';
 import { ViewEmployeeModalComponent } from './view-employee-modal/view-employee-modal.component';
 import { EditTrainingModalComponent } from './edit-training-modal/edit-training-modal.component';
+import { RmReqnomModalComponent } from './rm-reqnom-modal/rm-reqnom-modal.component';
 /**
  * Calendar Component Displays Training Sessions and 
  * Creates Training Session
@@ -105,7 +106,7 @@ export class CalendarComponent implements OnInit {
 
 
   // Nominate employee for Training Session
-  sendNomRequest(empID: any, sessionID: any) {
+  sendEmpNomRequest(sessionID: any) {
     const from_emp = this.user.user_id
     const to_emp = this.user.rm_id
     console.log(to_emp);
@@ -118,6 +119,32 @@ export class CalendarComponent implements OnInit {
     }
     this._calendarService.nominateEmp(data)
       .subscribe(res => console.log(res))
+  }
+  rmRequest: any = {}
+
+  sendRMNomRequest(sessionID: any) {
+    this.rmRequest.from_emp = this.user.user_id
+    this.rmRequest.session_id = sessionID
+    this._calendarService.session = this.rmRequest
+    
+    let dialogRef = this.dialogRef.open(RmReqnomModalComponent, {
+      width : '40%'
+    })
+
+    dialogRef.afterClosed().subscribe(res => {
+      if(res) {
+        
+        const data = {
+          nominated_from : this._calendarService.session.from_emp,
+          session_id : this._calendarService.session.session_id,
+          nominated_to : this._calendarService.session.emp_id,
+          status : null
+        }
+        this._calendarService.nominateEmp(data).subscribe(res => console.log(res)
+        )
+      }
+    }
+    )
   }
   
 }
