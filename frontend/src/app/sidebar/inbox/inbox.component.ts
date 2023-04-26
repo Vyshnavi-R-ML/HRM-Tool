@@ -59,7 +59,7 @@ export class InboxComponent implements OnInit {
     displayNames() {
       for(let i in this.nominationStatus) {
         let displayEmployeeName = this.empList.find((data:any) => {
-          return data.emp_id == this.nominationStatus[i].nominated_by
+          return data.emp_id == this.nominationStatus[i].nominated_from
         })        
         console.log(displayEmployeeName);
         
@@ -77,10 +77,10 @@ export class InboxComponent implements OnInit {
   // Manager as User
   acceptNomRequest(empIndex:any) {
     let data = {
-      nominated_by:this.nominationStatus[empIndex].nominated_by,
+      nominated_from:this.nominationStatus[empIndex].nominated_from,
       status: true,
       session_id: this.nominationStatus[empIndex].session,
-      emp_id: this.user.user_id
+      nominated_to: this.user.user_id
     }
     
     this._calendarService.acceptNomRequest(data)
@@ -92,10 +92,10 @@ export class InboxComponent implements OnInit {
 
   rejectNomRequest(empIndex:any) {
     let data = {
-      nominated_by : this.nominationStatus[empIndex].nominated_by,
+      nominated_from : this.nominationStatus[empIndex].nominated_from,
       status: false,
       session_id : this.nominationStatus[empIndex].session,
-      emp_id : this.user.user_id,
+      nominated_to : this.user.user_id,
       rejected_by : '10349',
       reason : 'Already in a training'
     }

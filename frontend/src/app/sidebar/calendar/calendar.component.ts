@@ -112,8 +112,8 @@ export class CalendarComponent implements OnInit {
     
     const data = {
       session_id: sessionID,
-      nominated_by: from_emp,
-      emp_id: to_emp,
+      nominated_from: from_emp,
+      nominated_to: to_emp,
       status: null
     }
     this._calendarService.nominateEmp(data)

@@ -9,22 +9,24 @@ from rest_framework import status
 class NominationView(APIView):
     def get(self, request):
         data = request.query_params
+        print(data)
 
         if not data:
             return Response("Please enter either Session ID or Manager ID", status=status.HTTP_400_BAD_REQUEST)
         
         # Nomination Requests received 
-        emp_id = data['emp_id']
+        nominated_to = data['nominated_to']
         session_id = data['session_id']
         
-        if emp_id != '' and session_id != '':
+        print(nominated_to)
+        if nominated_to != '' and session_id != '':
             nom_filter = Nomination.objects.filter(session_id = session_id)
-            nom_filter_mgr = nom_filter.filter(emp_id = emp_id)
+            nom_filter_mgr = nom_filter.filter(nominated_to = nominated_to)
             nom_data = NominationSerializer(nom_filter_mgr, many = True).data
             return Response(nom_data, status=status.HTTP_200_OK)                    
         
-        elif emp_id != '':
-            nom_filter_mgr = Nomination.objects.filter(emp_id=emp_id)
+        elif nominated_to != '':
+            nom_filter_mgr = Nomination.objects.filter(nominated_to=nominated_to)
             nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
             return Response(nom_data, status=status.HTTP_200_OK)
         
@@ -39,8 +41,8 @@ class NominationView(APIView):
         data = request.data
 
         Nomination.objects.create(session_id = data['session_id'],
-            emp_id=data['emp_id'],
-            nominated_by=data['nominated_by'], 
+            nominated_to=data['nominated_to'],
+            nominated_from=data['nominated_from'], 
             status = data['status'])
         
         return Response('Nomination for {} created to the database'.format(data['session_id']),status=status.HTTP_200_OK)
@@ -49,18 +51,18 @@ class NominationView(APIView):
     def put(self, request):
         data = request.data
         print(data['status'])
-        Nomination.objects.filter(nominated_by=data['nominated_by'], session_id = data['session_id']).update(
+        Nomination.objects.filter(nominated_from=data['nominated_from'], session_id = data['session_id']).update(
             #this does not work
             status = data['status']
         )
 
-        nom_filter_mgr = Nomination.objects.filter(emp_id=data['emp_id'])
+        nom_filter_mgr = Nomination.objects.filter(nominated_from=data['nominated_from'])
         nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
 
         if data['status']:
-            Training.objects.create(session_id = data['session_id'], emp_id = data['nominated_by'])
+            Training.objects.create(session_id = data['session_id'], emp_id = data['nominated_from'])
         else:
-            Rejection.objects.create(emp_id = data['nominated_by'], 
+            Rejection.objects.create(emp_id = data['nominated_from'], 
                 session_id=data['session_id'], 
                 rejected_by=data['rejected_by'],
                 reason=data['reason']

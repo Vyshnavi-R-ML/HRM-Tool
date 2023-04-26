@@ -15,10 +15,15 @@ export class EmployeeComponent {
       rm: ''
     },    
   ]
-
+  user: any
   constructor(private _employeeService: EmployeeService) {}
 
   ngOnInit() {
+    let userData: any = localStorage.getItem('user')
+    userData = JSON.parse(userData)
+    
+    
+    this.user = userData
     this.employees = this._employeeService.emp_list
   }
 

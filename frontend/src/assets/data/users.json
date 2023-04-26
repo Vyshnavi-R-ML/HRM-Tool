@@ -3,20 +3,41 @@
     [{
         "email": "tapash.das@maplelabs.com",
         "name": "Tapash Das",
-        "password": "tapashsample",
+        "password": "samplelog",
         "user_id": "10105",
         "user_role": "RM",
         "token": "24trguhuasg7r2",
-        "rm_id": "10028"
+        "rm_id": "10028",
+        "user_position": "Technical Lead"
     },
     {
         "email": "shiva.pranav@maplelabs.com",
         "name": "Shiva Pranav",
-        "password": "shivasample",
+        "password": "samplelog",
+        "user_id": "10391",
+        "user_role": "Intern",
+        "token": "asfyhuihdslge213f",
+        "rm_id": "10105",
+        "user_position": "Associate Software Engineer"
+    },
+    {
+        "email": "muazzam.alseri@maplelabs.com",
+        "name": "Muazzam Alseri",
+        "password": "samplelog",
         "user_id": "10378",
         "user_role": "Intern",
         "token": "asfyhuihdslge213f",
-        "rm_id": "10105"
+        "rm_id": "10105",
+        "user_position": "Associate Software Engineer"
+    },
+    {
+        "email": "annapurna@maplelabs.com",
+        "name": "Annapurna",
+        "password": "samplelog",
+        "user_id": "10349",
+        "user_role": "TM",
+        "token": "asfyhuihdslge213f",
+        "rm_id": "10105",
+        "user_position": "Senior Manager - Technical Training"
     }]
-
 }
