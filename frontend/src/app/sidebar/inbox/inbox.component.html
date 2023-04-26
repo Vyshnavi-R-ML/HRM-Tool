@@ -78,8 +78,20 @@
             </thead>
             <tbody>
               <tr *ngFor="let details of nominationReplies; index as i">
-                <td class="table-row">{{details.nominated_to}}</td>                
-                <td class="table-row">{{details.session_id}}</td>                
+                <td class="table-row">{{details.emp_name}}</td>                
+                <td class="table-row">{{details.training_name}}</td> 
+                <td class="table-row">
+                  <div class="status-grey" *ngIf="details.status == null">      
+                      Pending
+                  </div>
+                      <div class="status-red" *ngIf="details.status == false">
+                          Rejected
+                      </div>
+                      <div class="status-green" *ngIf="details.status == true">
+                          Accepted
+                      </div>
+              </td>             
+                <td class="table-row">{{details.status == false ? 'Already in Training' : ''}}</td>               
               </tr>
             </tbody>
           </table>
