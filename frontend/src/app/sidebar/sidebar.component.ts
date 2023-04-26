@@ -12,18 +12,9 @@ export class SidebarComponent implements OnInit {
   showCandidate = false;
   showCalendar = true;
 
-  rmUser = false;
 
-  user: any = {
-    user_id: '10105',
-    user_role: 'RM'
-  }
+  user: any
 
-  userIntern: any = {
-    user_id: '10131',
-    user_role: 'Intern',
-    rm: '10105'
-  }
 
   displayInbox() {
     this.showInbox = true;
@@ -62,26 +53,6 @@ export class SidebarComponent implements OnInit {
     this._employeeService.getEmployees()
       .subscribe(res => {
         this._employeeService.emp_list = res})
-  }
-
-  setRM() {
-    localStorage.clear()
-    localStorage.setItem('user',  JSON.stringify(this.user))
-  }
-
-  setIntern () {
-    localStorage.clear()
-    localStorage.setItem('user',  JSON.stringify(this.userIntern))
-  }
-
-  switchUser() {
-    if(this.rmUser) {
-      this.setRM()
-    }
-    else {
-      this.setIntern()
-    }
-    this.rmUser = !this.rmUser
   }
 
   logout() {

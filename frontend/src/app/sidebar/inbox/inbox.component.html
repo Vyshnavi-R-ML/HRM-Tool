@@ -6,7 +6,7 @@
         <h2 class="name">
             {{user.name}}
         </h2>
-        <h3 class="category"> Software Engineer</h3>
+        <h3 class="category"> {{user.user_position}}</h3>
         <p class="role">{{user.user_role}}</p>
     </div>
 </div>
@@ -18,23 +18,16 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <li>
-                <a class="nav-item" (click)="displayTraining()" [ngStyle]="{'color': showTraining ? 'black' : '#A4A4A4'}">TRAINING</a></li>
+                <a class="nav-item" (click)="displayTraining()" [ngStyle]="{'color': showTraining ? 'black' : '#A4A4A4'}">REQUEST</a></li>
             <li>
                 <a class="nav-item" (click)="displayReplies()" [ngStyle]="{'color': showReplies ? 'black' : '#A4A4A4'}">REPLIES</a>
-            </li>
-            <li>
-                <a class="nav-item" (click)="displayRequest()" [ngStyle]="{'color': showRequest ? 'black' : '#A4A4A4'}">REQUEST</a>
             </li>
           </div>
         </div>
     </nav>
     <div class="emp-table" *ngIf="showTraining">
         <div class="table-top">
-            <h2 class="table-name">{{user.user_role == 'RM' ? 'Manager' : 'Employee'}} Status</h2>
-            <div class="sort-btn">
-                <button class="sort-txt">Filter & Sort</button>
-                <i class="bi bi-funnel"></i>
-            </div>
+            <h2 class="table-name">{{user.user_role == 'Intern' ? 'Employee' : 'Manager'}} Status</h2>
         </div>
         <table class="table table-borderless">
             <thead>
@@ -70,11 +63,22 @@
             </tbody>
           </table>
     </div>
-    <div *ngIf="showReplies">
-        REPLIES
-    </div>
-    <div *ngIf="showRequest">
-        REQUEST
+    <div class="emp-table" *ngIf="showReplies">
+        <div class="table-top">
+            <h2 class="table-name">{{user.user_role == 'Intern' ? 'Employee' : 'Manager'}} Status</h2>
+        </div>
+        <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col" class="table-row">Employee</th>
+                <th scope="col" class="table-row">Session</th>
+                <th scope="col" class="table-row">Replies</th>
+                <th scope="col" class="table-row">Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
     </div>
 </div>
 

@@ -77,7 +77,7 @@ export class InboxComponent implements OnInit {
   // Manager as User
   acceptNomRequest(empIndex:any) {
     let data = {
-      nominated_from:this.nominationStatus[empIndex].nominated_by,
+      nominated_from:this.nominationStatus[empIndex].nominated_from,
       status: true,
       session_id: this.nominationStatus[empIndex].session,
       nominated_to: this.user.user_id
@@ -92,7 +92,7 @@ export class InboxComponent implements OnInit {
 
   rejectNomRequest(empIndex:any) {
     let data = {
-      nominated_from : this.nominationStatus[empIndex].nominated_by,
+      nominated_from : this.nominationStatus[empIndex].nominated_from,
       status: false,
       session_id : this.nominationStatus[empIndex].session,
       nominated_to : this.user.user_id,

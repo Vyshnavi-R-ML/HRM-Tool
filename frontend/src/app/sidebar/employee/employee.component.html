@@ -5,7 +5,7 @@
         <th class="table-row">Employee Name</th>
         <th class="table-row">Category</th>
         <th class="table-row">RM ID</th>
-        <th class="table-row">Delete</th>
+        <th class="table-row" *ngIf="user.user_role != 'Intern'">Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
         <ng-template #elseBlock>
           <td>-</td>
         </ng-template>
-        <td class="table-row"><button class="del-btn" (click)="deleteEmp(i)"><i class="bi bi-trash"></i></button></td>
+        <td class="table-row"><button class="del-btn" (click)="deleteEmp(i)" *ngIf="user.user_role != 'Intern'"><i class="bi bi-trash"></i></button></td>
       </tr>
     </tbody>
   </table>

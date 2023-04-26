@@ -28,14 +28,13 @@
         </form>
         <div class="btn" [ngClass]="{'btn-disabled': authForm.controls.email.invalid || authForm.controls.password.invalid}">
             <button type="button" [ngClass]="{'btn-clickable': authForm.controls.email.invalid || authForm.controls.password.invalid}" class="btn btn-signin" (click)="login()">Sign in</button>
-            <!-- routerLink="/dashboard" routerLinkActive="active" -->
         </div>
 
         <div class="or-text">
             <p> - OR -</p>
         </div>
         <div class="btn">
-            <button type="button"class="btn btn-outlook" routerLink="/dashboard" routerLinkActive="active">Sign in with Outlook</button>
+            <button type="button"class="btn btn-outlook" href="outlook.office365.com">Sign in with Outlook</button>
         </div>
     </div>
 </div>

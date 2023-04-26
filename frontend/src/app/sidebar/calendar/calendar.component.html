@@ -1,14 +1,15 @@
 <table class="table table-borderless">
     <thead>
-      <div class="search-training">
+      <div class="sort-btn">
         <input class="form-control" type="text" name="search" [(ngModel)]="searchText" placeholder="&#61442;  Search here">
       </div>
+      <br>
       <tr>
-        <th scope="col" class="table-row">Training Name</th>
-        <th scope="col" class="table-row">Session Date</th>
-        <th scope="col" class="table-row">Session Time</th>
+        <th class="table-row">Training Name</th>
+        <th class="table-row">Session Date</th>
+        <th class="table-row">Session Time</th>
         <th class="table-row">Trainer</th>
-        <th scope="col" class="table-row">Employees</th>
+        <th class="table-row">Employees</th>
         <th>{{user.user_role == 'Intern' ? 'Nomination': 'Modify'}}</th>
       </tr>
     </thead>
@@ -20,7 +21,7 @@
         <td class="table-row" *ngIf="trainings.trainer != null; else elseblock ">{{trainings.trainer}}</td>
         <td class="table-row"><i  class="bi bi-people" (click)="displayEmployees()"></i></td>
         <ng-template #elseblock> <td class="table-row">- </td> </ng-template>
-        <td *ngIf="user.user_role == 'RM'" class="table-row">
+        <td *ngIf="user.user_role != 'Intern'" class="table-row">
           <i class="bi bi-trash mr-4" (click)="deleteTraining(sessionIndex)"></i>
           <i class="bi bi-pencil-square" (click)="displayEditform(sessionIndex)"></i>
         </td>
@@ -32,4 +33,4 @@
     </tbody>
 </table>
 
-<i  class="bi bi-calendar-plus" *ngIf="user.user_role == 'RM'" (click)="displayForm()"></i>
+<i  class="bi bi-calendar-plus" *ngIf="user.user_role == 'TM'" (click)="displayForm()"></i>
