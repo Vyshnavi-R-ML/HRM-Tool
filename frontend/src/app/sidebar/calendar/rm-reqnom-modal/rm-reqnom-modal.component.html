@@ -1,0 +1,12 @@
+
+
+
+<form [formGroup]="trainingForm">
+    <div class="form-group">
+      <label>Training ID</label>
+      <p>{{rmReq.session_id}}</p>
+      <label>Emp id</label>
+      <input type="text" formControlName="emp_id" class="form-control" placeholder="Emp Id">
+    </div>
+    <button type="submit" (click)="submitRMRequest()" [mat-dialog-close]="true" class="btn btn-primary">Submit</button>
+</form> 

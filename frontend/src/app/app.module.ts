@@ -19,6 +19,7 @@ import { AddTrainingModalComponent } from './sidebar/calendar/add-training-modal
 import { ViewEmployeeModalComponent } from './sidebar/calendar/view-employee-modal/view-employee-modal.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { EditTrainingModalComponent } from './sidebar/calendar/edit-training-modal/edit-training-modal.component';
+import { RmReqnomModalComponent } from './sidebar/calendar/rm-reqnom-modal/rm-reqnom-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { EditTrainingModalComponent } from './sidebar/calendar/edit-training-mod
     CalendarComponent,
     AddTrainingModalComponent,
     ViewEmployeeModalComponent,
-    EditTrainingModalComponent
+    EditTrainingModalComponent,
+    RmReqnomModalComponent
   ],
   imports: [
     BrowserModule,
