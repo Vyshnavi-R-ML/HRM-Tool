@@ -122,9 +122,10 @@ export class CalendarComponent implements OnInit {
   }
   rmRequest: any = {}
 
-  sendRMNomRequest(sessionID: any) {
+  sendRMNomRequest(sessionID: any, training_name: any) {
     this.rmRequest.from_emp = this.user.user_id
     this.rmRequest.session_id = sessionID
+    this.rmRequest.training_name = training_name
     this._calendarService.session = this.rmRequest
     
     let dialogRef = this.dialogRef.open(RmReqnomModalComponent, {
