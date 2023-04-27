@@ -30,7 +30,7 @@
           <i class="bi bi-check-lg mr-4" (click) = "sendEmpNomRequest(trainings.session_id)"></i>
         </td>
         <td class="table-row" *ngIf="user.user_role == 'RM'">
-          <i class="bi bi-check-lg mr-4" (click)="sendRMNomRequest(trainings.session_id, trainings.training_name)"></i>
+          <i class="bi bi-person-add mr-4" (click)="sendRMNomRequest(trainings.session_id, trainings.training_name)"></i>
         </td>
       </tr>
     </tbody>
