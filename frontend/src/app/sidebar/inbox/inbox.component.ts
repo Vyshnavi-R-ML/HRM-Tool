@@ -88,11 +88,17 @@ export class InboxComponent implements OnInit {
 
   // Manager as User
   acceptNomRequest(empIndex:any) {
+    let emp_id: any;
+    if(this.user.user_role === 'RM'){
+      emp_id = this.nominationRequests[empIndex].nominated_from
+    } else emp_id = this.nominationRequests[empIndex].nominated_to
+
     let data = {
       nominated_from:this.nominationRequests[empIndex].nominated_from,
       status: true,
       session_id: this.nominationRequests[empIndex].session,
-      nominated_to: this.user.user_id
+      nominated_to: this.user.user_id,
+      emp_to_add: emp_id
     }
     
     this._calendarService.acceptNomRequest(data)

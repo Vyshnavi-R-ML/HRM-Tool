@@ -65,7 +65,7 @@ class NominationView(APIView):
         nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
 
         if data['status']:
-            Training.objects.create(session_id = data['session_id'], emp_id = data['nominated_from'])
+            Training.objects.create(session_id = data['session_id'], emp_id = data['emp_to_add'])
         else:
             Rejection.objects.create(emp_id = data['nominated_from'], 
                 session_id=data['session_id'], 

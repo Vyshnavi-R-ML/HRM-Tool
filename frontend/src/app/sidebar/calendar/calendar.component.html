@@ -11,7 +11,7 @@
         <th class="table-row">Trainer</th>
         <th class="table-row">Employees</th>
         <th>{{user.user_role == 'Intern' ? 'Nomination': 'Modify'}}</th>
-        <th *ngIf="user.user_role == 'RM'">Employee Nomination</th>
+        <th *ngIf="user.user_role == 'RM'">Nominate Employee</th>
       </tr>
     </thead>
     <tbody>
@@ -21,7 +21,7 @@
         <td class="table-row">{{trainings.session_time}}</td>
         <td class="table-row" *ngIf="trainings.trainer != null; else elseblock ">{{trainings.trainer}}</td>
         <td class="table-row"><i  class="bi bi-people" (click)="displayEmployees()"></i></td>
-        <ng-template #elseblock> <td class="table-row">- </td> </ng-template>
+        <ng-template #elseblock> <td class="table-row">    - </td> </ng-template>
         <td *ngIf="user.user_role != 'Intern'" class="table-row">
           <i class="bi bi-trash mr-4" (click)="deleteTraining(sessionIndex)"></i>
           <i class="bi bi-pencil-square" (click)="displayEditform(sessionIndex)"></i>
@@ -30,7 +30,7 @@
           <i class="bi bi-check-lg mr-4" (click) = "sendEmpNomRequest(trainings.session_id)"></i>
         </td>
         <td class="table-row" *ngIf="user.user_role == 'RM'">
-          <i class="bi bi-check-lg mr-4" (click)="sendRMNomRequest(trainings.session_id)"></i>
+          <i class="bi bi-person-add mr-4" (click)="sendRMNomRequest(trainings.session_id)"></i>
         </td>
       </tr>
     </tbody>
