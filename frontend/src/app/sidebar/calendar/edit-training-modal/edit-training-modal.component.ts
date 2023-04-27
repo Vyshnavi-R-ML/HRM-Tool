@@ -38,7 +38,7 @@ export class EditTrainingModalComponent {
     })
 }
 
-updateSession() {
+updateSession = () => {
   this._calendarService.session = this.trainingForm.value
 
 }

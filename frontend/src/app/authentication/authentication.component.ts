@@ -21,7 +21,7 @@ export class AuthenticationComponent  {
   
   
 
-  login() {
+  login = () => {
     this._authService.getUsers()
       .subscribe(res => {
         const user = res.login.find((data:any) => {        

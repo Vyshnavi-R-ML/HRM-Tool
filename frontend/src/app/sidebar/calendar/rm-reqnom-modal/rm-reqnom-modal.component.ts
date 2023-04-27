@@ -17,7 +17,7 @@ export class RmReqnomModalComponent implements OnInit{
     this.rmReq = this._calendarService.session  
   }
  
-  submitRMRequest() {
+  submitRMRequest = () => {
     this.rmReq.emp_id = this.trainingForm.value.emp_id
     this.rmReq = this._calendarService.session
     this._calendarService.session = this.rmReq    

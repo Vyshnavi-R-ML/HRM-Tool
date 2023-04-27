@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public isAuthenticated(): any {
+  public isAuthenticated = (): any => {
     const userData : any = localStorage.getItem('user');
     const userToken = JSON.parse(userData)    
 
@@ -21,7 +21,7 @@ export class AuthService {
     else return false
   }
 
-  getUsers(): Observable<any>{
+  getUsers = (): Observable<any> => {
     return this.http.get<any>(this._url)
   }
 }
