@@ -17,11 +17,11 @@ export class EmployeeService {
     headers : new HttpHeaders({'Content-Type' : 'application/json'}),
     body : {}
   }
-  getEmployees(): Observable<any> {
+  getEmployees = (): Observable<any> => {
     return this.http.get<any>(this._url)
   }
 
-  deleteEmployee(id: any) {
+  deleteEmployee = (id: any) => {
     this.httpOptions.body = {
       emp_id : id
     }

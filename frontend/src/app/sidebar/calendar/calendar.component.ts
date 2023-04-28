@@ -45,7 +45,7 @@ export class CalendarComponent implements OnInit {
     this.user = userData
   }
 
-  displayForm() {
+  displayForm = () => {
     let dialogRef = this.dialogRef.open(AddTrainingModalComponent, {
       width: '40%',
     })
@@ -56,7 +56,7 @@ export class CalendarComponent implements OnInit {
     })
   }
 
-  displayEmployees() {
+  displayEmployees = () => {
     let dialogRef = this.dialogRef.open(ViewEmployeeModalComponent, {
       width: '40%',
     })
@@ -68,7 +68,7 @@ export class CalendarComponent implements OnInit {
 
   
 
-  getTraining() {
+  getTraining = () => {
     this._calendarService.getTrainingSession()
       .subscribe(data => {
           this._calendarService.session = data
@@ -79,7 +79,7 @@ export class CalendarComponent implements OnInit {
 
   
 
-  displayEditform(sessionIndex: any) {
+  displayEditform = (sessionIndex: any) => {
       this._calendarService.session = this.trainingSession[sessionIndex]
       
       let editDialog = this.dialogRef.open(EditTrainingModalComponent, {
@@ -96,7 +96,7 @@ export class CalendarComponent implements OnInit {
       )
   }
 
-  deleteTraining(index: any) {
+  deleteTraining = (index: any) => {
     this.confirmBtn = confirm('Do you want to delete?')
     if(this.confirmBtn == true){
       this._calendarService.deleteTrainingSession(this.trainingSession[index].session_id)
@@ -106,7 +106,7 @@ export class CalendarComponent implements OnInit {
 
 
   // Nominate employee for Training Session
-  sendEmpNomRequest(sessionID: any) {
+  sendEmpNomRequest = (sessionID: any)  => {
     const from_emp = this.user.user_id
     const to_emp = this.user.rm_id
     console.log(to_emp);
@@ -122,10 +122,11 @@ export class CalendarComponent implements OnInit {
   }
   rmRequest: any = {}
 
-  sendRMNomRequest(sessionID: any, training_name: any) {
+  sendRMNomRequest = (...data: any) => {
+    
     this.rmRequest.from_emp = this.user.user_id
-    this.rmRequest.session_id = sessionID
-    this.rmRequest.training_name = training_name
+    this.rmRequest.session_id = data[0]
+    this.rmRequest.training_name = data[1]
     this._calendarService.session = this.rmRequest
     
     let dialogRef = this.dialogRef.open(RmReqnomModalComponent, {

@@ -29,7 +29,7 @@ export class EmployeeComponent {
 
   confirmBtn : any
 
-  deleteEmp(i: any){
+  deleteEmp = (i: any) => {
     this.confirmBtn = confirm('Do you want to delete?')
     if(this.confirmBtn == true) {
     this._employeeService.deleteEmployee(this.employees[i].emp_id)

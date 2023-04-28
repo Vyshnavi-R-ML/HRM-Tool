@@ -21,11 +21,11 @@ export class InboxComponent implements OnInit {
 
   constructor(private _calendarService: CalendarService, private _employeeService: EmployeeService) {}
 
-  displayRequests() {
+  displayRequests = () => {
     this.showRequests = true;
     this.showReplies = false;
   }
-  displayReplies() {
+  displayReplies = () => {
     this.showRequests = false;
     this.showReplies = true;
   }
@@ -50,7 +50,7 @@ export class InboxComponent implements OnInit {
     }
     
     
-    displayNames() {
+    displayNames = () => {
 
       //Mapping Nomination Requests
       for(let i in this.nominationRequests) {
@@ -87,7 +87,7 @@ export class InboxComponent implements OnInit {
   }
 
   // Manager as User
-  acceptNomRequest(empIndex:any) {
+  acceptNomRequest = (empIndex:any) => {
     let emp_id: any;
     if(this.user.user_role === 'RM'){
       emp_id = this.nominationRequests[empIndex].nominated_from
@@ -108,7 +108,7 @@ export class InboxComponent implements OnInit {
       })
   }
 
-  rejectNomRequest(empIndex:any) {
+  rejectNomRequest = (empIndex:any) => {
     let data = {
       nominated_from : this.nominationRequests[empIndex].nominated_from,
       status: false,

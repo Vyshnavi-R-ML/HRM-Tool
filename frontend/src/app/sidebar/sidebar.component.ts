@@ -9,35 +9,25 @@ import { EmployeeService } from '../services/employee.service';
 export class SidebarComponent implements OnInit {
   showInbox = false;
   showEmployee = false;
-  showCandidate = false;
   showCalendar = true;
 
 
   user: any
 
 
-  displayInbox() {
+  displayInbox = () => {
     this.showInbox = true;
     this.showEmployee = false;
-    this.showCandidate = false;
     this.showCalendar = false;
   }
-  displayEmployee() {
+  displayEmployee = () => {
     this.showInbox = false;
     this.showEmployee = true;
-    this.showCandidate = false;
     this.showCalendar = false;
   }
-  displayCandidate() {
+  displayCalendar = () => {
     this.showInbox = false;
     this.showEmployee = false;
-    this.showCandidate = true;
-    this.showCalendar = false;  
-  }
-  displayCalendar() {
-    this.showInbox = false;
-    this.showEmployee = false;
-    this.showCandidate = false;
     this.showCalendar = true;
   }
 
@@ -55,7 +45,7 @@ export class SidebarComponent implements OnInit {
         this._employeeService.emp_list = res})
   }
 
-  logout() {
+  logout = () => {
     localStorage.clear()
   }
 

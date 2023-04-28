@@ -24,23 +24,23 @@ export class CalendarService {
     
     }
 
-  getTrainingSession(): Observable<any> {
+  getTrainingSession = (): Observable<any> => {
     return this.http.get<any>(this._url + 'training/session/')
   }
 
-  getTrainingEmployees(): Observable<any> {
+  getTrainingEmployees = (): Observable<any> => {
     return this.http.get<any>(this._url + 'training/')
   }
 
-  addTrainingSession() {
+  addTrainingSession = () => {
     this.session.created_by = 10105
     return this.http.post<any>(this._url + 'training/session/', this.session)
   }
 
-  updateTrainingSession(data: any) {
+  updateTrainingSession = (data: any) => {
     return this.http.put<any>(this._url + 'training/session/', data)
   } 
-  deleteTrainingSession(id: any) {
+  deleteTrainingSession = (id: any) => {
      this.httpsOptions.body = {
      session_id: id
     };
@@ -49,17 +49,17 @@ export class CalendarService {
     }
     
     //Nominate Employee
-     nominateEmp(data:any) {
+     nominateEmp = (data:any) => {
      return this.http.post<any>(this._url + 'nomination/', data)
     }
     
     //Get Nomination Requests and Replies
-     getNominations(data:any) {
+     getNominations = (data:any) => {
      return this.http.get<any>(this._url + `nomination/?emp_id=${data}`)
     }
     
      //Accept Nom Request
-     acceptNomRequest(data:any) {
+     acceptNomRequest = (data:any) => {
      return this.http.put<any>(this._url + `nomination/`, data)
     }
 }
