@@ -54,16 +54,15 @@ export class InboxComponent implements OnInit {
 
       //Mapping Nomination Requests
       for(let i in this.nominationRequests) {
-        let displayEmployeeName = this.empList.find((data:any) => {
+        let displayEmployeeName = this.empList?.find((data:any) => {
           return data.emp_id == this.nominationRequests[i].nominated_from
         })        
-        // console.log(displayEmployeeName);
         
         this.nominationRequests[i].emp_name = displayEmployeeName.emp_name
       }      
 
       for(let i in this.nominationRequests){
-        let displayTrainingName = this.session.find((data: any) =>{ 
+        let displayTrainingName = this.session?.find((data: any) =>{ 
           return data.session_id == this.nominationRequests[i].session   
         }) 
         this.nominationRequests[i].training_name = displayTrainingName.training_name       
@@ -71,15 +70,14 @@ export class InboxComponent implements OnInit {
 
       //Mapping Nomination Replies
       for(let i in this.nominationReplies) {
-        let displayEmployeeName = this.empList.find((data:any) => {
+        let displayEmployeeName = this.empList?.find((data:any) => {
           return data.emp_id == this.nominationReplies[i].nominated_to
         })                
         this.nominationReplies[i].emp_name = displayEmployeeName.emp_name
-        console.log(this.nominationReplies);
       }
 
       for(let i in this.nominationReplies){
-        let displayTrainingName = this.session.find((data: any) =>{ 
+        let displayTrainingName = this.session?.find((data: any) =>{ 
           return data.session_id == this.nominationReplies[i].session   
         }) 
         this.nominationReplies[i].training_name = displayTrainingName.training_name       

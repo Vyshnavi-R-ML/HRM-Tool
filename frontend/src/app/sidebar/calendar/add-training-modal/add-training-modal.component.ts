@@ -26,14 +26,5 @@ export class AddTrainingModalComponent {
       .subscribe(res => {
         console.log(res)
       })
-    // this._calendarService.addTrainingSession(
-    //   this.trainingForm.value.trainingName,
-    //   this.trainingForm.value.trainer,
-    //   this.trainingForm.value.sessionDate,
-    //   this.trainingForm.value.sessionTime
-    // ).subscribe(res => {
-    //   console.log(res)
-    // })
-    
   }
 }

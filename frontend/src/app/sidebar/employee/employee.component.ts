@@ -34,8 +34,7 @@ export class EmployeeComponent {
     if(this.confirmBtn == true) {
     this._employeeService.deleteEmployee(this.employees[i].emp_id)
     .subscribe(res => res ? this.employees.splice(i, 1) : console.log(res)
-    )
-      
+    ) 
     }
   }
 }
