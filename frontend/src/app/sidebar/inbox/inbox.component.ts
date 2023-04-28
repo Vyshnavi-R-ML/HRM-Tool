@@ -102,24 +102,32 @@ export class InboxComponent implements OnInit {
     }
     
     this._calendarService.acceptNomRequest(data)
-      .subscribe(res => {
-        this.nominationRequests = res
+      .subscribe(data => {
+        this.nominationRequests = data.nom_data_to
+        this.nominationReplies = data.nom_data_from
         this.displayNames()
       })
   }
 
   rejectNomRequest = (empIndex:any) => {
+    let emp_id: any;
+    if(this.user.user_role === 'RM'){
+      emp_id = this.nominationRequests[empIndex].nominated_from
+    } else emp_id = this.nominationRequests[empIndex].nominated_to
+
     let data = {
       nominated_from : this.nominationRequests[empIndex].nominated_from,
       status: false,
       session_id : this.nominationRequests[empIndex].session,
       nominated_to : this.user.user_id,
       rejected_by : this.user.user_id,
-      reason : 'Already in a training'
+      reason : 'Already in a training',
+      emp_to_add : emp_id
     }
     this._calendarService.acceptNomRequest(data)
-    .subscribe(res =>{
-       this.nominationRequests = res
+    .subscribe(data =>{
+      this.nominationRequests = data.nom_data_to
+      this.nominationReplies = data.nom_data_from
        this.displayNames()
       })
   }

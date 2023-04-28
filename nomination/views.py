@@ -61,9 +61,17 @@ class NominationView(APIView):
             status = data['status']
         )
 
-        nom_filter_mgr = Nomination.objects.filter(nominated_from=data['nominated_from'])
-        nom_data = NominationSerializer(nom_filter_mgr, many = True).data    
 
+        emp_id = data['emp_to_add']
+
+        nom_data = {}
+        nom_filter_from = Nomination.objects.filter(nominated_from=emp_id)
+        nom_filter_to = Nomination.objects.filter(nominated_to=emp_id)
+        nom_data_from = NominationSerializer(nom_filter_from, many = True).data  
+        nom_data_to = NominationSerializer(nom_filter_to, many = True).data  
+        nom_data['nom_data_from'] = nom_data_from
+        nom_data['nom_data_to'] = nom_data_to
+    
         if data['status']:
             Training.objects.create(session_id = data['session_id'], emp_id = data['emp_to_add'])
         else:
